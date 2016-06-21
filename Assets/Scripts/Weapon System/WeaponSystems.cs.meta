@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 8d1aaca11e92c04419c9109823986ab3
+timeCreated: 1465922956
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - primaryWeapon: {instanceID: 0}
+  - secondaryWeapon: {instanceID: 0}
+  - centerHardpoint: {fileID: 475716, guid: 912279f26bbd65248b5a77c9350bb519, type: 2}
+  - leftHardpoint: {instanceID: 0}
+  - rightHardpoint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

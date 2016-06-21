@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 534a3a0ebd66e0e48b4d9f59b33b49e1
+timeCreated: 1465969589
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - healthSlider: {instanceID: 0}
+  - healthFillImage: {instanceID: 0}
+  - shieldSlider: {instanceID: 0}
+  - shieldFillImage: {instanceID: 0}
+  - Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
+  - explosion: {fileID: 19863738, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
