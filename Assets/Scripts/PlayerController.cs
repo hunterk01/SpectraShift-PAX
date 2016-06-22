@@ -82,6 +82,14 @@ public class PlayerController : LivingEntity
         float vert_kbInput = Input.GetAxis("Vertical");
         if (horiz_kbInput != 0) movingEntity.Turn(horiz_kbInput);
         if (vert_kbInput != 0) movingEntity.Thrust(vert_kbInput);
+        if (vert_kbInput > 0)
+        {
+            afterburners.AfterburnersOn();
+        }
+        else
+        {
+            afterburners.AfterburnersOff();
+        }
 
         // Other controls
         if (Input.GetButton("StrafeRight"))

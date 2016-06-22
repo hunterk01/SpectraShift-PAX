@@ -83,7 +83,7 @@ public class EnemyController : LivingEntity
     {
         if (material.shader == shader1)
         {
-            Debug.Log("Tansparent");
+            //Debug.Log("Tansparent");
             material.shader = shader2;
         }
     }
@@ -92,7 +92,7 @@ public class EnemyController : LivingEntity
     {
         if(material.shader == shader2)
         {
-            Debug.Log("Diffuse");
+            //Debug.Log("Diffuse");
             material.shader = shader1;
         }
     }
@@ -145,7 +145,7 @@ public class EnemyController : LivingEntity
         targetDistance = Vector3.Distance(player.transform.position, transform.position);
 
         if (targetDistance < detectionRange && player.isLight == isLight)
-        { 
+        {
             if (targetDistance < evadeDistance && enemyState != EnemyState.EVADE)
             {
                 enemyState = EnemyState.EVADE;
@@ -166,18 +166,19 @@ public class EnemyController : LivingEntity
         switch (enemyState)
         {
             case EnemyState.PATROL:
-                Debug.Log("State = Patrol");
+                //Debug.Log("State = Patrol");
                 patrol.PatrolMovement();
                 break;
             case EnemyState.PERSUE:
-                Debug.Log("State = Persue");
+                //Debug.Log("State = Persue");
                 accel = pursue.getSteering(playerRB);
                 steeringBasics.steer(accel);
                 steeringBasics.LookAtDirection();
+                //pursue.getSteering(playerRB);
                 CheckFire(player.transform.position);
                 break;
             case EnemyState.EVADE:
-                Debug.Log("State = Evade");
+                //Debug.Log("State = Evade");
                 evade.GetSteering(playerRB);
                 CheckFire(player.transform.position);
                 break;

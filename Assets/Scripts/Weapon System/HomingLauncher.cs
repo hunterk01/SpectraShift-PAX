@@ -5,6 +5,7 @@ public class HomingLauncher : MonoBehaviour, IGun
 {
     public float maxDelay = 0.5f;
     public float rocketLifetime = 10;
+    public float rocketRange = 40;
 
     public GameObject Rocket;
     private WeaponSystems weaponSystem;
@@ -13,9 +14,12 @@ public class HomingLauncher : MonoBehaviour, IGun
     float rocketDelay;
     bool isLight;
     bool isLoaded;
+    float distance;
 
-	// Use this for initialization
-	void Start ()
+    Vector3 displacement;
+
+    // Use this for initialization
+    void Start ()
     {
         rocketDelay = maxDelay;
         isLight = true;
@@ -31,16 +35,21 @@ public class HomingLauncher : MonoBehaviour, IGun
             rocketDelay = maxDelay;
             GameObject tempBulletHandler;
             GameObject tempEnemy = findClosestEnemy();
-            if (tempEnemy != null)
+            displacement = tempEnemy.transform.position - transform.position;
+            distance = displacement.magnitude;
+            if (distance < rocketRange)
             {
-                tempBulletHandler = Instantiate(Rocket, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-                HRocketAI temp = tempBulletHandler.GetComponent<HRocketAI>();
-                temp.setTarget(tempEnemy);
-                isLoaded = false;
-                Destroy(tempBulletHandler, rocketLifetime);
-                weaponSystem.manageSecondaryAmmo(ammoUsage);
+                if (tempEnemy != null)
+                {
+                    tempBulletHandler = Instantiate(Rocket, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+                    HRocketAI temp = tempBulletHandler.GetComponent<HRocketAI>();
+                    temp.setTarget(tempEnemy);
+                    isLoaded = false;
+                    Destroy(tempBulletHandler, rocketLifetime);
+                    weaponSystem.manageSecondaryAmmo(ammoUsage);
+                }
+                else Debug.Log("No Enemy Lock");
             }
-            else Debug.Log("No Enemy Lock");
         }
     }
 
