@@ -211,9 +211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47f6334dd77e82428023dc005ae89d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 30
+  turnSpeed: 5
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
+  rocketHeight: 0
   damage: 0
   speed: 0
 --- !u!114 &11462142

@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// Interface
-public class HRocketAI : MonoBehaviour, IProjectile
-{
+public class HGooAI : MonoBehaviour, IProjectile
+{ 
+
     public float maxSpeed = 30;
     private const float maxDamage = 20;
     private const float maxTurnSpeed = 10;
     private float distanceToTarget;
     public float turnSpeed = 5;
     private bool isLight;
-    
+    public GameObject gooSplash;
+    public float gooSplashOffset = 1;
+    public GameObject projectileExplosion;
+
     private GameObject enemy;
     private Transform rocketTran;
     private RaycastHit hit;
@@ -18,10 +21,10 @@ public class HRocketAI : MonoBehaviour, IProjectile
     public float rocketHeight;
     public float damage;
     public float speed;
+    public float gooLifetime = 3.5f;
 
-
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         rocketTran = gameObject.GetComponent<Transform>();
         damage = maxDamage;
@@ -29,9 +32,9 @@ public class HRocketAI : MonoBehaviour, IProjectile
         distanceToTarget = 0;
         rocketHeight = HeightManager.Instance.setHeight;
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+    // Update is called once per frame
+    void FixedUpdate()
     {
         rocketTran.position = new Vector3(rocketTran.position.x, rocketHeight, rocketTran.position.z);
 
@@ -60,11 +63,22 @@ public class HRocketAI : MonoBehaviour, IProjectile
             LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
             hitTarget(damageableObject);
         }
+
+        if (gooLifetime < 0)
+        {
+            Instantiate(projectileExplosion, gameObject.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        else
+        {
+            gooLifetime -= Time.deltaTime;
+        }
     }
 
     void hitTarget(IDamageable hitObject)
     {
-        hitObject.TakeHit(damage, hit);        
+        hitObject.TakeHit(damage, hit);
+        Instantiate(gooSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, gooSplashOffset), gameObject.transform.rotation);
         GameObject.Destroy(gameObject);
     }
 

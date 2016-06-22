@@ -169,6 +169,9 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
+  LaserSplash: {fileID: 137888, guid: 39974339d6d07da4fa64ee4576b67467, type: 2}
+  splashOffset: 0.5
+  boltHeight: 0
 --- !u!198 &19824624
 ParticleSystem:
   m_ObjectHideFlags: 1
