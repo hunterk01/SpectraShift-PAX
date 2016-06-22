@@ -130,7 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6de9160c662f741b2e51ecc2875a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDelay: 0.5
+  rocketLifetime: 10
   Rocket: {fileID: 174672, guid: ddb2ef5390c6ad0478259250ef50affd, type: 2}
+  projectileExplosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

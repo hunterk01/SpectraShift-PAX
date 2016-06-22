@@ -41,6 +41,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDelay: 2
   rocketLifetime: 3.5
+  projectileHeight: 0
   Rocket: {fileID: 122922, guid: 517405feb74a5f040bd81158ec5ea48d, type: 2}
 --- !u!1001 &100100000
 Prefab:

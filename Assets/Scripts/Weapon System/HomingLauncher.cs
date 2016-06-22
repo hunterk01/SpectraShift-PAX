@@ -8,6 +8,7 @@ public class HomingLauncher : MonoBehaviour, IGun
 
     public GameObject Rocket;
     private WeaponSystems weaponSystem;
+    //public GameObject projectileExplosion;
 
     int ammoUsage = -1;
     float rocketDelay;
@@ -37,6 +38,7 @@ public class HomingLauncher : MonoBehaviour, IGun
                 HRocketAI temp = tempBulletHandler.GetComponent<HRocketAI>();
                 temp.setTarget(tempEnemy);
                 isLoaded = false;
+                //Instantiate(projectileExplosion, gameObject.transform.position, Quaternion.identity);
                 Destroy(tempBulletHandler, rocketLifetime);
                 weaponSystem.manageSecondaryAmmo(ammoUsage);
             }
