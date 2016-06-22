@@ -9,7 +9,6 @@ public class HomingLauncher : MonoBehaviour, IGun
 
     public GameObject Rocket;
     private WeaponSystems weaponSystem;
-    //public GameObject projectileExplosion;
 
     int ammoUsage = -1;
     float rocketDelay;
@@ -20,14 +19,14 @@ public class HomingLauncher : MonoBehaviour, IGun
     Vector3 displacement;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         rocketDelay = maxDelay;
         isLight = true;
         isLoaded = true;
         weaponSystem = GetComponentInParent<WeaponSystems>();
-	}
-	
+    }
+
     void IGun.fire()
     {
         rocketDelay = rocketDelay - Time.deltaTime;
@@ -36,18 +35,12 @@ public class HomingLauncher : MonoBehaviour, IGun
             rocketDelay = maxDelay;
             GameObject tempBulletHandler;
             GameObject tempEnemy = findClosestEnemy();
-            displacement = tempEnemy.transform.position - transform.position;
-            distance = displacement.magnitude;
+            //displacement = tempEnemy.transform.position - transform.position;
+            //distance = displacement.magnitude;
+            distance = Vector3.Distance(tempEnemy.transform.position, transform.position);
+
             if (distance < rocketRange)
             {
-                tempBulletHandler = Instantiate(Rocket, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-                HRocketAI temp = tempBulletHandler.GetComponent<HRocketAI>();
-                temp.setTarget(tempEnemy);
-                isLoaded = false;
-                //Instantiate(projectileExplosion, gameObject.transform.position, Quaternion.identity);
-                Destroy(tempBulletHandler, rocketLifetime);
-                weaponSystem.manageSecondaryAmmo(ammoUsage);
-				
                 if (tempEnemy != null)
                 {
                     tempBulletHandler = Instantiate(Rocket, gameObject.transform.position, gameObject.transform.rotation) as GameObject;

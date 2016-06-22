@@ -1126,6 +1126,54 @@ Prefab:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100110, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 129512, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143018, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151914, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 152240, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 153922, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 165360, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 170942, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 181200, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183822, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 188242, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 195778, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f723bf132ae0b2449e52a7d7375d7fa, type: 2}
   m_IsPrefabParent: 0
@@ -1914,7 +1962,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498792, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 29
+      value: 49.3
       objectReference: {fileID: 0}
     - target: {fileID: 11455058, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: squadron.enemyCount
@@ -1922,7 +1970,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498792, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalScale.x
-      value: 40
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 498792, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalScale.z
@@ -3195,7 +3243,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -6281,7 +6328,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 405478, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 23.5
       objectReference: {fileID: 0}
     - target: {fileID: 405478, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6289,7 +6336,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 405478, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -29.7
       objectReference: {fileID: 0}
     - target: {fileID: 405478, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6318,11 +6365,11 @@ Prefab:
         type: 2}
     - target: {fileID: 498792, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalScale.x
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 498792, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalScale.z
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11455058, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: targetDistance
@@ -6346,7 +6393,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498792, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.42
+      value: -26
       objectReference: {fileID: 0}
     - target: {fileID: 11455058, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: patrolArea
@@ -6354,7 +6401,7 @@ Prefab:
       objectReference: {fileID: 55144565}
     - target: {fileID: 498792, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 11.01
+      value: 34.5
       objectReference: {fileID: 0}
     - target: {fileID: 11455058, guid: 5a00d012ce136eb439fa70dac838484a, type: 2}
       propertyPath: squadron.enemyCount
@@ -7192,7 +7239,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 416548, guid: ac73b383d946748468c02559453ff3bc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -15
+      value: 398.4
       objectReference: {fileID: 0}
     - target: {fileID: 416548, guid: ac73b383d946748468c02559453ff3bc, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7200,7 +7247,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416548, guid: ac73b383d946748468c02559453ff3bc, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 416548, guid: ac73b383d946748468c02559453ff3bc, type: 2}
       propertyPath: m_LocalRotation.x
@@ -12805,7 +12852,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
