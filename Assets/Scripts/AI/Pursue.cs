@@ -6,6 +6,8 @@ public class Pursue : MonoBehaviour
 {
     // Maximum prediction time the pursue will predict in the future
     public float maxPrediction = 1f;
+    public float maxAcceleration = 8f;
+    public float closingDistance = 15f;
 
     private Rigidbody rb;
     private SteeringBasics steeringBasics;
@@ -36,11 +38,22 @@ public class Pursue : MonoBehaviour
             prediction = distance / speed;
         }
 
-        // Put the target together based on where we think the target will be
+        // Set where the AI thinks the target will be and look at it
         Vector3 explicitTarget = target.position + target.velocity * prediction;
+        /*
+        if (distance < closingDistance)
+        {
+            steeringBasics.LookAtDirection(target.position);
+        }
+        else
+        {
+            steeringBasics.LookAtDirection(explicitTarget);
+        }
+        */
 
         Debug.DrawLine(transform.position, explicitTarget);
 
+        //transform.Translate(Vector3.forward * maxAcceleration * Time.deltaTime);
         return steeringBasics.seek(explicitTarget);
     }
 }

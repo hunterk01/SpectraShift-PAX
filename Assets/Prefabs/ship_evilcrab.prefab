@@ -503,7 +503,7 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
-  detectionRange: 35
+  detectionRange: 50
   pursueDistance: 25
   evadeDistance: 10
   fireDistance: 25
@@ -529,9 +529,9 @@ MonoBehaviour:
   spawner: {fileID: 0}
   boundsPosition: {x: 0, y: 0, z: 0}
   patrolWaypoints:
-  - {x: -7.6613674, y: 3, z: 23.363865}
-  - {x: 0.6617203, y: 3, z: 3.8217983}
-  - {x: 7.235696, y: 3, z: 5.102707}
+  - {x: 24.732475, y: 3, z: -3.6252055}
+  - {x: 16.797478, y: 3, z: 3.9755602}
+  - {x: 26.628565, y: 3, z: -14.431654}
   waypointArriveDistance: 0.5
   worldWaypointPosition: {x: 0, y: 0, z: 0}
   waypointSize: 3
@@ -597,6 +597,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPrediction: 1
+  maxAcceleration: 8
+  closingDistance: 15
 --- !u!114 &11473930
 MonoBehaviour:
   m_ObjectHideFlags: 1
