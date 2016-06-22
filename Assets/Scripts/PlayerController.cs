@@ -59,23 +59,8 @@ public class PlayerController : LivingEntity
         // Controller flight controls
         float horiz_cInput = Input.GetAxis("LS_Horizontal");
         float triggers_cInput = Input.GetAxis("Triggers");
-        
         if (-0.25f > horiz_cInput || horiz_cInput > 0.25f)    movingEntity.Turn(horiz_cInput);
-        if (triggers_cInput != 0)   
-        {
-            movingEntity.Thrust(triggers_cInput);
-
-            if (triggers_cInput > 0)
-            {
-                Debug.Log("Trigger Plus");
-                afterburners.AfterburnersOn();
-            }
-            else if (triggers_cInput < 0)
-            {
-                Debug.Log("Trigger Negative");
-                afterburners.AfterburnersOff();
-            }
-        }
+        if (triggers_cInput != 0)   movingEntity.Thrust(triggers_cInput);
 
         // Keyboard flight controls
         float horiz_kbInput = Input.GetAxis("Horizontal");
@@ -83,11 +68,12 @@ public class PlayerController : LivingEntity
         if (horiz_kbInput != 0) movingEntity.Turn(horiz_kbInput);
         if (vert_kbInput != 0) movingEntity.Thrust(vert_kbInput);
 
-        if (vert_kbInput > 0)
+        // Afterburner control
+        if (triggers_cInput > 0 || vert_kbInput > 0)
         {
             afterburners.AfterburnersOn();
         }
-        else if (vert_kbInput < 0)
+        else
         {
             afterburners.AfterburnersOff();
         }
