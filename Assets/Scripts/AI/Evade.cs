@@ -100,6 +100,7 @@ public class Evade : MonoBehaviour
         SetStrafeDirection();
         Vector3 combinedMovement = back + (right * strafeDirection);
         transform.Translate(combinedMovement * maxAcceleration * Time.deltaTime);
+
     }
 
     Vector3 setMaxAccel(Vector3 v)

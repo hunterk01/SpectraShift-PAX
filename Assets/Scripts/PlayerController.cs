@@ -2,8 +2,6 @@
 using UnityEngine.UI;
 using System.Collections;
 
-
-
 [RequireComponent(typeof(MovingEntity))]
 public class PlayerController : LivingEntity
 {
@@ -19,6 +17,7 @@ public class PlayerController : LivingEntity
         
     public bool playerControl = false;
 
+    float deadzone = 0.3f;
     float buttonTimer = 0.5f;
     int buttonCount = 0;
 
@@ -59,29 +58,24 @@ public class PlayerController : LivingEntity
         // Controller flight controls
         float horiz_cInput = Input.GetAxis("LS_Horizontal");
         float triggers_cInput = Input.GetAxis("Triggers");
-        
-        if (-0.25f > horiz_cInput || horiz_cInput > 0.25f)    movingEntity.Turn(horiz_cInput);
-        if (triggers_cInput != 0)   
-        {
-            movingEntity.Thrust(triggers_cInput);
-
-            if (triggers_cInput > 0)
-            {
-                Debug.Log("Trigger Plus");
-                afterburners.AfterburnersOn();
-            }
-            else
-            {
-                Debug.Log("Trigger Negative");
-                afterburners.AfterburnersOff();
-            }
-        }
+        if (-deadzone > horiz_cInput || horiz_cInput > deadzone)    movingEntity.Turn(horiz_cInput);
+        if (triggers_cInput != 0)   movingEntity.Thrust(triggers_cInput);
 
         // Keyboard flight controls
         float horiz_kbInput = Input.GetAxis("Horizontal");
         float vert_kbInput = Input.GetAxis("Vertical");
         if (horiz_kbInput != 0) movingEntity.Turn(horiz_kbInput);
         if (vert_kbInput != 0) movingEntity.Thrust(vert_kbInput);
+
+        // Afterburner control
+        if (triggers_cInput > 0 || vert_kbInput > 0)
+        {
+            afterburners.AfterburnersOn();
+        }
+        else
+        {
+            afterburners.AfterburnersOff();
+        }
 
         // Other controls
         if (Input.GetButton("StrafeRight"))

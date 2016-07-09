@@ -1381,9 +1381,9 @@ MonoBehaviour:
   spawner: {fileID: 0}
   boundsPosition: {x: 0, y: 0, z: 0}
   patrolWaypoints:
-  - {x: 387.42285, y: 3, z: 21.931341}
-  - {x: 390.7909, y: 3, z: 22.187418}
-  - {x: 386.51144, y: 3, z: 25.14045}
+  - {x: 259.56317, y: 3, z: 27.150537}
+  - {x: 291.86078, y: 3, z: 10.290846}
+  - {x: 262.7572, y: 3, z: 16.775696}
   waypointArriveDistance: 0.5
   worldWaypointPosition: {x: 0, y: 0, z: 0}
   waypointSize: 0
@@ -1399,24 +1399,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 1
-  UI_Debug: 0
   startingHealth: 10
   startingShield: 0
-  healthSlider: {fileID: 0}
-  healthFillImage: {fileID: 0}
-  fullHealthColor: {r: 0, g: 1, b: 0, a: 1}
-  zeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
-  shieldSlider: {fileID: 0}
-  shieldFillImage: {fileID: 0}
-  shieldColor: {r: 0, g: 0, b: 1, a: 1}
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
-  currentHealth: 0
+  healthRegenRate: 0
+  shieldRegenRate: 0
+  regenDelay: 0
   detectionRange: 50
   pursueDistance: 25
   evadeDistance: 10
   fireDistance: 20
+  maxShotTime: 5
+  maxSecondShotTime: 2
+  shotTimer: 0
+  secondShotTimer: 0
   shader1: {fileID: 0}
   shader2: {fileID: 0}
+  secondaryWeapon: 0
   targetDistance: 0
 --- !u!136 &13643950
 CapsuleCollider:
