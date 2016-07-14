@@ -1367,6 +1367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPrediction: 1
+  maxAcceleration: 8
+  closingDistance: 15
 --- !u!114 &11472110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1381,9 +1383,9 @@ MonoBehaviour:
   spawner: {fileID: 0}
   boundsPosition: {x: 0, y: 0, z: 0}
   patrolWaypoints:
-  - {x: 259.56317, y: 3, z: 27.150537}
-  - {x: 291.86078, y: 3, z: 10.290846}
-  - {x: 262.7572, y: 3, z: 16.775696}
+  - {x: -3.8183122, y: 3, z: 1.308783}
+  - {x: -11.861162, y: 3, z: 12.08985}
+  - {x: -14.355384, y: 3, z: 4.591141}
   waypointArriveDistance: 0.5
   worldWaypointPosition: {x: 0, y: 0, z: 0}
   waypointSize: 0
