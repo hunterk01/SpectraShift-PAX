@@ -5,28 +5,29 @@ public class OctoBossController : MonoBehaviour
 {
     public float spinTimer, spinDuration;
 
-    int gunCount = 8;
+    public int gunCount = 8;
 
-    bool isHealing = false;
-    bool spinMode = false;
-    bool shellAlive = true;
+    public bool isHealing = false;
+    public bool spinMode = false;
+
+    public bool shellAlive = true;
 
 	void Update ()
     {
 	
 	}
 
-    void HealMode (bool healState)
+    public void HealMode (bool healState)
     {
         isHealing = healState;
     }
 
-    void SpinAttack()
+    public void SpinAttack()
     {
 
     }
 
-    void GunCheck()
+    public void GunCheck()
     {
         gunCount--;
 

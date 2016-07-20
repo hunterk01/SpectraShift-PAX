@@ -3,7 +3,7 @@ using System.Collections;
 
 public class OctoBossGun : LivingEntity
 {
-    public enum EnemyState { SCAN, TRACK_CLOSE, TRACK_FAR, SHOOT };
+    public enum EnemyState { SCAN, TRACK_CLOSE, TRACK_FAR, SHOOT, SPIN_ATTACK };
     EnemyState enemyState;
 
     public float health;
@@ -39,6 +39,9 @@ public class OctoBossGun : LivingEntity
 	
 	void Update ()
     {
+        if (obControl.spinMode)
+            enemyState = EnemyState.SPIN_ATTACK;
+        
         StateResolution();
 	}
 
@@ -66,6 +69,9 @@ public class OctoBossGun : LivingEntity
 
                 break;
             case EnemyState.SHOOT:
+
+                break;
+            case EnemyState.SPIN_ATTACK:
 
                 break;
         }
@@ -96,4 +102,41 @@ public class OctoBossGun : LivingEntity
         // Does it see player, if so switch to track mode
         // *******************************************
     }
+
+    void TrackClose()
+    {
+        // Check if player location is in front of gun
+
+        // If fire rate has been reached, change state to SHOOT
+
+    }
+
+    void TrackFar()
+    {
+        // Check if player location + velocity is in front of gun
+
+        // If fire rate has been reached, change state to SHOOT
+
+    }
+
+    void ShootGun()
+    {
+        // Fire primary weapon
+
+        // Return state to appropriate track mode
+
+    }
+
+    void SpinAttack()
+    {
+        // Return gun to rotation 0
+
+        // Increase rate of fire for spin duration
+
+        // Return state to SCAN
+
+    }
+
+    // Need to setup a health bar for gun at the top of screen
+
 }
