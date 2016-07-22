@@ -12,7 +12,7 @@ public class OctoBossShell : MonoBehaviour
 
 	void Update ()
     {
-        if (!obControl.shellAlive) DestroyShell();
+        //if (!obControl.shellAlive) DestroyShell();
 	}
 
     void DestroyShell()

@@ -132,6 +132,7 @@ GameObject:
   - 23: {fileID: 93955853}
   - 114: {fileID: 93955857}
   - 114: {fileID: 93955856}
+  - 114: {fileID: 93955859}
   m_Layer: 0
   m_Name: OB_ArmBase08
   m_TagString: Enemy
@@ -220,6 +221,14 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 68
   gunRotation: 0
+  aimRange: 60
+  fireRate: 0
+  closeTrackDistance: 25
+  spinRateMultiplier: 0
+  maxPrediction: 1
+  playerDistance: 0
+  playerAngle: 0
+  playerDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &93955857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +262,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &93955859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93955851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 0
+  maxAcceleration: 0
+  turnSpeed: 20
+  targetRadius: 0.005
+  slowRadius: 1
+  timeToTarget: 0.1
+  smoothing: 1
+  numSamplesForSmoothing: 5
 --- !u!1 &108443653
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2117243462}
-  height: 35
+  height: 40
   distance: 0
   min: 10
   max: 60
@@ -563,6 +591,7 @@ GameObject:
   - 23: {fileID: 629243233}
   - 114: {fileID: 629243237}
   - 114: {fileID: 629243236}
+  - 114: {fileID: 629243239}
   m_Layer: 0
   m_Name: OB_ArmBase04
   m_TagString: Enemy
@@ -651,6 +680,14 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 60
   gunRotation: 0
+  aimRange: 60
+  fireRate: 0
+  closeTrackDistance: 25
+  spinRateMultiplier: 0
+  maxPrediction: 1
+  playerDistance: 0
+  playerAngle: 0
+  playerDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &629243237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +721,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &629243239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 629243231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 0
+  maxAcceleration: 0
+  turnSpeed: 20
+  targetRadius: 0.005
+  slowRadius: 1
+  timeToTarget: 0.1
+  smoothing: 1
+  numSamplesForSmoothing: 5
 --- !u!1 &632980676
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,6 +953,7 @@ GameObject:
   - 23: {fileID: 694850433}
   - 114: {fileID: 694850437}
   - 114: {fileID: 694850436}
+  - 114: {fileID: 694850439}
   m_Layer: 0
   m_Name: OB_ArmBase07
   m_TagString: Enemy
@@ -985,6 +1042,14 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 48
   gunRotation: 0
+  aimRange: 60
+  fireRate: 0
+  closeTrackDistance: 25
+  spinRateMultiplier: 0
+  maxPrediction: 1
+  playerDistance: 0
+  playerAngle: 0
+  playerDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &694850437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1018,6 +1083,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &694850439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 694850431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 0
+  maxAcceleration: 0
+  turnSpeed: 20
+  targetRadius: 0.005
+  slowRadius: 1
+  timeToTarget: 0.1
+  smoothing: 1
+  numSamplesForSmoothing: 5
 --- !u!1 &759838660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,11 +1833,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 22437796, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22437796, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22479546, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1829,11 +1913,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22412866, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22412866, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
@@ -1879,6 +1963,7 @@ GameObject:
   - 23: {fileID: 1477305341}
   - 114: {fileID: 1477305345}
   - 114: {fileID: 1477305344}
+  - 114: {fileID: 1477305347}
   m_Layer: 0
   m_Name: OB_ArmBase03
   m_TagString: Enemy
@@ -1967,6 +2052,14 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 55
   gunRotation: 0
+  aimRange: 60
+  fireRate: 0
+  closeTrackDistance: 25
+  spinRateMultiplier: 0
+  maxPrediction: 1
+  playerDistance: 0
+  playerAngle: 0
+  playerDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1477305345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2000,6 +2093,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &1477305347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1477305339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 0
+  maxAcceleration: 0
+  turnSpeed: 20
+  targetRadius: 0.005
+  slowRadius: 1
+  timeToTarget: 0.1
+  smoothing: 1
+  numSamplesForSmoothing: 5
 --- !u!1 &1510222455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2126,7 @@ GameObject:
   - 23: {fileID: 1510222457}
   - 114: {fileID: 1510222460}
   - 114: {fileID: 1510222461}
+  - 114: {fileID: 1510222463}
   m_Layer: 0
   m_Name: OB_ArmBase01
   m_TagString: Enemy
@@ -2109,7 +2222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b61279cef460844e8e93589cbf989a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLight: 0
+  isLight: 1
   startingHealth: 100
   startingShield: 0
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
@@ -2120,6 +2233,14 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 60
   gunRotation: 0
+  aimRange: 60
+  fireRate: 0
+  closeTrackDistance: 25
+  spinRateMultiplier: 0
+  maxPrediction: 1
+  playerDistance: 0
+  playerAngle: 0
+  playerDirection: {x: 0, y: 0, z: 0}
 --- !u!54 &1510222462
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2135,6 +2256,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &1510222463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510222455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 0
+  maxAcceleration: 0
+  turnSpeed: 20
+  targetRadius: 0.005
+  slowRadius: 1
+  timeToTarget: 0.1
+  smoothing: 1
+  numSamplesForSmoothing: 5
 --- !u!1001 &1518271661
 Prefab:
   m_ObjectHideFlags: 0
@@ -2613,6 +2753,7 @@ GameObject:
   - 23: {fileID: 1835544072}
   - 114: {fileID: 1835544076}
   - 114: {fileID: 1835544075}
+  - 114: {fileID: 1835544078}
   m_Layer: 0
   m_Name: OB_ArmBase05
   m_TagString: Enemy
@@ -2701,6 +2842,14 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 57
   gunRotation: 0
+  aimRange: 60
+  fireRate: 0
+  closeTrackDistance: 25
+  spinRateMultiplier: 0
+  maxPrediction: 1
+  playerDistance: 0
+  playerAngle: 0
+  playerDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1835544076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2734,6 +2883,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &1835544078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835544070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 0
+  maxAcceleration: 0
+  turnSpeed: 20
+  targetRadius: 0.005
+  slowRadius: 1
+  timeToTarget: 0.1
+  smoothing: 1
+  numSamplesForSmoothing: 5
 --- !u!1 &1879356523
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,6 +2977,7 @@ GameObject:
   - 23: {fileID: 1918605596}
   - 114: {fileID: 1918605600}
   - 114: {fileID: 1918605599}
+  - 114: {fileID: 1918605602}
   m_Layer: 0
   m_Name: OB_ArmBase06
   m_TagString: Enemy
@@ -2897,6 +3066,14 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 63
   gunRotation: 0
+  aimRange: 60
+  fireRate: 0
+  closeTrackDistance: 25
+  spinRateMultiplier: 0
+  maxPrediction: 1
+  playerDistance: 0
+  playerAngle: 0
+  playerDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1918605600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2930,6 +3107,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &1918605602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918605594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 0
+  maxAcceleration: 0
+  turnSpeed: 20
+  targetRadius: 0.005
+  slowRadius: 1
+  timeToTarget: 0.1
+  smoothing: 1
+  numSamplesForSmoothing: 5
 --- !u!1 &1929386159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,6 +3254,7 @@ GameObject:
   - 23: {fileID: 1982870187}
   - 114: {fileID: 1982870191}
   - 114: {fileID: 1982870190}
+  - 114: {fileID: 1982870193}
   m_Layer: 0
   m_Name: OB_ArmBase02
   m_TagString: Enemy
@@ -3146,6 +3343,14 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 65
   gunRotation: 0
+  aimRange: 60
+  fireRate: 0
+  closeTrackDistance: 25
+  spinRateMultiplier: 0
+  maxPrediction: 1
+  playerDistance: 0
+  playerAngle: 0
+  playerDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1982870191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3179,6 +3384,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &1982870193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1982870185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 0
+  maxAcceleration: 0
+  turnSpeed: 20
+  targetRadius: 0.005
+  slowRadius: 1
+  timeToTarget: 0.1
+  smoothing: 1
+  numSamplesForSmoothing: 5
 --- !u!1 &2060655122
 GameObject:
   m_ObjectHideFlags: 0

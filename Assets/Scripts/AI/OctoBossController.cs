@@ -12,7 +12,7 @@ public class OctoBossController : MonoBehaviour
 
     public bool shellAlive = true;
 
-	void Update ()
+    void Update ()
     {
 	
 	}
