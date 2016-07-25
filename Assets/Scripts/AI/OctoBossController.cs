@@ -15,14 +15,50 @@ public class OctoBossController : MonoBehaviour
     public GameObject playerTarget;
     public Rigidbody playerRB;
 
-    public void HealMode (bool healState)
+    float spinTimerCountdown, spinDurationCountdown;
+
+    void Start()
     {
-        isHealing = healState;
+        spinTimerCountdown = spinTimer;
+        spinDurationCountdown = spinDuration;
     }
 
-    public void SpinAttack()
+    void Update()
     {
-        spinMode = true;
+        SpinModeCheck();
+    }
+
+    public void SpinModeCheck()
+    {
+        if (!spinMode)
+        {
+            if (spinTimerCountdown <= 0)
+            {
+                spinMode = true;
+            }
+            else
+            {
+                spinTimerCountdown -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            if (spinDurationCountdown <= 0)
+            {
+                spinMode = false;
+                spinTimerCountdown = spinTimer;
+                spinDurationCountdown = spinDuration;
+            }
+            else
+            {
+                spinDurationCountdown -= Time.deltaTime;
+            }
+        }
+    }
+
+    public void HealMode(bool healState)
+    {
+        isHealing = healState;
     }
 
     public void GunCheck()

@@ -3,19 +3,24 @@ using System.Collections;
 
 public class OctoBossMain : MonoBehaviour
 {
-    OctoBossController obControl;
+    public float rotationSpeed = 60;
 
-    void Start ()
-    {
-        obControl = GetComponent<OctoBossController>();
-    }
-	
+    public OctoBossController obControl;
+
+    float bodyRotation;
+
 	void Update ()
     {
-	
+        SpinCheck();
 	}
 
-    // Things to setup
-    // 1. Spin Attack
-    // 2. Destroy on death
+    void SpinCheck()
+    {
+        if (obControl.spinMode)
+        {
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    // Destroy on death of core
 }

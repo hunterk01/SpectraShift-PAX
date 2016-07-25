@@ -29,7 +29,7 @@ public class OctoBossGun : LivingEntity
     WeaponSystems weaponSystems;
     SteeringBasics steeringBasics;
 
-    protected override void Start ()
+    protected override void Start()
     {
         base.Start();
 
@@ -206,11 +206,17 @@ public class OctoBossGun : LivingEntity
     void SpinAttack()
     {
         // Return gun to rotation 0
-
+        Debug.Log("Spin Attack!");
+        weaponSystems.setState(WeaponSystems.WEAPON.PRIMARY);
         // Increase rate of fire for spin duration
 
-        // Return state to SCAN
 
+        // If spin duration is reached return enemy state to SCAN
+        if (!obControl.spinMode)
+        {
+            weaponSystems.setState(WeaponSystems.WEAPON.BLANK);
+            enemyState = EnemyState.SCAN;
+        }
     }
 
     // Need to setup a health bar for gun at the top of screen

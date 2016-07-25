@@ -450,6 +450,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 184714691}
+  - 54: {fileID: 184714693}
+  - 114: {fileID: 184714692}
   m_Layer: 0
   m_Name: OctoBoss
   m_TagString: Untagged
@@ -480,6 +482,34 @@ Transform:
   - {fileID: 1683685756}
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &184714692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 184714690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3b8ff93a444694e8f4fea970404d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 60
+  obControl: {fileID: 1703406081}
+--- !u!54 &184714693
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 184714690}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 94
+  m_CollisionDetection: 0
 --- !u!114 &362321736 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11489866, guid: e6a52ac041eb4da42a2100165d52eca3,
@@ -1607,7 +1637,7 @@ GameObject:
   - 114: {fileID: 1130686634}
   m_Layer: 0
   m_Name: OB_Core
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1687,6 +1717,7 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
+  obControl: {fileID: 1703406081}
 --- !u!1 &1171052906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,7 +2439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1566191988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2642,8 +2673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ba45e311c48c84f9a361792710a4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinTimer: 0
-  spinDuration: 0
+  spinTimer: 10
+  spinDuration: 5
   gunCount: 8
   isHealing: 0
   spinMode: 0
