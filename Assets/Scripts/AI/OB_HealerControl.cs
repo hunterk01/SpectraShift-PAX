@@ -6,19 +6,11 @@ public class OB_HealerControl : LivingEntity
     public Transform target;
     public float speed;
 
-    OctoBossController obControl;
+    public OctoBossController obControl;
 
     float distance, healBuffer = 1.5f;
     Vector3 direction;
 
-    protected override void Start()
-    {
-        base.Start();
-
-        obControl = GetComponent<OctoBossController>();
-
-    }
-	
 	void Update ()
     {
         MoveHealer();

@@ -9,13 +9,11 @@ public class OctoBossController : MonoBehaviour
 
     public bool isHealing = false;
     public bool spinMode = false;
-
     public bool shellAlive = true;
 
-    void Update ()
-    {
-	
-	}
+    public PlayerController player;
+    public GameObject playerTarget;
+    public Rigidbody playerRB;
 
     public void HealMode (bool healState)
     {
@@ -24,7 +22,7 @@ public class OctoBossController : MonoBehaviour
 
     public void SpinAttack()
     {
-
+        spinMode = true;
     }
 
     public void GunCheck()

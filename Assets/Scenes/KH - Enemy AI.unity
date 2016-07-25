@@ -221,14 +221,13 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 68
   gunRotation: 0
+  detectionAngle: 5
   aimRange: 60
   fireRate: 0
   closeTrackDistance: 25
   spinRateMultiplier: 0
-  maxPrediction: 1
-  playerDistance: 0
-  playerAngle: 0
-  playerDirection: {x: 0, y: 0, z: 0}
+  maxPrediction: 0.5
+  obControl: {fileID: 1703406081}
 --- !u!114 &93955857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,14 +679,13 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 60
   gunRotation: 0
+  detectionAngle: 5
   aimRange: 60
   fireRate: 0
   closeTrackDistance: 25
   spinRateMultiplier: 0
-  maxPrediction: 1
-  playerDistance: 0
-  playerAngle: 0
-  playerDirection: {x: 0, y: 0, z: 0}
+  maxPrediction: 0.5
+  obControl: {fileID: 1703406081}
 --- !u!114 &629243237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,14 +1040,13 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 48
   gunRotation: 0
+  detectionAngle: 5
   aimRange: 60
   fireRate: 0
   closeTrackDistance: 25
   spinRateMultiplier: 0
-  maxPrediction: 1
-  playerDistance: 0
-  playerAngle: 0
-  playerDirection: {x: 0, y: 0, z: 0}
+  maxPrediction: 0.5
+  obControl: {fileID: 1703406081}
 --- !u!114 &694850437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,6 +1400,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 896150162}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &911533915 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 176846, guid: bc311d838f05b0a41828d6169833a028, type: 2}
+  m_PrefabInternal: {fileID: 122286413}
+--- !u!114 &911533919 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453454, guid: bc311d838f05b0a41828d6169833a028,
+    type: 2}
+  m_PrefabInternal: {fileID: 122286413}
+  m_Script: {fileID: 11500000, guid: b53c551d290e8a7488f3047f73394afb, type: 3}
+--- !u!54 &911533920 stripped
+Rigidbody:
+  m_PrefabParentObject: {fileID: 5498454, guid: bc311d838f05b0a41828d6169833a028,
+    type: 2}
+  m_PrefabInternal: {fileID: 122286413}
 --- !u!1 &913994780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,14 +2064,13 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 55
   gunRotation: 0
+  detectionAngle: 5
   aimRange: 60
   fireRate: 0
   closeTrackDistance: 25
   spinRateMultiplier: 0
-  maxPrediction: 1
-  playerDistance: 0
-  playerAngle: 0
-  playerDirection: {x: 0, y: 0, z: 0}
+  maxPrediction: 0.5
+  obControl: {fileID: 1703406081}
 --- !u!114 &1477305345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2233,14 +2244,13 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 60
   gunRotation: 0
+  detectionAngle: 5
   aimRange: 60
   fireRate: 0
   closeTrackDistance: 25
   spinRateMultiplier: 0
-  maxPrediction: 1
-  playerDistance: 0
-  playerAngle: 0
-  playerDirection: {x: 0, y: 0, z: 0}
+  maxPrediction: 0.5
+  obControl: {fileID: 1703406081}
 --- !u!54 &1510222462
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2269,7 +2279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxVelocity: 0
   maxAcceleration: 0
-  turnSpeed: 20
+  turnSpeed: 35
   targetRadius: 0.005
   slowRadius: 1
   timeToTarget: 0.1
@@ -2419,6 +2429,7 @@ MonoBehaviour:
   regenDelay: 0
   target: {fileID: 884354843}
   speed: 5
+  obControl: {fileID: 1703406081}
 --- !u!23 &1566191989
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2615,7 +2626,7 @@ GameObject:
   - 114: {fileID: 1703406081}
   m_Layer: 0
   m_Name: OctoBossController
-  m_TagString: Untagged
+  m_TagString: New Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2637,6 +2648,9 @@ MonoBehaviour:
   isHealing: 0
   spinMode: 0
   shellAlive: 1
+  player: {fileID: 911533919}
+  playerTarget: {fileID: 911533915}
+  playerRB: {fileID: 911533920}
 --- !u!4 &1703406082
 Transform:
   m_ObjectHideFlags: 0
@@ -2842,14 +2856,13 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 57
   gunRotation: 0
+  detectionAngle: 5
   aimRange: 60
   fireRate: 0
   closeTrackDistance: 25
   spinRateMultiplier: 0
-  maxPrediction: 1
-  playerDistance: 0
-  playerAngle: 0
-  playerDirection: {x: 0, y: 0, z: 0}
+  maxPrediction: 0.5
+  obControl: {fileID: 1703406081}
 --- !u!114 &1835544076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3066,14 +3079,13 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 63
   gunRotation: 0
+  detectionAngle: 5
   aimRange: 60
   fireRate: 0
   closeTrackDistance: 25
   spinRateMultiplier: 0
-  maxPrediction: 1
-  playerDistance: 0
-  playerAngle: 0
-  playerDirection: {x: 0, y: 0, z: 0}
+  maxPrediction: 0.5
+  obControl: {fileID: 1703406081}
 --- !u!114 &1918605600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3343,14 +3355,13 @@ MonoBehaviour:
   rotationRange: 45
   rotationSpeed: 65
   gunRotation: 0
+  detectionAngle: 5
   aimRange: 60
   fireRate: 0
   closeTrackDistance: 25
   spinRateMultiplier: 0
-  maxPrediction: 1
-  playerDistance: 0
-  playerAngle: 0
-  playerDirection: {x: 0, y: 0, z: 0}
+  maxPrediction: 0.5
+  obControl: {fileID: 1703406081}
 --- !u!114 &1982870191
 MonoBehaviour:
   m_ObjectHideFlags: 0

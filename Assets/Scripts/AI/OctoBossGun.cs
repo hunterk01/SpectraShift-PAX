@@ -7,38 +7,33 @@ public class OctoBossGun : LivingEntity
     EnemyState enemyState;
 
     public float health;
-    public float rotationRange;
-    public float rotationSpeed;
+    public float rotationRange = 45;
+    public float rotationSpeed = 60;
     public float gunRotation;
+    public float detectionAngle = 7.5f;
     public float aimRange = 60;
     public float fireRate;
-    public float closeTrackDistance = 10f;
+    public float closeTrackDistance = 10;
     public int spinRateMultiplier;
 
     // Maximum prediction time the gun will predict in the future
-    public float maxPrediction = 1f;
+    public float maxPrediction = .5f;
+
+    public OctoBossController obControl;
 
     float hoverHeight;
-    public float playerDistance, playerAngle;
-    public Vector3 playerDirection;
+    float playerDistance, playerAngle;
+    Vector3 playerDirection;
     bool scanRight = true;
 
-    PlayerController player;
-    GameObject playerTarget;
-    Rigidbody playerRB;
     WeaponSystems weaponSystems;
-    OctoBossController obControl;
     SteeringBasics steeringBasics;
 
     protected override void Start ()
     {
         base.Start();
 
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        playerRB = player.GetComponent<Rigidbody>();
-        playerTarget = GameObject.FindGameObjectWithTag("Player");
         weaponSystems = GetComponent<WeaponSystems>();
-        obControl = GetComponent<OctoBossController>();
         steeringBasics = GetComponent<SteeringBasics>();
         hoverHeight = HeightManager.Instance.setHeight;
 
@@ -48,8 +43,8 @@ public class OctoBossGun : LivingEntity
 	
 	void Update ()
     {
-        //if (obControl.spinMode)
-        //    enemyState = EnemyState.SPIN_ATTACK;
+        if (obControl.spinMode)
+            enemyState = EnemyState.SPIN_ATTACK;
         
         StateResolution();
 	}
@@ -57,11 +52,6 @@ public class OctoBossGun : LivingEntity
     void SetHeight()
     {
         transform.position = new Vector3(transform.position.x, hoverHeight, transform.position.z);
-    }
-
-    void CheckState()
-    {
-        // Probably don't need this function
     }
 
     void StateResolution()
@@ -112,11 +102,11 @@ public class OctoBossGun : LivingEntity
         transform.localEulerAngles = new Vector3(0, gunRotation, 0);
 
         // If the gun sees the player, switch to track mode
-        playerDirection = playerTarget.transform.position - transform.position;
-        playerDistance = Vector3.Distance(playerTarget.transform.position, transform.position);
+        playerDirection = obControl.playerTarget.transform.position - transform.position;
+        playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
         playerAngle = Vector3.Angle(playerDirection, transform.forward);
 
-        if(playerAngle < 45 && isLight == player.isLight)
+        if(playerAngle < detectionAngle && isLight == obControl.player.isLight)
         {
             if (playerDistance < closeTrackDistance)
                 enemyState = EnemyState.TRACK_CLOSE;
@@ -127,12 +117,12 @@ public class OctoBossGun : LivingEntity
 
     void TrackClose()
     {
-        playerDirection = playerTarget.transform.position - transform.position;
-        playerDistance = Vector3.Distance(playerTarget.transform.position, transform.position);
+        playerDirection = obControl.playerTarget.transform.position - transform.position;
+        playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
         playerAngle = Vector3.Angle(playerDirection, transform.forward);
 
         // Check if the gun still sees the player.  If not, change to SCAN
-        if (playerAngle > 45)
+        if (playerAngle > detectionAngle)
             enemyState = EnemyState.SCAN;
 
         // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
@@ -140,11 +130,11 @@ public class OctoBossGun : LivingEntity
             enemyState = EnemyState.TRACK_FAR;
 
         // Rotate gun to track player position
-        steeringBasics.LookAtDirection(playerTarget.transform.position);
+        steeringBasics.LookAtDirection(obControl.playerTarget.transform.position);
         CheckRotationBounds();
 
         // Check if player location is in front of gun and shoot
-        if(steeringBasics.IsInFront(playerTarget.transform.position))
+        if(steeringBasics.IsInFront(obControl.playerTarget.transform.position))
         {
             ShootGun();
         }
@@ -152,12 +142,12 @@ public class OctoBossGun : LivingEntity
 
     void TrackFar()
     {
-        playerDirection = playerTarget.transform.position - transform.position;
-        playerDistance = Vector3.Distance(playerTarget.transform.position, transform.position);
+        playerDirection = obControl.playerTarget.transform.position - transform.position;
+        playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
         playerAngle = Vector3.Angle(playerDirection, transform.forward);
 
         // Check if the gun still sees the player.  If not, change to SCAN
-        if (playerAngle > 45)
+        if (playerAngle > detectionAngle)
             enemyState = EnemyState.SCAN;
 
         // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
@@ -166,7 +156,7 @@ public class OctoBossGun : LivingEntity
 
         // Rotate gun to track player position + velocity
         // Get the targets's speed
-        float speed = playerRB.velocity.magnitude;
+        float speed = obControl.playerRB.velocity.magnitude;
 
         // Calculate the prediction time
         float prediction;
@@ -182,7 +172,7 @@ public class OctoBossGun : LivingEntity
         }
 
         // Set where the AI thinks the target will be and look at it
-        Vector3 explicitTarget = playerRB.position + playerRB.velocity * prediction;
+        Vector3 explicitTarget = obControl.playerRB.position + obControl.playerRB.velocity * prediction;
         steeringBasics.LookAtDirection(explicitTarget);
         CheckRotationBounds();
 
