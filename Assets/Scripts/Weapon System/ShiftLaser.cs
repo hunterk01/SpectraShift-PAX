@@ -4,8 +4,8 @@ using System;
 
 public class ShiftLaser : MonoBehaviour, IGun
 {
-    public float maxDelay = 0.2f;
-    const float laserLifetime = 6.0f;
+    public float maxDelay = 0.5f;
+    const float laserLifetime = 3.0f;
 
     float laserDelay;
     float currentAmmo;

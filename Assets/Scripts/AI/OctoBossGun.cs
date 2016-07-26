@@ -26,6 +26,7 @@ public class OctoBossGun : LivingEntity
     Vector3 playerDirection;
     bool scanRight = true;
 
+    ShiftLaser shiftLaser;
     WeaponSystems weaponSystems;
     SteeringBasics steeringBasics;
 
@@ -35,6 +36,7 @@ public class OctoBossGun : LivingEntity
 
         weaponSystems = GetComponent<WeaponSystems>();
         steeringBasics = GetComponent<SteeringBasics>();
+        shiftLaser = weaponSystems.primaryWeapon.GetComponent<ShiftLaser>();
         hoverHeight = HeightManager.Instance.setHeight;
 
         SetHeight();
@@ -205,17 +207,18 @@ public class OctoBossGun : LivingEntity
 
     void SpinAttack()
     {
-        // Return gun to rotation 0
-        Debug.Log("Spin Attack!");
-        weaponSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-        // Increase rate of fire for spin duration
+        // Return gun to rotation 0 and shoot gun
 
+
+        // Increase rate of fire for spin duration and shoot gun
+        shiftLaser.maxDelay = .1f;
+        ShootGun();
 
         // If spin duration is reached return enemy state to SCAN
         if (!obControl.spinMode)
         {
-            weaponSystems.setState(WeaponSystems.WEAPON.BLANK);
             enemyState = EnemyState.SCAN;
+            shiftLaser.maxDelay = 2f;
         }
     }
 
