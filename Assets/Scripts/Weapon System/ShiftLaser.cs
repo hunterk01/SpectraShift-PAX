@@ -5,9 +5,10 @@ using System;
 public class ShiftLaser : MonoBehaviour, IGun
 {
     public float maxDelay = 0.5f;
-    const float laserLifetime = 3.0f;
+    [HideInInspector]
+    public float laserDelay;
 
-    float laserDelay;
+    const float laserLifetime = 3.0f;
     float currentAmmo;
     private float playerHeight;
 

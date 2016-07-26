@@ -223,7 +223,8 @@ MonoBehaviour:
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRate: 0
+  fireRateNormal: 1.6
+  fireRateFast: 0.15
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -711,7 +712,8 @@ MonoBehaviour:
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRate: 0
+  fireRateNormal: 1.6
+  fireRateFast: 0.15
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -1072,7 +1074,8 @@ MonoBehaviour:
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRate: 0
+  fireRateNormal: 1.6
+  fireRateFast: 0.15
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -2097,7 +2100,8 @@ MonoBehaviour:
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRate: 0
+  fireRateNormal: 1.6
+  fireRateFast: 0.15
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -2246,7 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
+  primaryWeapon: {fileID: 182792, guid: 26b915db1fc8aa143b0fef3f17674bf8, type: 2}
   secondaryWeapon: {fileID: 0}
   centerHardpoint: {fileID: 1445916344}
   leftHardpoint: {fileID: 0}
@@ -2277,7 +2281,8 @@ MonoBehaviour:
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRate: 0
+  fireRateNormal: 1.6
+  fireRateFast: 0.15
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -2889,7 +2894,8 @@ MonoBehaviour:
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRate: 0
+  fireRateNormal: 1.6
+  fireRateFast: 0.15
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -3112,7 +3118,8 @@ MonoBehaviour:
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRate: 0
+  fireRateNormal: 1.6
+  fireRateFast: 0.15
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -3388,7 +3395,8 @@ MonoBehaviour:
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRate: 0
+  fireRateNormal: 1.6
+  fireRateFast: 0.15
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
