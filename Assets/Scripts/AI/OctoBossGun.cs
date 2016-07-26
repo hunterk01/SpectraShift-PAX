@@ -44,7 +44,7 @@ public class OctoBossGun : LivingEntity
 
         SetHeight();
         enemyState = EnemyState.SCAN;
-        shotTimer = fireRateNormal;
+        weaponSystems.rateOfFire = fireRateNormal;
     }
 	
 	void Update ()
@@ -206,32 +206,23 @@ public class OctoBossGun : LivingEntity
     void ShootGun()
     {
         // Fire primary weapon
-        shotTimer -= Time.deltaTime;
+        weaponSystems.setState(WeaponSystems.WEAPON.PRIMARY);
 
-        if (shotTimer <= 0)
-        {
-            weaponSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-            weaponSystems.setState(WeaponSystems.WEAPON.BLANK);
-
-            if (obControl.spinMode)
-                shotTimer = fireRateFast;
-            else
-                shotTimer = fireRateNormal;
-        }
     }
 
     void SpinAttack()
     {
         // Return gun to rotation 0 and shoot gun
 
-
         // Increase rate of fire for spin duration and shoot gun
+        weaponSystems.rateOfFire = fireRateFast;
         ShootGun();
 
         // If spin duration is reached return enemy state to SCAN
         if (!obControl.spinMode)
         {
             enemyState = EnemyState.SCAN;
+            weaponSystems.rateOfFire = fireRateNormal;
         }
     }
 

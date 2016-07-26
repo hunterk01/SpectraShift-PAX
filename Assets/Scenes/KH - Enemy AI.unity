@@ -247,6 +247,8 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
+  rateOfFire: 0
+  adjustableROF: 0
 --- !u!54 &93955858
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -736,6 +738,8 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
+  rateOfFire: 0
+  adjustableROF: 0
 --- !u!54 &629243238
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1098,6 +1102,8 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
+  rateOfFire: 0
+  adjustableROF: 0
 --- !u!54 &694850438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2124,6 +2130,8 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
+  rateOfFire: 0
+  adjustableROF: 0
 --- !u!54 &1477305346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2250,13 +2258,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 26b915db1fc8aa143b0fef3f17674bf8, type: 2}
+  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
   secondaryWeapon: {fileID: 0}
   centerHardpoint: {fileID: 1445916344}
   leftHardpoint: {fileID: 0}
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 0
   currentSecondaryAmmo: 0
+  rateOfFire: 0
+  adjustableROF: 1
 --- !u!114 &1510222461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,28 +2275,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1510222455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b61279cef460844e8e93589cbf989a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 167136421fa8c35488f78b8e90e01928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLight: 1
-  startingHealth: 100
-  startingShield: 0
-  Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
-  healthRegenRate: 0
-  shieldRegenRate: 0
-  regenDelay: 0
-  health: 0
-  rotationRange: 45
-  rotationSpeed: 60
-  gunRotation: 0
-  detectionAngle: 5
-  aimRange: 60
-  fireRateNormal: 1.6
-  fireRateFast: 0.15
-  closeTrackDistance: 25
-  spinRateMultiplier: 0
-  maxPrediction: 0.5
-  obControl: {fileID: 1703406081}
+  maxDelay: 0.5
+  laserDelay: 0
+  lightBolt: {fileID: 138972, guid: 0eb82e33d8935fc4db9627c0a7eab193, type: 2}
+  darkBolt: {fileID: 138972, guid: 0eb82e33d8935fc4db9627c0a7eab193, type: 2}
 --- !u!54 &1510222462
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2918,6 +2913,8 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
+  rateOfFire: 0
+  adjustableROF: 0
 --- !u!54 &1835544077
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3142,6 +3139,8 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
+  rateOfFire: 0
+  adjustableROF: 0
 --- !u!54 &1918605601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3419,6 +3418,8 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
+  rateOfFire: 0
+  adjustableROF: 0
 --- !u!54 &1982870192
 Rigidbody:
   m_ObjectHideFlags: 0

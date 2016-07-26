@@ -4,6 +4,7 @@ using System;
 
 public class OB_Laser : MonoBehaviour, IGun
 {
+    public float maxDelay;
     const float laserLifetime = 3.0f;
     private float playerHeight;
 
