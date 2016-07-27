@@ -217,14 +217,13 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
-  health: 0
   rotationRange: 45
   rotationSpeed: 68
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRateNormal: 1.6
-  fireRateFast: 0.15
+  fireRateNormal: 1.5
+  fireRateFast: 0.12
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -247,8 +246,6 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
-  rateOfFire: 0
-  adjustableROF: 0
 --- !u!54 &93955858
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -400,7 +397,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 403442, guid: bc311d838f05b0a41828d6169833a028, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -16.07
       objectReference: {fileID: 0}
     - target: {fileID: 403442, guid: bc311d838f05b0a41828d6169833a028, type: 2}
       propertyPath: m_LocalPosition.y
@@ -408,7 +405,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 403442, guid: bc311d838f05b0a41828d6169833a028, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -19.39
+      value: -4.01
       objectReference: {fileID: 0}
     - target: {fileID: 403442, guid: bc311d838f05b0a41828d6169833a028, type: 2}
       propertyPath: m_LocalRotation.x
@@ -442,6 +439,10 @@ Prefab:
       propertyPath: rocketText
       value: 
       objectReference: {fileID: 362321736}
+    - target: {fileID: 11453454, guid: bc311d838f05b0a41828d6169833a028, type: 2}
+      propertyPath: isLight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc311d838f05b0a41828d6169833a028, type: 2}
   m_IsPrefabParent: 0
@@ -496,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3b8ff93a444694e8f4fea970404d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 60
+  rotationSpeed: 40
   obControl: {fileID: 1703406081}
 --- !u!54 &184714693
 Rigidbody:
@@ -708,14 +709,13 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
-  health: 0
   rotationRange: 45
   rotationSpeed: 60
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRateNormal: 1.6
-  fireRateFast: 0.15
+  fireRateNormal: 1.5
+  fireRateFast: 0.12
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -738,8 +738,6 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
-  rateOfFire: 0
-  adjustableROF: 0
 --- !u!54 &629243238
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1072,14 +1070,13 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
-  health: 0
   rotationRange: 45
   rotationSpeed: 48
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRateNormal: 1.6
-  fireRateFast: 0.15
+  fireRateNormal: 1.5
+  fireRateFast: 0.12
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -1102,8 +1099,6 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
-  rateOfFire: 0
-  adjustableROF: 0
 --- !u!54 &694850438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2100,14 +2095,13 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
-  health: 0
   rotationRange: 45
   rotationSpeed: 55
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRateNormal: 1.6
-  fireRateFast: 0.15
+  fireRateNormal: 1.5
+  fireRateFast: 0.12
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -2130,8 +2124,6 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
-  rateOfFire: 0
-  adjustableROF: 0
 --- !u!54 &1477305346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2180,6 +2172,7 @@ GameObject:
   - 23: {fileID: 1510222457}
   - 114: {fileID: 1510222460}
   - 114: {fileID: 1510222461}
+  - 114: {fileID: 1510222464}
   - 114: {fileID: 1510222463}
   m_Layer: 0
   m_Name: OB_ArmBase01
@@ -2265,8 +2258,6 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 0
   currentSecondaryAmmo: 0
-  rateOfFire: 0
-  adjustableROF: 1
 --- !u!114 &1510222461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2316,6 +2307,35 @@ MonoBehaviour:
   timeToTarget: 0.1
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &1510222464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510222455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b61279cef460844e8e93589cbf989a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLight: 1
+  startingHealth: 100
+  startingShield: 0
+  Explosion: {fileID: 0}
+  healthRegenRate: 0
+  shieldRegenRate: 0
+  regenDelay: 0
+  rotationRange: 45
+  rotationSpeed: 60
+  gunRotation: 0
+  detectionAngle: 7.5
+  aimRange: 60
+  fireRateNormal: 1.5
+  fireRateFast: 0.12
+  closeTrackDistance: 10
+  spinRateMultiplier: 0
+  maxPrediction: 0.5
+  obControl: {fileID: 1703406081}
 --- !u!1001 &1518271661
 Prefab:
   m_ObjectHideFlags: 0
@@ -2883,14 +2903,13 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
-  health: 0
   rotationRange: 45
   rotationSpeed: 57
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRateNormal: 1.6
-  fireRateFast: 0.15
+  fireRateNormal: 1.5
+  fireRateFast: 0.12
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -2913,8 +2932,6 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
-  rateOfFire: 0
-  adjustableROF: 0
 --- !u!54 &1835544077
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3109,14 +3126,13 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
-  health: 0
   rotationRange: 45
   rotationSpeed: 63
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRateNormal: 1.6
-  fireRateFast: 0.15
+  fireRateNormal: 1.5
+  fireRateFast: 0.12
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -3139,8 +3155,6 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
-  rateOfFire: 0
-  adjustableROF: 0
 --- !u!54 &1918605601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3388,14 +3402,13 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
-  health: 0
   rotationRange: 45
   rotationSpeed: 65
   gunRotation: 0
   detectionAngle: 5
   aimRange: 60
-  fireRateNormal: 1.6
-  fireRateFast: 0.15
+  fireRateNormal: 1.5
+  fireRateFast: 0.12
   closeTrackDistance: 25
   spinRateMultiplier: 0
   maxPrediction: 0.5
@@ -3418,8 +3431,6 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 6
   currentSecondaryAmmo: 0
-  rateOfFire: 0
-  adjustableROF: 0
 --- !u!54 &1982870192
 Rigidbody:
   m_ObjectHideFlags: 0

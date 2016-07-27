@@ -3,7 +3,7 @@ using System.Collections;
 
 public class OctoBossMain : MonoBehaviour
 {
-    public float rotationSpeed = 60;
+    public float rotationSpeed = 40;
 
     public OctoBossController obControl;
 
