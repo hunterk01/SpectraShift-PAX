@@ -12,7 +12,7 @@ public class OctoBossGun : LivingEntity
     public float gunRotation;
     public float detectionAngle = 7.5f;
     public float aimRange = 60;
-    public float fireRateNormal = 1.5f;
+    public float fireRateNormal = 1.2f;
     public float fireRateFast = .12f;
     public float closeTrackDistance = 10;
     public int spinRateMultiplier;

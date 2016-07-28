@@ -11,7 +11,8 @@ public class OctoBossMain : MonoBehaviour
 
 	void Update ()
     {
-        SpinCheck();
+        if (obControl.shellAlive)
+            SpinCheck();
 	}
 
     void SpinCheck()
