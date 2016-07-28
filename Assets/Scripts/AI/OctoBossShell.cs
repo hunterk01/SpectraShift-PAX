@@ -3,23 +3,20 @@ using System.Collections;
 
 public class OctoBossShell : MonoBehaviour
 {
-    OctoBossController obControl;
-
-	void Start ()
-    {
-        obControl = GetComponent<OctoBossController>();
-	}
+    public OctoBossController obControl;
+    public GameObject Explosion;
 
 	void Update ()
     {
-        //if (!obControl.shellAlive) DestroyShell();
+        if (!obControl.shellAlive) DestroyShell();
 	}
 
     void DestroyShell()
     {
         // Play shell explosion vfx
+        Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
 
         // Destroy GameObject
-
+        GameObject.Destroy(gameObject);
     }
 }

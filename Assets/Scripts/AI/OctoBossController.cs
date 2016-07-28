@@ -14,6 +14,8 @@ public class OctoBossController : MonoBehaviour
     public PlayerController player;
     public GameObject playerTarget;
     public Rigidbody playerRB;
+    public Canvas obCoreUI;
+    public Canvas obGunUI;
 
     float spinTimerCountdown, spinDurationCountdown;
 

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class OctoBossGun : LivingEntity
 {
-    public enum EnemyState { SCAN, TRACK_CLOSE, TRACK_FAR, SHOOT, SPIN_ATTACK };
+    public enum EnemyState { SCAN, TRACK_CLOSE, TRACK_FAR, SPIN_ATTACK };
     EnemyState enemyState;
 
     public float rotationRange = 45;
@@ -19,13 +20,21 @@ public class OctoBossGun : LivingEntity
     // Maximum prediction time the gun will predict in the future
     public float maxPrediction = .5f;
 
+    public GameObject OB_Bolt;
+    public GameObject bulletSpawn;
+    public Slider healthSlider;
     public OctoBossController obControl;
 
     float hoverHeight;
-    float shotTimer;
+    public float shotTimer;
+    float shotLifetime = 3.0f;
     float playerDistance, playerAngle;
     Vector3 playerDirection;
     bool scanRight = true;
+    bool shootGun = false;
+    bool firstShot = true;
+    bool initROF = true;
+    bool ROFSet = false;
     bool spinFireRateSet = false;
 
     ShiftLaser shiftLaser;
@@ -38,21 +47,28 @@ public class OctoBossGun : LivingEntity
 
         weaponSystems = GetComponent<WeaponSystems>();
         steeringBasics = GetComponent<SteeringBasics>();
-        shiftLaser = weaponSystems.primaryWeapon.GetComponent<ShiftLaser>();
         hoverHeight = HeightManager.Instance.setHeight;
 
         SetHeight();
         enemyState = EnemyState.SCAN;
         startingHealth = 100;
+        shotTimer = 0;
+        healthSlider.maxValue = startingHealth;
     }
 	
 	void Update ()
     {
         if (obControl.spinMode)
+        {
             enemyState = EnemyState.SPIN_ATTACK;
-        
+        }
+
+        if (shootGun) ShootGun();
+        if (currentHealth <= 0) gunCount();
+
         StateResolution();
-	}
+        ControlUI();
+    }
 
     void SetHeight()
     {
@@ -72,9 +88,6 @@ public class OctoBossGun : LivingEntity
             case EnemyState.TRACK_FAR:
                 TrackFar();
                 break;
-            case EnemyState.SHOOT:
-                ShootGun();
-                break;
             case EnemyState.SPIN_ATTACK:
                 SpinAttack();
                 break;
@@ -84,7 +97,7 @@ public class OctoBossGun : LivingEntity
     void GunScan()
     {
         // Turn off primary weapon fire
-        weaponSystems.setState(WeaponSystems.WEAPON.BLANK);
+        shootGun = false;
 
         // Move gun back and forth between scan boundaries
         gunRotation = transform.localEulerAngles.y;
@@ -141,7 +154,7 @@ public class OctoBossGun : LivingEntity
         // Check if player location is in front of gun and shoot
         if(steeringBasics.IsInFront(obControl.playerTarget.transform.position))
         {
-            ShootGun();
+            shootGun = true;
         }
     }
 
@@ -184,7 +197,7 @@ public class OctoBossGun : LivingEntity
         // Check if player position + velocity is in front of gun
         if (steeringBasics.IsInFront(explicitTarget))
         {
-            ShootGun();
+            shootGun = true;
         }
     }
 
@@ -204,8 +217,24 @@ public class OctoBossGun : LivingEntity
 
     void ShootGun()
     {
+        shotTimer -= Time.deltaTime;
+
+        if (shotTimer <= 0)
+        {
+            Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+
+            if (obControl.spinMode)
+            {
+                shotTimer = fireRateFast;
+            }
+            else
+            {
+                shotTimer = fireRateNormal;
+            }
+        }
+
         // Fire primary weapon
-        weaponSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+        //weaponSystems.setState(WeaponSystems.WEAPON.PRIMARY);
 
     }
 
@@ -214,17 +243,34 @@ public class OctoBossGun : LivingEntity
         // Return gun to rotation 0 and shoot gun
         transform.localEulerAngles = Vector3.zero;
 
-        // Increase rate of fire for spin duration and shoot gun
-        shiftLaser.maxDelay = fireRateFast;
-        ShootGun();
+        // Set initial spin mode rate of fire and shoot gun
+        if (initROF && !ROFSet)
+        {
+            shotTimer = fireRateFast;
+            initROF = false;
+            ROFSet = true;
+        }
+
+        shootGun = true;
 
         // If spin duration is reached return enemy state to SCAN
         if (!obControl.spinMode)
         {
             enemyState = EnemyState.SCAN;
+            shotTimer = 0;
+            initROF = true;
+            ROFSet = false;
         }
     }
 
-    // Need to setup a health bar for gun at the top of screen
+    void gunCount()
+    {
+        obControl.gunCount--;
+    }
+
+    void ControlUI()
+    {
+        healthSlider.value = currentHealth;
+    }
 
 }
