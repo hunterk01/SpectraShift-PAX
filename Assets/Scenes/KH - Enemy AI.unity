@@ -218,6 +218,7 @@ GameObject:
   - 114: {fileID: 93955857}
   - 114: {fileID: 93955856}
   - 114: {fileID: 93955859}
+  - 114: {fileID: 93955860}
   m_Layer: 8
   m_Name: OB_ArmBase08
   m_TagString: Enemy
@@ -370,6 +371,19 @@ MonoBehaviour:
   timeToTarget: 0.1
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &93955860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93955851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!1 &108443653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1286,7 @@ GameObject:
   - 114: {fileID: 629243237}
   - 114: {fileID: 629243236}
   - 114: {fileID: 629243239}
+  - 114: {fileID: 629243240}
   m_Layer: 8
   m_Name: OB_ArmBase04
   m_TagString: Enemy
@@ -1424,6 +1439,19 @@ MonoBehaviour:
   timeToTarget: 0.1
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &629243240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 629243231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!1 &632343427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,6 +1874,7 @@ GameObject:
   - 114: {fileID: 694850437}
   - 114: {fileID: 694850436}
   - 114: {fileID: 694850439}
+  - 114: {fileID: 694850440}
   m_Layer: 8
   m_Name: OB_ArmBase07
   m_TagString: Enemy
@@ -1998,6 +2027,19 @@ MonoBehaviour:
   timeToTarget: 0.1
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &694850440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 694850431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!1 &715623699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,6 +4025,7 @@ GameObject:
   - 114: {fileID: 1477305345}
   - 114: {fileID: 1477305344}
   - 114: {fileID: 1477305347}
+  - 114: {fileID: 1477305348}
   m_Layer: 8
   m_Name: OB_ArmBase03
   m_TagString: Enemy
@@ -4135,6 +4178,19 @@ MonoBehaviour:
   timeToTarget: 0.1
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &1477305348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1477305339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!1 &1488470201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4233,9 +4289,9 @@ GameObject:
   - 54: {fileID: 1510222462}
   - 23: {fileID: 1510222457}
   - 114: {fileID: 1510222460}
-  - 114: {fileID: 1510222461}
   - 114: {fileID: 1510222464}
   - 114: {fileID: 1510222463}
+  - 114: {fileID: 1510222461}
   m_Layer: 8
   m_Name: OB_ArmBase01
   m_TagString: Enemy
@@ -4326,15 +4382,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1510222455}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167136421fa8c35488f78b8e90e01928, type: 3}
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDelay: 0.5
-  laserDelay: 0
-  lightBolt: {fileID: 138972, guid: 0eb82e33d8935fc4db9627c0a7eab193, type: 2}
-  darkBolt: {fileID: 138972, guid: 0eb82e33d8935fc4db9627c0a7eab193, type: 2}
+  dropItem: {fileID: 148750, guid: 5af35412b34063e49998abf63942cfb6, type: 2}
+  dropRate: 0
 --- !u!54 &1510222462
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5001,6 +5055,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinTimer: 10
   spinDuration: 5
+  guns:
+  - {fileID: 1510222455}
+  - {fileID: 1982870185}
+  - {fileID: 1477305339}
+  - {fileID: 629243231}
+  - {fileID: 1835544070}
+  - {fileID: 1918605594}
+  - {fileID: 694850431}
+  - {fileID: 93955851}
   gunCount: 8
   isHealing: 0
   spinMode: 0
@@ -5267,6 +5330,7 @@ GameObject:
   - 114: {fileID: 1835544076}
   - 114: {fileID: 1835544075}
   - 114: {fileID: 1835544078}
+  - 114: {fileID: 1835544079}
   m_Layer: 8
   m_Name: OB_ArmBase05
   m_TagString: Enemy
@@ -5419,6 +5483,19 @@ MonoBehaviour:
   timeToTarget: 0.1
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &1835544079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835544070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!1 &1879356523
 GameObject:
   m_ObjectHideFlags: 0
@@ -5495,6 +5572,7 @@ GameObject:
   - 114: {fileID: 1918605600}
   - 114: {fileID: 1918605599}
   - 114: {fileID: 1918605602}
+  - 114: {fileID: 1918605603}
   m_Layer: 8
   m_Name: OB_ArmBase06
   m_TagString: Enemy
@@ -5647,6 +5725,19 @@ MonoBehaviour:
   timeToTarget: 0.1
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &1918605603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918605594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!1 &1926212332
 GameObject:
   m_ObjectHideFlags: 0
@@ -5897,6 +5988,7 @@ GameObject:
   - 114: {fileID: 1982870191}
   - 114: {fileID: 1982870190}
   - 114: {fileID: 1982870193}
+  - 114: {fileID: 1982870194}
   m_Layer: 8
   m_Name: OB_ArmBase02
   m_TagString: Enemy
@@ -6049,6 +6141,19 @@ MonoBehaviour:
   timeToTarget: 0.1
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &1982870194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1982870185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!1 &2060655122
 GameObject:
   m_ObjectHideFlags: 0

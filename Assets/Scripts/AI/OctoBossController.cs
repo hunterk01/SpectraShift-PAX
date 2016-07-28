@@ -5,6 +5,7 @@ public class OctoBossController : MonoBehaviour
 {
     public float spinTimer, spinDuration;
 
+    public GameObject[] guns;
     public int gunCount = 8;
 
     public bool isHealing = false;
@@ -27,6 +28,7 @@ public class OctoBossController : MonoBehaviour
 
     void Update()
     {
+        GunCheck();
         SpinModeCheck();
     }
 
@@ -65,11 +67,26 @@ public class OctoBossController : MonoBehaviour
 
     public void GunCheck()
     {
-        gunCount--;
+        int tempCount = 0;
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (guns[i] != null)
+            {
+                tempCount++;
+            }
+        }
+
+        gunCount = tempCount;
 
         if (gunCount <= 0)
         {
-            shellAlive = false;
+            destroyShell();
         }
+    }
+
+    void destroyShell()
+    {
+        shellAlive = false;
     }
 }
