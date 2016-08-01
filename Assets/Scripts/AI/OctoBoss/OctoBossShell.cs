@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OctoBossShell : MonoBehaviour
+public class OctoBossShell : LivingEntity
 {
     public OctoBossController obControl;
     public GameObject Explosion;
 
 	void Update ()
     {
-        if (!obControl.shellAlive) DestroyShell();
+        if (obControl.shellAlive)
+            currentHealth = startingHealth;
+        else
+            DestroyShell();
 	}
 
     void DestroyShell()

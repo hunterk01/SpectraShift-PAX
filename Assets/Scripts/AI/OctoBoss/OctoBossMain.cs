@@ -13,6 +13,10 @@ public class OctoBossMain : MonoBehaviour
     {
         if (obControl.shellAlive)
             SpinCheck();
+        else
+        {
+            CheckForDeath();
+        }
 	}
 
     void SpinCheck()
@@ -23,5 +27,11 @@ public class OctoBossMain : MonoBehaviour
         }
     }
 
-    // Destroy on death of core
+    void CheckForDeath()
+    {
+        if (!obControl.coreAlive)
+        {
+            GameObject.Destroy(gameObject);
+        }
+    }
 }

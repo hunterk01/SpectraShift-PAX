@@ -215,7 +215,6 @@ GameObject:
   - 135: {fileID: 93955854}
   - 54: {fileID: 93955858}
   - 23: {fileID: 93955853}
-  - 114: {fileID: 93955857}
   - 114: {fileID: 93955856}
   - 114: {fileID: 93955859}
   - 114: {fileID: 93955860}
@@ -297,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 1
-  startingHealth: 100
+  startingHealth: 50
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
@@ -319,24 +318,6 @@ MonoBehaviour:
   healthSlider: {fileID: 953988577}
   obControl: {fileID: 1703406081}
   shotTimer: 0
---- !u!114 &93955857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 93955851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
-  secondaryWeapon: {fileID: 0}
-  centerHardpoint: {fileID: 676912193}
-  leftHardpoint: {fileID: 0}
-  rightHardpoint: {fileID: 0}
-  maxSecondaryAmmo: 6
-  currentSecondaryAmmo: 0
 --- !u!54 &93955858
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -686,6 +667,91 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!1 &187801147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 179992, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 187801148}
+  - 114: {fileID: 187801149}
+  m_Layer: 5
+  m_Name: HealthSlider_C01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &187801148
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22476076, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 187801147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1126487210}
+  - {fileID: 1794445122}
+  m_Father: {fileID: 445584902}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 13.8, y: -3.1}
+  m_SizeDelta: {x: 400, y: 25}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &187801149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11498514, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 187801147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.75, g: 0.3805147, b: 0.3805147, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_FillRect: {fileID: 1402492671}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &195542975
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,6 +996,40 @@ Transform:
   - {fileID: 1982870186}
   m_Father: {fileID: 184714691}
   m_RootOrder: 4
+--- !u!1 &445584901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 199790, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 445584902}
+  m_Layer: 5
+  m_Name: CoreHealth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &445584902
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22403872, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445584901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.4325, y: 1.4325, z: 1}
+  m_Children:
+  - {fileID: 187801148}
+  m_Father: {fileID: 1311511025}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 400, y: 25}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445844380 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11498514, guid: e6a52ac041eb4da42a2100165d52eca3,
@@ -1064,7 +1164,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Boss Gun Health
+  m_Text: OctoBoss Guns
 --- !u!222 &491960213
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1283,7 +1383,6 @@ GameObject:
   - 135: {fileID: 629243234}
   - 54: {fileID: 629243238}
   - 23: {fileID: 629243233}
-  - 114: {fileID: 629243237}
   - 114: {fileID: 629243236}
   - 114: {fileID: 629243239}
   - 114: {fileID: 629243240}
@@ -1365,7 +1464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 1
-  startingHealth: 100
+  startingHealth: 50
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
@@ -1387,24 +1486,6 @@ MonoBehaviour:
   healthSlider: {fileID: 1536607385}
   obControl: {fileID: 1703406081}
   shotTimer: 0
---- !u!114 &629243237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 629243231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
-  secondaryWeapon: {fileID: 0}
-  centerHardpoint: {fileID: 1008870543}
-  leftHardpoint: {fileID: 0}
-  rightHardpoint: {fileID: 0}
-  maxSecondaryAmmo: 6
-  currentSecondaryAmmo: 0
 --- !u!54 &629243238
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1871,7 +1952,6 @@ GameObject:
   - 135: {fileID: 694850434}
   - 54: {fileID: 694850438}
   - 23: {fileID: 694850433}
-  - 114: {fileID: 694850437}
   - 114: {fileID: 694850436}
   - 114: {fileID: 694850439}
   - 114: {fileID: 694850440}
@@ -1953,7 +2033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 1
-  startingHealth: 100
+  startingHealth: 50
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
@@ -1975,24 +2055,6 @@ MonoBehaviour:
   healthSlider: {fileID: 1143641581}
   obControl: {fileID: 1703406081}
   shotTimer: 0
---- !u!114 &694850437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 694850431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
-  secondaryWeapon: {fileID: 0}
-  centerHardpoint: {fileID: 29295886}
-  leftHardpoint: {fileID: 0}
-  rightHardpoint: {fileID: 0}
-  maxSecondaryAmmo: 6
-  currentSecondaryAmmo: 0
 --- !u!54 &694850438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3360,6 +3422,76 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1123827017}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1126487209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 186676, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1126487210}
+  - 222: {fileID: 1126487212}
+  - 114: {fileID: 1126487211}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1126487210
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22404568, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1126487209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 187801148}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: -5.2, y: 0}
+  m_SizeDelta: {x: -10.4, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1126487211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11425978, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1126487209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1126487212
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22257840, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1126487209}
 --- !u!1 &1130686629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3374,7 +3506,7 @@ GameObject:
   - 54: {fileID: 1130686635}
   - 114: {fileID: 1130686634}
   - 114: {fileID: 1130686636}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OB_Core
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3391,6 +3523,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
+  - {fileID: 1623276220}
   - {fileID: 2143472013}
   m_Father: {fileID: 184714691}
   m_RootOrder: 1
@@ -3430,7 +3563,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1130686633
 MeshFilter:
@@ -3460,9 +3593,15 @@ MonoBehaviour:
   regenDelay: 0
   maxPrediction: 0.5
   closeTrackDistance: 20
-  OB_Bolt: {fileID: 0}
-  bulletSpawn: {fileID: 0}
-  healthSlider: {fileID: 0}
+  fireRateNormal: 1.2
+  fireRateFast: 0.12
+  rotationSpeed: 80
+  spiralRotationSpeed: 60
+  detectionAngle: 7.5
+  OB_Bolt: {fileID: 182792, guid: 26b915db1fc8aa143b0fef3f17674bf8, type: 2}
+  OB_Ball: {fileID: 122922, guid: 517405feb74a5f040bd81158ec5ea48d, type: 2}
+  bulletSpawn: {fileID: 1623276219}
+  healthSlider: {fileID: 187801149}
   obControl: {fileID: 1703406081}
   shotTimer: 0
 --- !u!54 &1130686635
@@ -3837,7 +3976,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 1489145107}
+  - {fileID: 445584902}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_AnchorMin: {x: 0, y: 0}
@@ -3928,6 +4069,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1835544071}
   m_RootOrder: 1
+--- !u!1 &1402492670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 168580, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1402492671}
+  - 222: {fileID: 1402492673}
+  - 114: {fileID: 1402492672}
+  m_Layer: 5
+  m_Name: Fill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1402492671
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22412866, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402492670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1794445122}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1402492672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400820, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402492670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7794118, g: 0.3839749, b: 0.3839749, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1402492673
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22231698, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402492670}
 --- !u!1001 &1426375791
 Prefab:
   m_ObjectHideFlags: 0
@@ -4065,7 +4276,6 @@ GameObject:
   - 135: {fileID: 1477305342}
   - 54: {fileID: 1477305346}
   - 23: {fileID: 1477305341}
-  - 114: {fileID: 1477305345}
   - 114: {fileID: 1477305344}
   - 114: {fileID: 1477305347}
   - 114: {fileID: 1477305348}
@@ -4147,7 +4357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 1
-  startingHealth: 100
+  startingHealth: 50
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
@@ -4169,24 +4379,6 @@ MonoBehaviour:
   healthSlider: {fileID: 29781987}
   obControl: {fileID: 1703406081}
   shotTimer: 0
---- !u!114 &1477305345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1477305339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
-  secondaryWeapon: {fileID: 0}
-  centerHardpoint: {fileID: 1171052907}
-  leftHardpoint: {fileID: 0}
-  rightHardpoint: {fileID: 0}
-  maxSecondaryAmmo: 6
-  currentSecondaryAmmo: 0
 --- !u!54 &1477305346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4319,6 +4511,79 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1489145106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1489145107}
+  - 222: {fileID: 1489145109}
+  - 114: {fileID: 1489145108}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1489145107
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1489145106}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1311511025}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -29}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1489145108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1489145106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: OctoBoss Core
+--- !u!222 &1489145109
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1489145106}
 --- !u!1 &1510222455
 GameObject:
   m_ObjectHideFlags: 0
@@ -4331,7 +4596,6 @@ GameObject:
   - 135: {fileID: 1510222458}
   - 54: {fileID: 1510222462}
   - 23: {fileID: 1510222457}
-  - 114: {fileID: 1510222460}
   - 114: {fileID: 1510222464}
   - 114: {fileID: 1510222463}
   - 114: {fileID: 1510222461}
@@ -4401,24 +4665,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1510222455}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1510222460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1510222455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
-  secondaryWeapon: {fileID: 0}
-  centerHardpoint: {fileID: 1445916344}
-  leftHardpoint: {fileID: 0}
-  rightHardpoint: {fileID: 0}
-  maxSecondaryAmmo: 0
-  currentSecondaryAmmo: 0
 --- !u!114 &1510222461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4478,7 +4724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 1
-  startingHealth: 100
+  startingHealth: 50
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
@@ -4928,6 +5174,33 @@ RectTransform:
   m_AnchoredPosition: {x: 55, y: -100}
   m_SizeDelta: {x: 102.400024, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1623276219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1623276220}
+  m_Layer: 0
+  m_Name: OB_Core_Hardpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1623276220
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1623276219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0.546}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 1130686630}
+  m_RootOrder: 0
 --- !u!1 &1661611513
 GameObject:
   m_ObjectHideFlags: 0
@@ -5107,15 +5380,20 @@ MonoBehaviour:
   - {fileID: 1918605594}
   - {fileID: 694850431}
   - {fileID: 93955851}
+  core: {fileID: 1130686629}
   gunCount: 8
   isHealing: 0
   spinMode: 0
   shellAlive: 1
+  coreAlive: 1
   player: {fileID: 911533919}
   playerTarget: {fileID: 911533915}
   playerRB: {fileID: 911533920}
   obCoreUI: {fileID: 1311511028}
   obGunUI: {fileID: 1032326183}
+  healerSpawnPoints: []
+  healer: {fileID: 0}
+  healerSpawnTimer: 15
 --- !u!4 &1703406082
 Transform:
   m_ObjectHideFlags: 0
@@ -5358,6 +5636,40 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1759380472}
+--- !u!1 &1794445121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 120422, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1794445122}
+  m_Layer: 5
+  m_Name: Fill Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1794445122
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22472650, guid: e6a52ac041eb4da42a2100165d52eca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794445121}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1402492671}
+  m_Father: {fileID: 187801148}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1835544070
 GameObject:
   m_ObjectHideFlags: 0
@@ -5370,7 +5682,6 @@ GameObject:
   - 135: {fileID: 1835544073}
   - 54: {fileID: 1835544077}
   - 23: {fileID: 1835544072}
-  - 114: {fileID: 1835544076}
   - 114: {fileID: 1835544075}
   - 114: {fileID: 1835544078}
   - 114: {fileID: 1835544079}
@@ -5452,7 +5763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 1
-  startingHealth: 100
+  startingHealth: 50
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
@@ -5474,24 +5785,6 @@ MonoBehaviour:
   healthSlider: {fileID: 725984658}
   obControl: {fileID: 1703406081}
   shotTimer: 0
---- !u!114 &1835544076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1835544070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
-  secondaryWeapon: {fileID: 0}
-  centerHardpoint: {fileID: 1391872077}
-  leftHardpoint: {fileID: 0}
-  rightHardpoint: {fileID: 0}
-  maxSecondaryAmmo: 6
-  currentSecondaryAmmo: 0
 --- !u!54 &1835544077
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5612,7 +5905,6 @@ GameObject:
   - 135: {fileID: 1918605597}
   - 54: {fileID: 1918605601}
   - 23: {fileID: 1918605596}
-  - 114: {fileID: 1918605600}
   - 114: {fileID: 1918605599}
   - 114: {fileID: 1918605602}
   - 114: {fileID: 1918605603}
@@ -5694,7 +5986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 1
-  startingHealth: 100
+  startingHealth: 50
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
@@ -5716,24 +6008,6 @@ MonoBehaviour:
   healthSlider: {fileID: 1661611515}
   obControl: {fileID: 1703406081}
   shotTimer: 0
---- !u!114 &1918605600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1918605594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
-  secondaryWeapon: {fileID: 0}
-  centerHardpoint: {fileID: 1929386160}
-  leftHardpoint: {fileID: 0}
-  rightHardpoint: {fileID: 0}
-  maxSecondaryAmmo: 6
-  currentSecondaryAmmo: 0
 --- !u!54 &1918605601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5905,7 +6179,7 @@ GameObject:
   - 135: {fileID: 1950474224}
   - 23: {fileID: 1950474223}
   - 114: {fileID: 1950474226}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: OB_Shell
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5980,6 +6254,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c787b3d285c5646b76e59f1072b26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLight: 1
+  startingHealth: 1000
+  startingShield: 0
+  octoBossGun: 0
+  Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
+  healthRegenRate: 0
+  shieldRegenRate: 0
+  regenDelay: 0
   obControl: {fileID: 1703406081}
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
 --- !u!1 &1981941535
@@ -6028,7 +6310,6 @@ GameObject:
   - 135: {fileID: 1982870188}
   - 54: {fileID: 1982870192}
   - 23: {fileID: 1982870187}
-  - 114: {fileID: 1982870191}
   - 114: {fileID: 1982870190}
   - 114: {fileID: 1982870193}
   - 114: {fileID: 1982870194}
@@ -6110,7 +6391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 1
-  startingHealth: 100
+  startingHealth: 50
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
@@ -6132,24 +6413,6 @@ MonoBehaviour:
   healthSlider: {fileID: 1926212334}
   obControl: {fileID: 1703406081}
   shotTimer: 0
---- !u!114 &1982870191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1982870185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 182792, guid: 9995671514bfd494782a6b55a39cdf22, type: 2}
-  secondaryWeapon: {fileID: 0}
-  centerHardpoint: {fileID: 913994781}
-  leftHardpoint: {fileID: 0}
-  rightHardpoint: {fileID: 0}
-  maxSecondaryAmmo: 6
-  currentSecondaryAmmo: 0
 --- !u!54 &1982870192
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6399,7 +6662,7 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.2, z: 0.25}
   m_Children: []
   m_Father: {fileID: 1130686630}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!23 &2143472014
 MeshRenderer:
   m_ObjectHideFlags: 0
