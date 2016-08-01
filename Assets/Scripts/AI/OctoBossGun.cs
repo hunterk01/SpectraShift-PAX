@@ -64,7 +64,6 @@ public class OctoBossGun : LivingEntity
         }
 
         if (shootGun) ShootGun();
-        if (currentHealth <= 0) gunCount();
 
         StateResolution();
         ControlUI();
@@ -217,6 +216,12 @@ public class OctoBossGun : LivingEntity
 
     void ShootGun()
     {
+        if (firstShot)
+        {
+            Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+            firstShot = false;
+        }
+
         shotTimer -= Time.deltaTime;
 
         if (shotTimer <= 0)
@@ -232,10 +237,6 @@ public class OctoBossGun : LivingEntity
                 shotTimer = fireRateNormal;
             }
         }
-
-        // Fire primary weapon
-        //weaponSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-
     }
 
     void SpinAttack()
@@ -257,20 +258,14 @@ public class OctoBossGun : LivingEntity
         if (!obControl.spinMode)
         {
             enemyState = EnemyState.SCAN;
-            shotTimer = 0;
             initROF = true;
             ROFSet = false;
+            firstShot = true;
         }
-    }
-
-    void gunCount()
-    {
-        obControl.gunCount--;
     }
 
     void ControlUI()
     {
         healthSlider.value = currentHealth;
     }
-
 }
