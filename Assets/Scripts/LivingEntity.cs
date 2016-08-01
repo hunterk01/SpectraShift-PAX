@@ -7,6 +7,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public bool isLight;
     public float startingHealth;
     public float startingShield;
+    public bool octoBossGun = false;
 
     public GameObject Explosion;   
     private GameOver gameover;
@@ -22,6 +23,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public float regenDelay;
     private float regenTimer;
     bool regenEnabled = false;
+    
     
 
     protected virtual void Start()

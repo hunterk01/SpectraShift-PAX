@@ -54,10 +54,10 @@ public class BoltAI : MonoBehaviour, IProjectile
     }
 
     void hitTarget(IDamageable hitObject)
-    {      
+    {
         hitObject.TakeHit(damage, hit);
         Instantiate(LaserSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, splashOffset), gameObject.transform.rotation);
-        Debug.Log("HIT!!!!!!");
+        //Debug.Log("HIT!!!!!!");
         GameObject.Destroy(gameObject);
     }
 
