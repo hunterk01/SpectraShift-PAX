@@ -15,10 +15,10 @@ public class OctoBossGun : LivingEntity
     public float fireRateNormal = 1.2f;
     public float fireRateFast = .12f;
     public float closeTrackDistance = 10;
-    public int spinRateMultiplier;
-
-    // Maximum prediction time the gun will predict in the future
     public float maxPrediction = .5f;
+    public float shotTimer;
+    public int spinRateMultiplier;
+    public bool playerViewable = false;
 
     public GameObject OB_Bolt;
     public GameObject bulletSpawn;
@@ -26,7 +26,7 @@ public class OctoBossGun : LivingEntity
     public OctoBossController obControl;
 
     float hoverHeight;
-    public float shotTimer;
+
     float shotLifetime = 3.0f;
     float playerDistance, playerAngle;
     Vector3 playerDirection;
@@ -95,8 +95,9 @@ public class OctoBossGun : LivingEntity
 
     void GunScan()
     {
-        // Turn off primary weapon fire
+        // Turn off primary weapon fire and viewable player
         shootGun = false;
+        playerViewable = false;
 
         // Move gun back and forth between scan boundaries
         gunRotation = transform.localEulerAngles.y;
@@ -134,6 +135,8 @@ public class OctoBossGun : LivingEntity
 
     void TrackClose()
     {
+        playerViewable = true;
+
         playerDirection = obControl.playerTarget.transform.position - transform.position;
         playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
         playerAngle = Vector3.Angle(playerDirection, transform.forward);
@@ -159,6 +162,8 @@ public class OctoBossGun : LivingEntity
 
     void TrackFar()
     {
+        playerViewable = true;
+
         playerDirection = obControl.playerTarget.transform.position - transform.position;
         playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
         playerAngle = Vector3.Angle(playerDirection, transform.forward);
@@ -241,6 +246,8 @@ public class OctoBossGun : LivingEntity
 
     void SpinAttack()
     {
+        playerViewable = true;
+
         // Return gun to rotation 0 and shoot gun
         transform.localEulerAngles = Vector3.zero;
 

@@ -9,6 +9,7 @@ public class OctoBossController : MonoBehaviour
 
     public GameObject core;
     public int gunCount = 8;
+    public int gunsViewing = 0;
 
     public bool isHealing = false;
     public bool spinMode = false;
@@ -84,21 +85,29 @@ public class OctoBossController : MonoBehaviour
 
     public void GunCheck()
     {
-        int tempCount = 0;
+        int tempGunCount = 0;
+        int tempViewCount = 0;
 
         for (int i = 0; i < 8; i++)
         {
             if (guns[i] != null)
             {
-                tempCount++;
+                tempGunCount++;
+
+                if (guns[i].GetComponent<OctoBossGun>().playerViewable)
+                    tempViewCount++;
             }
         }
 
-        gunCount = tempCount;
+        gunCount = tempGunCount;
 
         if (gunCount <= 0)
         {
             shellAlive = false;
+        }
+        else if (tempViewCount <= 0)
+        {
+            // Initiate reverse spin scanning
         }
     }
 
