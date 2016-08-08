@@ -99,8 +99,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDelay: 0.2
+  PlayerUI: {fileID: 0}
   lightBolt: {fileID: 107040, guid: 30ed774e05361454fb0111fed317f2f1, type: 2}
+  lightEnergy: 50
   darkBolt: {fileID: 171988, guid: e3d8f7ce8719a4f47ae2540cffb6dd45, type: 2}
+  darkEnergy: 50
+  darkSlider: {fileID: 11463634, guid: cf1fdfee9f5cda044be10e3c3ed1aef2, type: 2}
+  lightSlider: {fileID: 11416098, guid: f09d7278a9e363a46a3fce723320a393, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

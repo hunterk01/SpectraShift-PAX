@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System;
 
@@ -14,15 +15,16 @@ public class ShiftLaser : MonoBehaviour, IGun
     bool isLight = true;
     bool fired = false;
 
-    public GameObject lightBolt;
-    public GameObject darkBolt;
+    public Canvas PlayerUI;
+    public GameObject lightBolt;   
+    public GameObject darkBolt;   
     private GameObject player;
     private Transform laserTran;
-
+    
     // Use this for initialization
     void Start ()
     {
-        laserDelay = maxDelay;
+        laserDelay = maxDelay;       
     }
 
     void IGun.fire()
@@ -34,14 +36,14 @@ public class ShiftLaser : MonoBehaviour, IGun
             fired = true;
             GameObject tempBulletHandler;
             if (isLight)
-            {
+            {              
                 tempBulletHandler = Instantiate(lightBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-                Destroy(tempBulletHandler, laserLifetime);
+                Destroy(tempBulletHandler, laserLifetime);              
             }
             else if(!isLight)
-            {
+            {              
                 tempBulletHandler = Instantiate(darkBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-                Destroy(tempBulletHandler, laserLifetime);
+                Destroy(tempBulletHandler, laserLifetime);               
             }
         }
     }
