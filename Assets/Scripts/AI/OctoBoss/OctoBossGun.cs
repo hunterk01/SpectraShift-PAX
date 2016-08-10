@@ -51,7 +51,7 @@ public class OctoBossGun : LivingEntity
 
         SetHeight();
         enemyState = EnemyState.SCAN;
-        startingHealth = 100;
+        startingHealth = 50;
         shotTimer = 0;
         healthSlider.maxValue = startingHealth;
     }
