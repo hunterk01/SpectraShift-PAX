@@ -11,6 +11,7 @@ public class OctoBossController : MonoBehaviour
     public int gunCount = 8;
     public int gunsViewing = 0;
 
+    public bool startFight = false;
     public bool isHealing = false;
     public bool spinMode = false;
     public bool shellAlive = true;
@@ -28,6 +29,7 @@ public class OctoBossController : MonoBehaviour
     GameObject healerTracker;
 
     float spinTimerCountdown, spinDurationCountdown;
+    
 
     void Start()
     {
