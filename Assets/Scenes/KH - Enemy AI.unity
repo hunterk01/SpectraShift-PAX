@@ -833,6 +833,87 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 195542975}
+--- !u!1 &264503491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 264503492}
+  m_Layer: 0
+  m_Name: HealerSpawn02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &264503492
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 264503491}
+  m_LocalRotation: {x: -2.942091e-15, y: 0.9470592, z: 0.00000011289824, w: -0.32105896}
+  m_LocalPosition: {x: 29, y: 0, z: 30.199997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 906413879}
+  m_RootOrder: 1
+--- !u!1 &268126586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 268126587}
+  m_Layer: 0
+  m_Name: HealerSpawn01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &268126587
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 268126586}
+  m_LocalRotation: {x: 2.775558e-17, y: 0.9018436, z: 0.00000010750812, w: 0.4320627}
+  m_LocalPosition: {x: -43.9, y: 0, z: 29.699997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 906413879}
+  m_RootOrder: 0
+--- !u!1 &293012108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 293012109}
+  m_Layer: 0
+  m_Name: HealerSpawn04
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &293012109
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 293012108}
+  m_LocalRotation: {x: -1.3877788e-17, y: 0.3740347, z: 0.000000044588408, w: 0.9274147}
+  m_LocalPosition: {x: -41.3, y: 0, z: -35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 906413879}
+  m_RootOrder: 3
 --- !u!114 &362321736 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11489866, guid: e6a52ac041eb4da42a2100165d52eca3,
@@ -1264,6 +1345,33 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &600779848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 600779849}
+  m_Layer: 0
+  m_Name: HealerSpawn03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &600779849
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 600779848}
+  m_LocalRotation: {x: -1.3877788e-17, y: -0.3595213, z: -0.000000042858275, w: 0.9331369}
+  m_LocalPosition: {x: 34.9, y: 0, z: -37.199997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 906413879}
+  m_RootOrder: 2
 --- !u!1 &614151008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2174,6 +2282,10 @@ Prefab:
     - {fileID: 5494412, guid: 7a6346f8f7d5c7147956f1b07e57453a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7a6346f8f7d5c7147956f1b07e57453a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &808521438 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 141448, guid: 7a6346f8f7d5c7147956f1b07e57453a, type: 2}
+  m_PrefabInternal: {fileID: 808521437}
 --- !u!1 &823479233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,6 +2551,37 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 880428856}
+--- !u!1 &906413878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 906413879}
+  m_Layer: 0
+  m_Name: HealerSpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &906413879
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 906413878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -32, y: 0, z: 222.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 268126587}
+  - {fileID: 264503492}
+  - {fileID: 600779849}
+  - {fileID: 293012109}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &911533915 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 176846, guid: bc311d838f05b0a41828d6169833a028, type: 2}
@@ -3519,11 +3662,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 22437796, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22437796, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22479546, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_LocalPosition.x
@@ -3599,11 +3742,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22412866, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22412866, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6a52ac041eb4da42a2100165d52eca3, type: 2}
@@ -3782,6 +3925,22 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 478250, guid: 7a6346f8f7d5c7147956f1b07e57453a, type: 2}
   m_PrefabInternal: {fileID: 808521437}
+--- !u!114 &1510222457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510222455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8065aaa047cd74abb74196da38331f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLight: 1
+  LightForm: {fileID: 808521438}
+  DarkForm: {fileID: 180271031}
+  LightLayer: 0
+  DarkLayer: 0
 --- !u!1 &1510574245
 GameObject:
   m_ObjectHideFlags: 0
@@ -4236,9 +4395,14 @@ MonoBehaviour:
   playerRB: {fileID: 911533920}
   obCoreUI: {fileID: 1311511028}
   obGunUI: {fileID: 1032326183}
-  healerSpawnPoints: []
-  healer: {fileID: 0}
-  healerSpawnTimer: 15
+  healerSpawnPoints:
+  - {fileID: 268126586}
+  - {fileID: 264503491}
+  - {fileID: 600779848}
+  - {fileID: 293012108}
+  healer: {fileID: 155812, guid: 6836104d7a389c442a6dc7dbbfc78715, type: 2}
+  healerSpawnDelay: 15
+  healerSpawnTimer: 0
 --- !u!4 &1703406082
 Transform:
   m_ObjectHideFlags: 0
