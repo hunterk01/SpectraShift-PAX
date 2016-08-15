@@ -4,7 +4,6 @@ using System.Collections;
 public class OctoBossShell : LivingEntity
 {
     public OctoBossController obControl;
-    public GameObject Explosion;
 
 	void Update ()
     {

@@ -4,14 +4,13 @@ using System.Collections;
 
 public class OctoBossCore : LivingEntity
 {
-    public enum EnemyState { SCAN, TRACK_CLOSE, TRACK_FAR, SPIRAL };
+    public enum EnemyState { TRACK_CLOSE, TRACK_FAR };
     EnemyState enemyState;
 
     // Maximum prediction time the gun will predict in the future
     public float maxPrediction = .5f;
     public float closeTrackDistance = 20;
-    public float fireRateNormal = 1.2f;
-    public float fireRateFast = .12f;
+    public float fireRate = 1.2f;
     public float rotationSpeed = 80;
     public float spiralRotationSpeed = 60;
     public float detectionAngle = 7.5f;
@@ -26,10 +25,8 @@ public class OctoBossCore : LivingEntity
     public float shotTimer;
     float shotLifetime = 3.0f;
     float playerDistance, playerAngle;
-    int shotCount;
-    bool firstShot = true, shootGun = false;
-    bool initROF = true;
-    bool ROFSet = false;
+    int shotCount = 0;
+    bool shootGun = false;
     Vector3 playerDirection;
 
     SteeringBasics steeringBasics;
@@ -52,8 +49,6 @@ public class OctoBossCore : LivingEntity
 
         if (!obControl.shellAlive)
         {
-            if (obControl.spinMode)
-                enemyState = EnemyState.SPIRAL;
 
             if (shootGun) ShootGun();
 
@@ -70,35 +65,12 @@ public class OctoBossCore : LivingEntity
     {
         switch (enemyState)
         {
-            case EnemyState.SCAN:
-                CoreScan();
-                break;
             case EnemyState.TRACK_CLOSE:
                 TrackClose();
                 break;
             case EnemyState.TRACK_FAR:
                 TrackFar();
                 break;
-            case EnemyState.SPIRAL:
-                SpiralShot();
-                break;
-        }
-    }
-
-    void CoreScan()
-    {
-        transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
-
-        playerDirection = obControl.playerTarget.transform.position - transform.position;
-        playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
-        playerAngle = Vector3.Angle(playerDirection, transform.forward);
-
-        if (playerAngle < detectionAngle && isLight == obControl.player.isLight)
-        {
-            if (playerDistance < closeTrackDistance)
-                enemyState = EnemyState.TRACK_CLOSE;
-            else
-                enemyState = EnemyState.TRACK_FAR;
         }
     }
 
@@ -119,6 +91,10 @@ public class OctoBossCore : LivingEntity
         if (steeringBasics.IsInFront(obControl.playerTarget.transform.position))
         {
             shootGun = true;
+        }
+        else
+        {
+            shootGun = false;
         }
     }
 
@@ -158,43 +134,16 @@ public class OctoBossCore : LivingEntity
         {
             shootGun = true;
         }
-    }
-
-    void SpiralShot()
-    {
-        transform.Rotate(Vector3.up * spiralRotationSpeed * Time.deltaTime);
-
-        // Set initial spin mode rate of fire and shoot gun
-        if (initROF && !ROFSet)
+        else
         {
-            shotTimer = fireRateFast;
-            initROF = false;
-            ROFSet = true;
-        }
-
-        shootGun = true;
-
-        // If spin duration is reached return enemy state to SCAN
-        if (!obControl.spinMode)
-        {
-            enemyState = EnemyState.SCAN;
-            initROF = true;
-            ROFSet = false;
-            firstShot = true;
+            shootGun = false;
         }
     }
-    
+
     void ShootGun()
     {
-        if(!obControl.shellAlive)
+        if (!obControl.shellAlive && isLight == obControl.player.isLight)
         {
-            if (firstShot)
-            {
-                Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
-                firstShot = false;
-                shotCount++;
-            }
-
             shotTimer -= Time.deltaTime;
 
             if (shotTimer <= 0)
@@ -203,20 +152,13 @@ public class OctoBossCore : LivingEntity
                 {
                     Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
                     shotCount++;
+                    shotTimer = fireRate;
                 }
                 else
                 {
                     Instantiate(OB_Ball, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
                     shotCount = 0;
-                }
-
-                if (obControl.spinMode)
-                {
-                    shotTimer = fireRateFast;
-                }
-                else
-                {
-                    shotTimer = fireRateNormal;
+                    shotTimer = fireRate;
                 }
             }
         }

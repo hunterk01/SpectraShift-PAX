@@ -15,10 +15,10 @@ public class OctoBossGun : LivingEntity
     public float fireRateNormal = 1.2f;
     public float fireRateFast = .12f;
     public float closeTrackDistance = 10;
-    public int spinRateMultiplier;
-
-    // Maximum prediction time the gun will predict in the future
     public float maxPrediction = .5f;
+    public float shotTimer;
+    public int spinRateMultiplier;
+    public bool playerViewable = false;
 
     public GameObject OB_Bolt;
     public GameObject bulletSpawn;
@@ -26,7 +26,7 @@ public class OctoBossGun : LivingEntity
     public OctoBossController obControl;
 
     float hoverHeight;
-    public float shotTimer;
+
     float shotLifetime = 3.0f;
     float playerDistance, playerAngle;
     Vector3 playerDirection;
@@ -51,7 +51,7 @@ public class OctoBossGun : LivingEntity
 
         SetHeight();
         enemyState = EnemyState.SCAN;
-        startingHealth = 100;
+        startingHealth = 50;
         shotTimer = 0;
         healthSlider.maxValue = startingHealth;
     }
@@ -95,8 +95,9 @@ public class OctoBossGun : LivingEntity
 
     void GunScan()
     {
-        // Turn off primary weapon fire
+        // Turn off primary weapon fire and viewable player
         shootGun = false;
+        playerViewable = false;
 
         // Move gun back and forth between scan boundaries
         gunRotation = transform.localEulerAngles.y;

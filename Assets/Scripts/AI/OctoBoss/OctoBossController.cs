@@ -9,7 +9,9 @@ public class OctoBossController : MonoBehaviour
 
     public GameObject core;
     public int gunCount = 8;
+    public int gunsViewing = 0;
 
+    public bool startFight = false;
     public bool isHealing = false;
     public bool spinMode = false;
     public bool shellAlive = true;
@@ -27,11 +29,14 @@ public class OctoBossController : MonoBehaviour
     GameObject healerTracker;
 
     float spinTimerCountdown, spinDurationCountdown;
+    
 
     void Start()
     {
         spinTimerCountdown = spinTimer;
         spinDurationCountdown = spinDuration;
+        obGunUI.enabled = true;
+        obCoreUI.enabled = false;
     }
 
     void Update()
@@ -84,28 +89,33 @@ public class OctoBossController : MonoBehaviour
 
     public void GunCheck()
     {
-        int tempCount = 0;
+        int tempGunCount = 0;
 
         for (int i = 0; i < 8; i++)
         {
             if (guns[i] != null)
             {
-                tempCount++;
+                tempGunCount++;
             }
         }
 
-        gunCount = tempCount;
+        gunCount = tempGunCount;
 
         if (gunCount <= 0)
         {
             shellAlive = false;
+            obGunUI.enabled = false;
+            obCoreUI.enabled = true;
         }
     }
 
     void CoreCheck()
     {
         if (core == null)
+        {
             coreAlive = false;
+            obCoreUI.enabled = false;
+        }
     }
 
     void SpawnHealer()

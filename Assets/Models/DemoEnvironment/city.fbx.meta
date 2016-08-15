@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: 41159a4f6d424f940af2a3ac04b1c596
+timeCreated: 1470872858
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: city
+    100004: pCone10
+    100006: pCone5
+    100008: pCone6
+    100010: pCone7
+    100012: pCone8
+    100014: pCone9
+    100016: pCube22
+    100018: pCube23
+    100020: pCube24
+    100022: pCube66
+    100024: pine_tree:pCone5
+    100026: pine_tree:pCone6
+    100028: pine_tree:transform1
+    100030: pine_tree:transform2
+    100032: pine_tree:transform3
+    100034: pine_tree:transform4
+    100036: pine_tree:transform5
+    100038: pine_tree:transform6
+    100040: pine_tree:transform7
+    100042: pine_tree:transform8
+    100044: rock_wall:pCube50
+    100046: rock_wall:pCube50 1
+    100048: rock_wall:pCube51
+    100050: rock_wall:pCube52
+    100052: rock_wall:pCube53
+    100054: rock_wall:pCube54
+    100056: rock_wall:rock_wall_group_master
+    100058: rock_wall:transform1
+    100060: rock_wall:transform2
+    100062: rock_wall:transform3
+    100064: rock_wall:transform4
+    100066: rock_wall:transform5
+    100068: transform1
+    100070: transform2
+    400000: //RootNode
+    400002: city
+    400004: pCone10
+    400006: pCone5
+    400008: pCone6
+    400010: pCone7
+    400012: pCone8
+    400014: pCone9
+    400016: pCube22
+    400018: pCube23
+    400020: pCube24
+    400022: pCube66
+    400024: pine_tree:pCone5
+    400026: pine_tree:pCone6
+    400028: pine_tree:transform1
+    400030: pine_tree:transform2
+    400032: pine_tree:transform3
+    400034: pine_tree:transform4
+    400036: pine_tree:transform5
+    400038: pine_tree:transform6
+    400040: pine_tree:transform7
+    400042: pine_tree:transform8
+    400044: rock_wall:pCube50
+    400046: rock_wall:pCube50 1
+    400048: rock_wall:pCube51
+    400050: rock_wall:pCube52
+    400052: rock_wall:pCube53
+    400054: rock_wall:pCube54
+    400056: rock_wall:rock_wall_group_master
+    400058: rock_wall:transform1
+    400060: rock_wall:transform2
+    400062: rock_wall:transform3
+    400064: rock_wall:transform4
+    400066: rock_wall:transform5
+    400068: transform1
+    400070: transform2
+    2300000: city
+    2300002: pCube24
+    2300004: pine_tree:pCone6
+    2300006: rock_wall:pCube50
+    3300000: city
+    3300002: pCube24
+    3300004: pine_tree:pCone6
+    3300006: rock_wall:pCube50
+    4300000: city
+    4300002: pCube24
+    4300004: pine_tree:pCone6
+    4300006: rock_wall:pCube50
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
