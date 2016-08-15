@@ -35,6 +35,8 @@ public class OctoBossController : MonoBehaviour
     {
         spinTimerCountdown = spinTimer;
         spinDurationCountdown = spinDuration;
+        obGunUI.enabled = true;
+        obCoreUI.enabled = false;
     }
 
     void Update()
@@ -88,16 +90,12 @@ public class OctoBossController : MonoBehaviour
     public void GunCheck()
     {
         int tempGunCount = 0;
-        int tempViewCount = 0;
 
         for (int i = 0; i < 8; i++)
         {
             if (guns[i] != null)
             {
                 tempGunCount++;
-
-                if (guns[i].GetComponent<OctoBossGun>().playerViewable)
-                    tempViewCount++;
             }
         }
 
@@ -106,17 +104,18 @@ public class OctoBossController : MonoBehaviour
         if (gunCount <= 0)
         {
             shellAlive = false;
-        }
-        else if (tempViewCount <= 0)
-        {
-            // Initiate reverse spin scanning
+            obGunUI.enabled = false;
+            obCoreUI.enabled = true;
         }
     }
 
     void CoreCheck()
     {
         if (core == null)
+        {
             coreAlive = false;
+            obCoreUI.enabled = false;
+        }
     }
 
     void SpawnHealer()

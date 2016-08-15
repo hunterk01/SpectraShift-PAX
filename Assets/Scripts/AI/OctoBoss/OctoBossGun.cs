@@ -135,8 +135,6 @@ public class OctoBossGun : LivingEntity
 
     void TrackClose()
     {
-        playerViewable = true;
-
         playerDirection = obControl.playerTarget.transform.position - transform.position;
         playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
         playerAngle = Vector3.Angle(playerDirection, transform.forward);
@@ -162,8 +160,6 @@ public class OctoBossGun : LivingEntity
 
     void TrackFar()
     {
-        playerViewable = true;
-
         playerDirection = obControl.playerTarget.transform.position - transform.position;
         playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
         playerAngle = Vector3.Angle(playerDirection, transform.forward);
@@ -246,8 +242,6 @@ public class OctoBossGun : LivingEntity
 
     void SpinAttack()
     {
-        playerViewable = true;
-
         // Return gun to rotation 0 and shoot gun
         transform.localEulerAngles = Vector3.zero;
 

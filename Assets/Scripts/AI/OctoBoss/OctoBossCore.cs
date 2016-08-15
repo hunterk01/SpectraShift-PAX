@@ -49,6 +49,7 @@ public class OctoBossCore : LivingEntity
 
         if (!obControl.shellAlive)
         {
+
             if (shootGun) ShootGun();
 
             ControlUI();
