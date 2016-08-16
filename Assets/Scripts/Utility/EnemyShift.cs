@@ -7,6 +7,8 @@ public class EnemyShift : MonoBehaviour
     public bool isLight;
     public Object LightForm;
     public Object DarkForm;
+
+    // Layer numbers: 0 - Not shootable, 8 - Shootable
     public int LightLayer;
     public int DarkLayer;
 

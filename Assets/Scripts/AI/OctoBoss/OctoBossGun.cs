@@ -65,6 +65,8 @@ public class OctoBossGun : LivingEntity
 
         if (shootGun) ShootGun();
 
+        CheckHealing();
+
         StateResolution();
         ControlUI();
     }
@@ -265,6 +267,19 @@ public class OctoBossGun : LivingEntity
             ROFSet = false;
             firstShot = true;
         }
+    }
+
+    void CheckHealing()
+    {
+        if(obControl.isHealing)
+        {
+            currentHealth += healthRegenRate * Time.deltaTime;
+
+            if (currentHealth > startingHealth)
+            {
+                currentHealth = startingHealth;
+            }
+        }      
     }
 
     void ControlUI()

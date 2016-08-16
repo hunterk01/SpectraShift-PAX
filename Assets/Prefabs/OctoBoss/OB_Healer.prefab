@@ -11,10 +11,12 @@ GameObject:
   - 33: {fileID: 3379958}
   - 136: {fileID: 13630384}
   - 23: {fileID: 2326802}
+  - 54: {fileID: 5433044}
   - 114: {fileID: 11403328}
-  m_Layer: 0
+  - 114: {fileID: 11422260}
+  m_Layer: 8
   m_Name: OB_Healer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 0, z: 222.6}
+  m_LocalPosition: {x: 42, y: 0, z: 222.6}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,6 +66,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155812}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5433044
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155812}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!114 &11403328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,17 +92,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4d672a9d769774db8397bf4ebaa7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLight: 0
+  isLight: 1
   startingHealth: 25
   startingShield: 0
   octoBossGun: 0
-  Explosion: {fileID: 0}
+  Explosion: {fileID: 100012, guid: 384371afbb4354cc9a3fc68eab303756, type: 2}
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
   target: {fileID: 0}
-  speed: 10
+  speed: 8
+  healerStopDistance: 17.5
   obControl: {fileID: 0}
+--- !u!114 &11422260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 148750, guid: 5af35412b34063e49998abf63942cfb6, type: 2}
+  dropRate: 25
 --- !u!136 &13630384
 CapsuleCollider:
   m_ObjectHideFlags: 1
