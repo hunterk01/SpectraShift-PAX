@@ -5,7 +5,8 @@ public class EnemyHomingGun : MonoBehaviour, IGun
 {
     public float maxDelay = 0.5f;
     public float rocketLifetime = 10;
-    public float projectileHeight;    
+    public float rocketRange = 40;
+    public float projectileHeight;
 
     public GameObject Rocket;
     private WeaponSystems weaponSystem;
@@ -13,6 +14,9 @@ public class EnemyHomingGun : MonoBehaviour, IGun
     float rocketDelay;
     bool isLight;
     bool isLoaded;
+    float distance;
+
+    Vector3 displacement;
 
     GameObject player;
 
@@ -28,19 +32,25 @@ public class EnemyHomingGun : MonoBehaviour, IGun
 	
     void IGun.fire()
     {
+        displacement = player.transform.position - transform.position;
+        distance = displacement.magnitude;
+
         rocketDelay = rocketDelay - Time.deltaTime;
         if (rocketDelay <= 0)
         {
-            rocketDelay = maxDelay;
-            GameObject tempBulletHandler;
-            if (player != null)
+            if (distance < rocketRange)
             {
-                tempBulletHandler = Instantiate(Rocket, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-                HGooAI temp = tempBulletHandler.GetComponent<HGooAI>();
-                temp.setTarget(player);
-                //Destroy(tempBulletHandler, rocketLifetime);
+                rocketDelay = maxDelay;
+                GameObject tempBulletHandler;
+                if (player != null)
+                {
+                    tempBulletHandler = Instantiate(Rocket, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+                    HGooAI temp = tempBulletHandler.GetComponent<HGooAI>();
+                    temp.setTarget(player);
+                    isLoaded = false;
+                }
+                else Debug.Log("No Enemy Lock");
             }
-            else Debug.Log("No Enemy Lock");
         }
     }
 
