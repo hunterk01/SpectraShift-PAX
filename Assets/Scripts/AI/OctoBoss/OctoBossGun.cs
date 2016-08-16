@@ -65,6 +65,8 @@ public class OctoBossGun : LivingEntity
 
         if (shootGun) ShootGun();
 
+        CheckHealing();
+
         StateResolution();
         ControlUI();
     }
@@ -227,7 +229,9 @@ public class OctoBossGun : LivingEntity
 
         if (shotTimer <= 0)
         {
-            Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+            GameObject tempOB_Bolt;
+            tempOB_Bolt = Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation) as GameObject;
+            Destroy(tempOB_Bolt, shotLifetime);
 
             if (obControl.spinMode)
             {
@@ -263,6 +267,19 @@ public class OctoBossGun : LivingEntity
             ROFSet = false;
             firstShot = true;
         }
+    }
+
+    void CheckHealing()
+    {
+        if(obControl.isHealing)
+        {
+            currentHealth += healthRegenRate * Time.deltaTime;
+
+            if (currentHealth > startingHealth)
+            {
+                currentHealth = startingHealth;
+            }
+        }      
     }
 
     void ControlUI()

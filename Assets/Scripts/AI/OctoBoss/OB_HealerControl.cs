@@ -5,16 +5,29 @@ public class OB_HealerControl : LivingEntity
 {
     public Transform target;
     public float speed;
+    public float healerStopDistance = 25;
 
     public OctoBossController obControl;
 
     float distance, healBuffer = 1.5f;
+    float hoverHeight;
     Vector3 direction;
+
+    protected override void Start()
+    {
+        hoverHeight = HeightManager.Instance.setHeight;
+        SetHeight();
+    }
 
 	void Update ()
     {
         MoveHealer();
 	}
+
+    void SetHeight()
+    {
+        transform.position = new Vector3(transform.position.x, hoverHeight, transform.position.z);
+    }
 
     void MoveHealer()
     {
@@ -23,7 +36,7 @@ public class OB_HealerControl : LivingEntity
         direction = target.position - transform.position;
 
         // Move toward boss and heal when arrive at target
-        if (distance > (target.localScale.z / 2) + (transform.localScale.z / 2) + healBuffer)
+        if (distance > healerStopDistance)
         {
             transform.rotation = Quaternion.LookRotation(direction);
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);

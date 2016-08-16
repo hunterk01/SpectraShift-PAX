@@ -22,10 +22,9 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public float healthRegenRate, shieldRegenRate;
     public float regenDelay;
     private float regenTimer;
-    bool regenEnabled = false;
-    
-    
-
+    [HideInInspector]
+    public bool regenEnabled = false;
+ 
     protected virtual void Start()
     {
         currentHealth = startingHealth;

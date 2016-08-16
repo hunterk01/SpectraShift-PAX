@@ -25,16 +25,18 @@ public class OctoBossController : MonoBehaviour
 
     public GameObject[] healerSpawnPoints;
     public GameObject healer;
-    public float healerSpawnTimer = 15;
+    public float healerSpawnDelay = 15;
     GameObject healerTracker;
 
     float spinTimerCountdown, spinDurationCountdown;
+    public float healerSpawnTimer
+        ;
     
-
     void Start()
     {
         spinTimerCountdown = spinTimer;
         spinDurationCountdown = spinDuration;
+        healerSpawnTimer = healerSpawnDelay;
         obGunUI.enabled = true;
         obCoreUI.enabled = false;
     }
@@ -120,14 +122,20 @@ public class OctoBossController : MonoBehaviour
 
     void SpawnHealer()
     {
-        if (healer == null && healerSpawnTimer <= 0)
+        if (healerTracker == null)
         {
-            // Spawn a healer at one of four random spawn points
-            int i = Random.Range(1, 4);
-            Instantiate(healer, healerSpawnPoints[i - 1].transform.position, healerSpawnPoints[i - 1].transform.rotation);
+            isHealing = false;
 
-            // Track healer gameObject and reset healerSpawnTimer on death
-            
+            if (healerSpawnTimer <= 0)
+            {
+                // Spawn a healer at one of four random spawn points
+                int i = Random.Range(1, 4);
+                healerTracker = Instantiate(healer, healerSpawnPoints[i - 1].transform.position, healerSpawnPoints[i - 1].transform.rotation) as GameObject;
+
+                healerSpawnTimer = 15;
+            }
+
+            healerSpawnTimer -= Time.deltaTime;
         }
     }
 }
