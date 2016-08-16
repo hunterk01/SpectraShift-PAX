@@ -1149,6 +1149,7 @@ MonoBehaviour:
   DarkForm: {fileID: 186002}
   LightLayer: 8
   DarkLayer: 0
+  colliderSwitch: 1
 --- !u!114 &11460912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1181,9 +1182,9 @@ MonoBehaviour:
   spawner: {fileID: 0}
   boundsPosition: {x: 0, y: 0, z: 0}
   patrolWaypoints:
-  - {x: -8.81239, y: 3, z: 3.1614695}
-  - {x: 23.495234, y: 3, z: 13.686918}
-  - {x: 14.598906, y: 3, z: 20.656387}
+  - {x: 11.191732, y: 3, z: 21.022034}
+  - {x: 21.445549, y: 3, z: -9.547578}
+  - {x: 8.038952, y: 3, z: -12.984725}
   waypointArriveDistance: 0.5
   worldWaypointPosition: {x: 0, y: 0, z: 0}
   waypointSize: 3

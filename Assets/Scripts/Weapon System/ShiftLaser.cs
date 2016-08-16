@@ -20,11 +20,15 @@ public class ShiftLaser : MonoBehaviour, IGun
     public GameObject darkBolt;   
     private GameObject player;
     private Transform laserTran;
+    private ParticleSystem lightBoltPartical;
+    private ParticleSystem darkBoltPartical;
     
     // Use this for initialization
     void Start ()
     {
-        laserDelay = maxDelay;       
+        laserDelay = maxDelay;
+        lightBoltPartical = GetComponent<ParticleSystem>();
+        darkBoltPartical = GetComponent<ParticleSystem>();      
     }
 
     void IGun.fire()
@@ -36,13 +40,21 @@ public class ShiftLaser : MonoBehaviour, IGun
             fired = true;
             GameObject tempBulletHandler;
             if (isLight)
-            {              
+            {
                 tempBulletHandler = Instantiate(lightBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+                if (!isLight)
+                {
+                    lightBoltPartical.Stop();
+                }
                 Destroy(tempBulletHandler, laserLifetime);              
             }
             else if(!isLight)
             {              
                 tempBulletHandler = Instantiate(darkBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+                if (isLight)
+                {
+                    darkBoltPartical.Stop();
+                }
                 Destroy(tempBulletHandler, laserLifetime);               
             }
         }

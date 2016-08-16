@@ -32,7 +32,7 @@ public class HomingLauncher : MonoBehaviour, IGun
             rocketDelay = maxDelay;
             GameObject tempBulletHandler;
             GameObject tempEnemy = findClosestEnemy();
-            if (tempEnemy != null)
+            if (tempEnemy != null && tempEnemy.layer == 8)
             {
                 tempBulletHandler = Instantiate(Rocket, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
                 HRocketAI temp = tempBulletHandler.GetComponent<HRocketAI>();
