@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
+    PlayerController playercontroller;
     public bool isLight;
     public float startingHealth;
     public float startingShield;
@@ -31,7 +32,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         currentShield = startingShield;
         regenTimer = regenDelay;
         ammoDrop = gameObject.GetComponent<AmmoDrop>();
-        gameover = GameObject.FindWithTag("WorldController").GetComponent<GameOver>();        
+        gameover = GameObject.FindWithTag("WorldController").GetComponent<GameOver>();       
     }
 
     public void TakeHit(float damage, RaycastHit hit)
@@ -77,9 +78,20 @@ public class LivingEntity : MonoBehaviour, IDamageable
             GameObject.Destroy(gameObject);                       
         }
         else
-        {
+        { 
             ammoDrop.itemDrop();
             GameObject.Destroy(gameObject);
+
+            //if (gameObject.tag == "Enemy" && isLight)
+            //{
+            //    playercontroller.lightEnergy += 5;
+            //    GameObject.Destroy(gameObject);
+            //}
+            //if (gameObject.tag == "Enemy" && !isLight)
+            //{
+            //    playercontroller.darkEnergy += 5;
+            //    GameObject.Destroy(gameObject);
+            //}
         }
     }
 

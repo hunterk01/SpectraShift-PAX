@@ -13,8 +13,14 @@ public class PlayerController : LivingEntity
 
     public Slider healthSlider;
     public Slider shieldSlider;
+    public Slider darkSlider;
+    public Slider lightSlider;
     public Text rocketText;
-        
+    public float lightEnergy;
+    private float lightEnergyMax = 50;
+    public float darkEnergy;
+    private float darkEnergyMax = 50;
+
     public bool playerControl = false;
 
     float deadzone = 0.3f;
@@ -30,9 +36,15 @@ public class PlayerController : LivingEntity
         pause = GameObject.FindWithTag("WorldController").GetComponent<PauseGame>();
         healthSlider.maxValue = startingHealth;
         shieldSlider.maxValue = startingShield;
+        lightEnergy = 50;
+        darkEnergy = 50;
+        //Slider.Instantiate(darkSlider, gameObject.transform.position, gameObject.transform.rotation);
+        //Slider.Instantiate(lightSlider, gameObject.transform.position, gameObject.transform.rotation);
+        //darkSlider.transform.parent = darkSlider.transform.PlayerUI;
+        //lightSlider.transform.SetParent(PlayerUI, false);
     }
 
-	void Update ()
+    void Update ()
     {
         if (playerControl)
         {
@@ -40,6 +52,17 @@ public class PlayerController : LivingEntity
             ControlUI();
             Regen();
         }
+        if (!isLight && darkEnergy < darkEnergyMax)
+        {
+            darkEnergy += 0.3f;
+        }
+
+        if (isLight && lightEnergy < lightEnergyMax)
+        {
+            lightEnergy += 0.3f;
+        }
+
+        ControlUI();
     }
 
     void InputControl()
@@ -92,9 +115,19 @@ public class PlayerController : LivingEntity
 
         //Weapons System, Buttons Should be Left for Laser, Right for Rocket (Mouse Inputs)
         if (Input.GetButton("Fire1"))
-        {
-            weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-            Debug.Log("Attempt Firing Laser");
+        {      
+            if (isLight && darkEnergy > 0)
+            {
+                weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                Debug.Log("Attempt Firing Laser");
+                darkEnergy -= 0.3f;
+            }
+            else if (!isLight && lightEnergy > 0)
+            {
+                weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                Debug.Log("Attempt Firing Laser");
+                lightEnergy -= 0.3f;
+            }
         }
         else if (Input.GetButton("Fire2"))
         {
@@ -153,5 +186,7 @@ public class PlayerController : LivingEntity
         healthSlider.value = currentHealth;
         shieldSlider.value = currentShield;
         rocketText.text = weaponsSystems.currentSecondaryAmmo.ToString();
+        darkSlider.value = darkEnergy;
+        lightSlider.value = lightEnergy;
     }
 }

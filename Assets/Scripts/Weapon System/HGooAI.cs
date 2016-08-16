@@ -22,6 +22,8 @@ public class HGooAI : MonoBehaviour, IProjectile
     public float damage;
     public float speed;
     public float gooLifetime = 3.5f;
+    private ParticleSystem gooPartical;
+    private Collider gooCollider;
 
     // Use this for initialization
     void Start()
@@ -31,6 +33,8 @@ public class HGooAI : MonoBehaviour, IProjectile
         speed = maxSpeed;
         distanceToTarget = 0;
         rocketHeight = HeightManager.Instance.setHeight;
+        gooPartical = GetComponent<ParticleSystem>();
+        gooCollider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -38,7 +42,7 @@ public class HGooAI : MonoBehaviour, IProjectile
     {
         rocketTran.position = new Vector3(rocketTran.position.x, rocketHeight, rocketTran.position.z);
 
-        if (enemy != null)
+        if (enemy != null && !isLight)
         {
             distanceToTarget = Vector3.Distance(gameObject.transform.position, enemy.transform.position);
             if (distanceToTarget <= 2)
@@ -56,7 +60,11 @@ public class HGooAI : MonoBehaviour, IProjectile
         Vector3 bulletForward = gameObject.transform.TransformDirection(Vector3.forward);
 
         Debug.DrawRay(transform.position, bulletForward * 4, Color.blue);
-
+        if (isLight)
+        {
+            gooPartical.Stop();
+            gooCollider.enabled = false;
+        }
         if (Physics.Raycast(transform.position, bulletForward, out hit, .5f, collisionMask))
         {
             IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
@@ -66,7 +74,7 @@ public class HGooAI : MonoBehaviour, IProjectile
 
         if (gooLifetime < 0)
         {
-            Instantiate(projectileExplosion, gameObject.transform.position, Quaternion.identity);
+            Instantiate(projectileExplosion, gameObject.transform.position, Quaternion.identity);            
             Destroy(gameObject);
         }
         else
