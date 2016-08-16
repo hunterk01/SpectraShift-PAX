@@ -79,7 +79,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &11403328
 MonoBehaviour:
@@ -97,13 +97,12 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100012, guid: 384371afbb4354cc9a3fc68eab303756, type: 2}
-  healthRegenRate: 0
+  healthRegenRate: 2
   shieldRegenRate: 0
   regenDelay: 0
-  target: {fileID: 0}
+  regenEnabled: 0
   speed: 8
   healerStopDistance: 17.5
-  obControl: {fileID: 0}
 --- !u!114 &11422260
 MonoBehaviour:
   m_ObjectHideFlags: 1
