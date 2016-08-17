@@ -1,0 +1,164 @@
+fileFormatVersion: 2
+guid: 23071c38aa3be0f4dba3f0c4b1cf2cfb
+timeCreated: 1471381002
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: broken_bridge
+    100002: metal_fence46
+    100004: obj_prop_env_picnic_bench
+    100006: obj_prop_env_picnic_bench1
+    100008: obj_prop_env_picnic_bench2
+    100010: obj_prop_env_picnic_bench3
+    100012: obj_prop_env_picnic_bench4
+    100014: obj_prop_env_picnic_bench5
+    100016: pCube10
+    100018: pCube11
+    100020: pCube12
+    100022: pCube13
+    100024: pCube14
+    100026: pCube15
+    100028: pCube16
+    100030: playground1
+    100032: //RootNode
+    100034: playground_path
+    100036: river_entrance
+    400000: broken_bridge
+    400002: metal_fence46
+    400004: obj_prop_env_picnic_bench
+    400006: obj_prop_env_picnic_bench1
+    400008: obj_prop_env_picnic_bench2
+    400010: obj_prop_env_picnic_bench3
+    400012: obj_prop_env_picnic_bench4
+    400014: obj_prop_env_picnic_bench5
+    400016: pCube10
+    400018: pCube11
+    400020: pCube12
+    400022: pCube13
+    400024: pCube14
+    400026: pCube15
+    400028: pCube16
+    400030: playground1
+    400032: //RootNode
+    400034: playground_path
+    400036: river_entrance
+    2300000: broken_bridge
+    2300002: metal_fence46
+    2300004: obj_prop_env_picnic_bench
+    2300006: obj_prop_env_picnic_bench1
+    2300008: obj_prop_env_picnic_bench2
+    2300010: obj_prop_env_picnic_bench3
+    2300012: obj_prop_env_picnic_bench4
+    2300014: obj_prop_env_picnic_bench5
+    2300016: pCube10
+    2300018: pCube11
+    2300020: pCube12
+    2300022: pCube13
+    2300024: pCube14
+    2300026: pCube15
+    2300028: pCube16
+    2300030: playground1
+    2300032: playground_path
+    2300034: river_entrance
+    3300000: broken_bridge
+    3300002: metal_fence46
+    3300004: obj_prop_env_picnic_bench
+    3300006: obj_prop_env_picnic_bench1
+    3300008: obj_prop_env_picnic_bench2
+    3300010: obj_prop_env_picnic_bench3
+    3300012: obj_prop_env_picnic_bench4
+    3300014: obj_prop_env_picnic_bench5
+    3300016: pCube10
+    3300018: pCube11
+    3300020: pCube12
+    3300022: pCube13
+    3300024: pCube14
+    3300026: pCube15
+    3300028: pCube16
+    3300030: playground1
+    3300032: playground_path
+    3300034: river_entrance
+    4300000: playground_path
+    4300002: river_entrance
+    4300004: broken_bridge
+    4300006: metal_fence46
+    4300008: obj_prop_env_picnic_bench
+    4300010: playground1
+    4300012: obj_prop_env_picnic_bench1
+    4300014: obj_prop_env_picnic_bench2
+    4300016: obj_prop_env_picnic_bench3
+    4300018: obj_prop_env_picnic_bench4
+    4300020: obj_prop_env_picnic_bench5
+    4300022: pCube10
+    4300024: pCube11
+    4300026: pCube12
+    4300028: pCube13
+    4300030: pCube14
+    4300032: pCube15
+    4300034: pCube16
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

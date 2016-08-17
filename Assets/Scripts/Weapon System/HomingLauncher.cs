@@ -39,7 +39,7 @@ public class HomingLauncher : MonoBehaviour, IGun
             //distance = displacement.magnitude;
             distance = Vector3.Distance(tempEnemy.transform.position, transform.position);
 
-            if (distance < rocketRange)
+            if (distance < rocketRange && tempEnemy.layer == 8)
             {
                 if (tempEnemy != null)
                 {

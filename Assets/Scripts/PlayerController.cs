@@ -120,13 +120,13 @@ public class PlayerController : LivingEntity
             {
                 weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
                 Debug.Log("Attempt Firing Laser");
-                darkEnergy -= 0.3f;
+                darkEnergy -= 0.2f;
             }
             else if (!isLight && lightEnergy > 0)
             {
                 weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
                 Debug.Log("Attempt Firing Laser");
-                lightEnergy -= 0.3f;
+                lightEnergy -= 0.2f;
             }
         }
         else if (Input.GetButton("Fire2"))

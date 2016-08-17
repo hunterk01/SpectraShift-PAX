@@ -1133,6 +1133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPrediction: 1
+  maxAcceleration: 8
+  closingDistance: 15
 --- !u!114 &11450544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1182,9 +1184,9 @@ MonoBehaviour:
   spawner: {fileID: 0}
   boundsPosition: {x: 0, y: 0, z: 0}
   patrolWaypoints:
-  - {x: 11.191732, y: 3, z: 21.022034}
-  - {x: 21.445549, y: 3, z: -9.547578}
-  - {x: 8.038952, y: 3, z: -12.984725}
+  - {x: -6.106797, y: 3, z: -2.200387}
+  - {x: -6.2400928, y: 3, z: 3.1373415}
+  - {x: 17.683577, y: 3, z: 21.952843}
   waypointArriveDistance: 0.5
   worldWaypointPosition: {x: 0, y: 0, z: 0}
   waypointSize: 3
@@ -1239,10 +1241,12 @@ MonoBehaviour:
   isLight: 0
   startingHealth: 50
   startingShield: 0
+  octoBossGun: 0
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
   detectionRange: 35
   pursueDistance: 25
   evadeDistance: 10
