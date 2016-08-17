@@ -3,15 +3,30 @@ using System.Collections;
 
 public class OctoBossShell : LivingEntity
 {
+    public float rotationSpeed = 40;
+
     public OctoBossController obControl;
 
 	void Update ()
     {
         if (obControl.shellAlive)
+        {
             currentHealth = startingHealth;
+
+            SpinCheck();
+        }
+
         else
             DestroyShell();
 	}
+
+    void SpinCheck()
+    {
+        if (obControl.spinMode)
+        {
+            transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
+        }
+    }
 
     void DestroyShell()
     {
