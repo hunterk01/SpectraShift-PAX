@@ -58,17 +58,20 @@ public class OctoBossGun : LivingEntity
 	
 	void Update ()
     {
-        if (obControl.spinMode)
+        if (obControl.startFight)
         {
-            enemyState = EnemyState.SPIN_ATTACK;
+            if (obControl.spinMode)
+            {
+                enemyState = EnemyState.SPIN_ATTACK;
+            }
+
+            if (shootGun) ShootGun();
+
+            CheckHealing();
+
+            StateResolution();
+            ControlUI();
         }
-
-        if (shootGun) ShootGun();
-
-        CheckHealing();
-
-        StateResolution();
-        ControlUI();
     }
 
     void SetHeight()
@@ -300,5 +303,8 @@ public class OctoBossGun : LivingEntity
     void ControlUI()
     {
         healthSlider.value = currentHealth;
+
+        if (gameObject == null)
+            healthSlider.value = 0;
     }
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class OB_HealerControl : LivingEntity
 {
     public float speed = 8;
-    public float healerStopDistance = 25;
+    public float healerStopDistance = 18;
 
     float distance;
     float hoverHeight;
@@ -16,8 +16,10 @@ public class OB_HealerControl : LivingEntity
 
     protected override void Start()
     {
+        base.Start();
+
         obControl = GameObject.FindWithTag("obController").GetComponent<OctoBossController>();
-        target = obControl.transform;
+        target = GameObject.FindWithTag("obCenter").transform;
         hoverHeight = HeightManager.Instance.setHeight;
         SetHeight();
     }

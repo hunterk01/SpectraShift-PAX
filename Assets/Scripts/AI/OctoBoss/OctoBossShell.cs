@@ -9,15 +9,18 @@ public class OctoBossShell : LivingEntity
 
 	void Update ()
     {
-        if (obControl.shellAlive)
+        if (obControl.startFight)
         {
-            currentHealth = startingHealth;
+            if (obControl.shellAlive)
+            {
+                currentHealth = startingHealth;
 
-            SpinCheck();
+                SpinCheck();
+            }
+
+            else
+                DestroyShell();
         }
-
-        else
-            DestroyShell();
 	}
 
     void SpinCheck()
