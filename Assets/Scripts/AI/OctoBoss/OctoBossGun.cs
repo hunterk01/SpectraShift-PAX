@@ -137,69 +137,84 @@ public class OctoBossGun : LivingEntity
 
     void TrackClose()
     {
-        playerDirection = obControl.playerTarget.transform.position - transform.position;
-        playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
-        playerAngle = Vector3.Angle(playerDirection, transform.forward);
+        if (obControl.player.isLight)
+        {
+            playerDirection = obControl.playerTarget.transform.position - transform.position;
+            playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
+            playerAngle = Vector3.Angle(playerDirection, transform.forward);
 
-        // Check if the gun still sees the player.  If not, change to SCAN
-        if (playerAngle > detectionAngle)
+            // Check if the gun still sees the player.  If not, change to SCAN
+            if (playerAngle > detectionAngle)
+                enemyState = EnemyState.SCAN;
+
+            // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
+            if (playerDistance > closeTrackDistance)
+                enemyState = EnemyState.TRACK_FAR;
+
+            // Rotate gun to track player position
+            steeringBasics.LookAtDirection(obControl.playerTarget.transform.position);
+            CheckRotationBounds();
+
+            // Check if player location is in front of gun and shoot
+            if (steeringBasics.IsInFront(obControl.playerTarget.transform.position))
+            {
+                shootGun = true;
+            }
+        }
+        else
+        {
             enemyState = EnemyState.SCAN;
 
-        // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
-        if (playerDistance > closeTrackDistance)
-            enemyState = EnemyState.TRACK_FAR;
-
-        // Rotate gun to track player position
-        steeringBasics.LookAtDirection(obControl.playerTarget.transform.position);
-        CheckRotationBounds();
-
-        // Check if player location is in front of gun and shoot
-        if(steeringBasics.IsInFront(obControl.playerTarget.transform.position))
-        {
-            shootGun = true;
         }
     }
 
     void TrackFar()
     {
-        playerDirection = obControl.playerTarget.transform.position - transform.position;
-        playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
-        playerAngle = Vector3.Angle(playerDirection, transform.forward);
-
-        // Check if the gun still sees the player.  If not, change to SCAN
-        if (playerAngle > detectionAngle)
-            enemyState = EnemyState.SCAN;
-
-        // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
-        if (playerDistance < closeTrackDistance)
-            enemyState = EnemyState.TRACK_CLOSE;
-
-        // Rotate gun to track player position + velocity
-        // Get the targets's speed
-        float speed = obControl.playerRB.velocity.magnitude;
-
-        // Calculate the prediction time
-        float prediction;
-        if (speed <= playerDistance / maxPrediction)
+        if (obControl.player.isLight)
         {
-            prediction = maxPrediction;
-        }
+            playerDirection = obControl.playerTarget.transform.position - transform.position;
+            playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
+            playerAngle = Vector3.Angle(playerDirection, transform.forward);
+
+            // Check if the gun still sees the player.  If not, change to SCAN
+            if (playerAngle > detectionAngle)
+                enemyState = EnemyState.SCAN;
+
+            // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
+            if (playerDistance < closeTrackDistance)
+                enemyState = EnemyState.TRACK_CLOSE;
+
+            // Rotate gun to track player position + velocity
+            // Get the targets's speed
+            float speed = obControl.playerRB.velocity.magnitude;
+
+            // Calculate the prediction time
+            float prediction;
+            if (speed <= playerDistance / maxPrediction)
+            {
+                prediction = maxPrediction;
+            }
+            else
+            {
+                prediction = playerDistance / speed;
+                //Place the predicted position a little before the target reaches the character
+                prediction *= 0.9f;
+            }
+
+            // Set where the AI thinks the target will be and look at it
+            Vector3 explicitTarget = obControl.playerRB.position + obControl.playerRB.velocity * prediction;
+            steeringBasics.LookAtDirection(explicitTarget);
+            CheckRotationBounds();
+
+            // Check if player position + velocity is in front of gun
+            if (steeringBasics.IsInFront(explicitTarget))
+            {
+                shootGun = true;
+            }
+        }       
         else
         {
-            prediction = playerDistance / speed;
-            //Place the predicted position a little before the target reaches the character
-            prediction *= 0.9f;
-        }
-
-        // Set where the AI thinks the target will be and look at it
-        Vector3 explicitTarget = obControl.playerRB.position + obControl.playerRB.velocity * prediction;
-        steeringBasics.LookAtDirection(explicitTarget);
-        CheckRotationBounds();
-
-        // Check if player position + velocity is in front of gun
-        if (steeringBasics.IsInFront(explicitTarget))
-        {
-            shootGun = true;
+            enemyState = EnemyState.SCAN;
         }
     }
 
@@ -227,7 +242,7 @@ public class OctoBossGun : LivingEntity
 
         shotTimer -= Time.deltaTime;
 
-        if (shotTimer <= 0)
+        if (shotTimer <= 0 && obControl.player.isLight)
         {
             GameObject tempOB_Bolt;
             tempOB_Bolt = Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation) as GameObject;

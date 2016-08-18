@@ -66,12 +66,13 @@ public class OctoBossController : MonoBehaviour
             }
             else
             {
-                spinTimerCountdown -= Time.deltaTime;
+                if (player.isLight)
+                    spinTimerCountdown -= Time.deltaTime;
             }
         }
         else
         {
-            if (spinDurationCountdown <= 0)
+            if (spinDurationCountdown <= 0 || !player.isLight)
             {
                 spinMode = false;
                 spinTimerCountdown = spinTimer;

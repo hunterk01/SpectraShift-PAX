@@ -32,6 +32,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &104914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 457098}
+  - 33: {fileID: 3342502}
+  - 23: {fileID: 2328288}
+  - 135: {fileID: 13504508}
+  - 54: {fileID: 5404674}
+  - 114: {fileID: 11405656}
+  - 114: {fileID: 11406854}
+  - 114: {fileID: 11453430}
+  m_Layer: 8
+  m_Name: Eye
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &107316
 GameObject:
   m_ObjectHideFlags: 1
@@ -120,7 +142,7 @@ GameObject:
   - 114: {fileID: 11433158}
   m_Layer: 0
   m_Name: OctoBossController
-  m_TagString: New Tag
+  m_TagString: obController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,27 +177,6 @@ GameObject:
   m_Layer: 0
   m_Name: OB_Gun01_Solid
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &118268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 450792}
-  - 33: {fileID: 3316296}
-  - 23: {fileID: 2358552}
-  - 135: {fileID: 13596466}
-  - 54: {fileID: 5424042}
-  - 114: {fileID: 11459628}
-  - 114: {fileID: 11492022}
-  m_Layer: 8
-  m_Name: Eye
-  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -622,6 +623,7 @@ GameObject:
   - 23: {fileID: 2393142}
   - 135: {fileID: 13562024}
   - 114: {fileID: 11461216}
+  - 114: {fileID: 11442780}
   m_Layer: 8
   m_Name: Ring
   m_TagString: Enemy
@@ -702,10 +704,28 @@ GameObject:
   - 114: {fileID: 11401254}
   - 114: {fileID: 11421670}
   - 114: {fileID: 11460268}
-  - 114: {fileID: 11419124}
   m_Layer: 8
   m_Name: OB_ArmBase01
   m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &181274
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 430258}
+  - 33: {fileID: 3374962}
+  - 23: {fileID: 2361424}
+  - 95: {fileID: 9513096}
+  - 64: {fileID: 6456252}
+  m_Layer: 0
+  m_Name: OuterRing
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -825,9 +845,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 375, y: 150, z: 375}
-  m_Children: []
+  m_Children:
+  - {fileID: 430258}
   m_Father: {fileID: 451236}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &404376
 Transform:
   m_ObjectHideFlags: 1
@@ -990,6 +1011,18 @@ Transform:
   - {fileID: 451722}
   m_Father: {fileID: 499476}
   m_RootOrder: 5
+--- !u!4 &430258
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.03, z: 0}
+  m_LocalScale: {x: 3.75, y: 9, z: 3.75}
+  m_Children: []
+  m_Father: {fileID: 402650}
+  m_RootOrder: 0
 --- !u!4 &430780
 Transform:
   m_ObjectHideFlags: 1
@@ -1079,19 +1112,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 405262}
   m_RootOrder: 0
---- !u!4 &450792
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118268}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 225, y: 225, z: 225}
-  m_Children:
-  - {fileID: 461676}
-  m_Father: {fileID: 451236}
-  m_RootOrder: 1
 --- !u!4 &451236
 Transform:
   m_ObjectHideFlags: 1
@@ -1102,8 +1122,8 @@ Transform:
   m_LocalPosition: {x: -32, y: 0, z: 222.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 457098}
   - {fileID: 402650}
-  - {fileID: 450792}
   - {fileID: 441096}
   - {fileID: 499476}
   - {fileID: 455546}
@@ -1163,6 +1183,19 @@ Transform:
   - {fileID: 451434}
   m_Father: {fileID: 476040}
   m_RootOrder: 0
+--- !u!4 &457098
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.5, z: 0}
+  m_LocalScale: {x: 225, y: 225, z: 225}
+  m_Children:
+  - {fileID: 461676}
+  m_Father: {fileID: 451236}
+  m_RootOrder: 0
 --- !u!4 &460534
 Transform:
   m_ObjectHideFlags: 1
@@ -1182,10 +1215,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0222}
+  m_LocalPosition: {x: 0, y: -0.04, z: 0.022199979}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 450792}
+  m_Father: {fileID: 457098}
   m_RootOrder: 0
 --- !u!4 &463330
 Transform:
@@ -1506,6 +1539,32 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &2328288
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104914}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 2e465255013dcb94bbc5655fed5be1cc, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2331842
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1636,17 +1695,17 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!23 &2358552
+--- !u!23 &2361424
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118268}
-  m_Enabled: 1
+  m_GameObject: {fileID: 181274}
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2e465255013dcb94bbc5655fed5be1cc, type: 2}
+  - {fileID: 2100000, guid: d932142f6e03f6e40a9b22527b7f727b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1903,13 +1962,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128984}
   m_Mesh: {fileID: 4300004, guid: 2fd029d29ea1d624ba1d9c812fd99431, type: 3}
---- !u!33 &3316296
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118268}
-  m_Mesh: {fileID: 4300020, guid: 2fd029d29ea1d624ba1d9c812fd99431, type: 3}
 --- !u!33 &3317686
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1945,6 +1997,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137426}
   m_Mesh: {fileID: 4300004, guid: 2fd029d29ea1d624ba1d9c812fd99431, type: 3}
+--- !u!33 &3342502
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104914}
+  m_Mesh: {fileID: 4300020, guid: df41d550ad3c10047a9d17539e0959a1, type: 3}
 --- !u!33 &3342844
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1994,6 +2053,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124764}
   m_Mesh: {fileID: 4300004, guid: 2fd029d29ea1d624ba1d9c812fd99431, type: 3}
+--- !u!33 &3374962
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181274}
+  m_Mesh: {fileID: 4300000, guid: 5e31c0bc47782fa458224145b76a9c8b, type: 3}
 --- !u!33 &3376350
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2044,12 +2110,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
---- !u!54 &5424042
+--- !u!54 &5404674
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118268}
+  m_GameObject: {fileID: 104914}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -2164,6 +2230,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!64 &6456252
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 5e31c0bc47782fa458224145b76a9c8b, type: 3}
+--- !u!95 &9513096
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5e31c0bc47782fa458224145b76a9c8b, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11401254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2180,9 +2275,10 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
-  healthRegenRate: 0
+  healthRegenRate: 2
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
   rotationRange: 45
   rotationSpeed: 60
   gunRotation: 0
@@ -2228,9 +2324,10 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
-  healthRegenRate: 0
+  healthRegenRate: 2
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
   rotationRange: 45
   rotationSpeed: 65
   gunRotation: 0
@@ -2247,6 +2344,57 @@ MonoBehaviour:
   bulletSpawn: {fileID: 152314}
   healthSlider: {fileID: 0}
   obControl: {fileID: 11433158}
+--- !u!114 &11405656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78db76b71c0da3b48bdffe093eaa9539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLight: 1
+  startingHealth: 100
+  startingShield: 0
+  octoBossGun: 0
+  Explosion: {fileID: 109656, guid: 9d37728b0ad17384f9509c6123c7fa5c, type: 2}
+  healthRegenRate: 0
+  shieldRegenRate: 0
+  regenDelay: 0
+  regenEnabled: 0
+  maxPrediction: 0.5
+  closeTrackDistance: 30
+  fireRate: 1.2
+  rotationSpeed: 80
+  spiralRotationSpeed: 60
+  detectionAngle: 7.5
+  OB_Bolt: {fileID: 138972, guid: 9504a362ce5abac41a723e510fb3809c, type: 2}
+  OB_Ball: {fileID: 122922, guid: 517405feb74a5f040bd81158ec5ea48d, type: 2}
+  bulletSpawn: {fileID: 103018}
+  healthSlider: {fileID: 0}
+  obControl: {fileID: 11433158}
+  shotTimer: 0
+--- !u!114 &11406854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 3.5
+  maxAcceleration: 10
+  turnSpeed: 20
+  targetRadius: 0.005
+  slowRadius: 1
+  timeToTarget: 0.1
+  smoothing: 1
+  numSamplesForSmoothing: 5
 --- !u!114 &11410892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2276,9 +2424,10 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
-  healthRegenRate: 0
+  healthRegenRate: 2
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
   rotationRange: 45
   rotationSpeed: 55
   gunRotation: 0
@@ -2295,22 +2444,6 @@ MonoBehaviour:
   bulletSpawn: {fileID: 145852}
   healthSlider: {fileID: 0}
   obControl: {fileID: 11433158}
---- !u!114 &11419124
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f8065aaa047cd74abb74196da38331f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isLight: 1
-  LightForm: {fileID: 118212}
-  DarkForm: {fileID: 141448}
-  LightLayer: 0
-  DarkLayer: 0
 --- !u!114 &11419166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2409,7 +2542,7 @@ MonoBehaviour:
   - {fileID: 121728}
   - {fileID: 128256}
   - {fileID: 154722}
-  core: {fileID: 118268}
+  core: {fileID: 0}
   gunCount: 8
   gunsViewing: 0
   startFight: 0
@@ -2443,6 +2576,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
   dropRate: 0
+--- !u!114 &11442780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!114 &11444964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2459,9 +2605,10 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
-  healthRegenRate: 0
+  healthRegenRate: 2
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
   rotationRange: 45
   rotationSpeed: 48
   gunRotation: 0
@@ -2494,9 +2641,10 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
-  healthRegenRate: 0
+  healthRegenRate: 2
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
   rotationRange: 45
   rotationSpeed: 57
   gunRotation: 0
@@ -2529,9 +2677,10 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
-  healthRegenRate: 0
+  healthRegenRate: 2
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
   rotationRange: 45
   rotationSpeed: 63
   gunRotation: 0
@@ -2580,37 +2729,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 40
   obControl: {fileID: 11433158}
---- !u!114 &11459628
+--- !u!114 &11453430
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118268}
+  m_GameObject: {fileID: 104914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78db76b71c0da3b48bdffe093eaa9539, type: 3}
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLight: 1
-  startingHealth: 100
-  startingShield: 0
-  octoBossGun: 0
-  Explosion: {fileID: 109656, guid: 9d37728b0ad17384f9509c6123c7fa5c, type: 2}
-  healthRegenRate: 0
-  shieldRegenRate: 0
-  regenDelay: 0
-  maxPrediction: 0.5
-  closeTrackDistance: 30
-  fireRate: 1.2
-  rotationSpeed: 80
-  spiralRotationSpeed: 60
-  detectionAngle: 7.5
-  OB_Bolt: {fileID: 138972, guid: 9504a362ce5abac41a723e510fb3809c, type: 2}
-  OB_Ball: {fileID: 122922, guid: 517405feb74a5f040bd81158ec5ea48d, type: 2}
-  bulletSpawn: {fileID: 103018}
-  healthSlider: {fileID: 0}
-  obControl: {fileID: 11433158}
-  shotTimer: 0
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!114 &11460268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2643,6 +2774,8 @@ MonoBehaviour:
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
+  rotationSpeed: 40
   obControl: {fileID: 11433158}
 --- !u!114 &11465680
 MonoBehaviour:
@@ -2721,25 +2854,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
   dropRate: 0
---- !u!114 &11492022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxVelocity: 3.5
-  maxAcceleration: 10
-  turnSpeed: 20
-  targetRadius: 0.005
-  slowRadius: 1
-  timeToTarget: 0.1
-  smoothing: 1
-  numSamplesForSmoothing: 5
 --- !u!114 &11494674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2788,9 +2902,10 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
-  healthRegenRate: 0
+  healthRegenRate: 2
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
   rotationRange: 45
   rotationSpeed: 68
   gunRotation: 0
@@ -2823,9 +2938,10 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
-  healthRegenRate: 0
+  healthRegenRate: 2
   shieldRegenRate: 0
   regenDelay: 0
+  regenEnabled: 0
   rotationRange: 45
   rotationSpeed: 60
   gunRotation: 0
@@ -2842,6 +2958,18 @@ MonoBehaviour:
   bulletSpawn: {fileID: 190580}
   healthSlider: {fileID: 0}
   obControl: {fileID: 11433158}
+--- !u!135 &13504508
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.015
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &13516944
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2937,18 +3065,6 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.45
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13596466
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118268}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.0225
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &13599680
 SphereCollider:
