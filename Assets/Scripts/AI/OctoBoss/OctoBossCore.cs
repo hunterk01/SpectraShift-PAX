@@ -14,6 +14,7 @@ public class OctoBossCore : LivingEntity
     public float rotationSpeed = 80;
     public float spiralRotationSpeed = 60;
     public float detectionAngle = 7.5f;
+    public float coreHealthCheck;
 
     public GameObject OB_Bolt;
     public GameObject OB_Ball;
@@ -36,23 +37,27 @@ public class OctoBossCore : LivingEntity
         base.Start();
 
         steeringBasics = GetComponent<SteeringBasics>();
-
         hoverHeight = HeightManager.Instance.setHeight;
         currentHealth = startingHealth;
+        healthSlider.maxValue = startingHealth;
+
         SetHeight();
         enemyState = EnemyState.TRACK_FAR;
 	}
 	
 	void Update ()
     {
-        StateResolution();
-
-        if (!obControl.shellAlive)
+        if (obControl.startFight)
         {
+            StateResolution();
 
-            if (shootGun) ShootGun();
+            if (!obControl.shellAlive)
+            {
+                if (shootGun) ShootGun();
 
-            ControlUI();
+                CheckHealing();
+                ControlUI();
+            }
         }
 	}
 
@@ -164,8 +169,26 @@ public class OctoBossCore : LivingEntity
         }
     }
 
+    void CheckHealing()
+    {
+        if (obControl.isHealing)
+        {
+            currentHealth += healthRegenRate * Time.deltaTime;
+
+            if (currentHealth > startingHealth)
+            {
+                currentHealth = startingHealth;
+            }
+        }
+
+        coreHealthCheck = currentHealth;
+    }
+
     void ControlUI()
     {
         healthSlider.value = currentHealth;
+
+        if (gameObject == null)
+            healthSlider.value = 0;
     }
 }

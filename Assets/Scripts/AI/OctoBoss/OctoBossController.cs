@@ -7,7 +7,6 @@ public class OctoBossController : MonoBehaviour
 
     public GameObject[] guns;
 
-    public GameObject core;
     public int gunCount = 8;
     public int gunsViewing = 0;
 
@@ -26,34 +25,40 @@ public class OctoBossController : MonoBehaviour
     public GameObject[] healerSpawnPoints;
     public GameObject healer;
     public float healerSpawnDelay = 15;
+
     GameObject healerTracker;
+    OctoBossCore core;
 
     float spinTimerCountdown, spinDurationCountdown;
-    public float healerSpawnTimer
-        ;
+    public float healerSpawnTimer;
     
     void Start()
     {
         spinTimerCountdown = spinTimer;
         spinDurationCountdown = spinDuration;
         healerSpawnTimer = healerSpawnDelay;
-        obGunUI.enabled = true;
+        obGunUI.enabled = false;
         obCoreUI.enabled = false;
+
+        core = GameObject.FindObjectOfType<OctoBossCore>().GetComponent<OctoBossCore>();
     }
 
     void Update()
     {
-        if (shellAlive)
+        if (startFight)
         {
-            GunCheck();
-            SpinModeCheck();
-        }
-        else
-        {
-            CoreCheck();
-        }
+            if (shellAlive)
+            {
+                GunCheck();
+                SpinModeCheck();
+            }
+            else
+            {
+                CoreCheck();
+            }
 
-        SpawnHealer();
+            SpawnHealer();
+        }
     }
 
     public void SpinModeCheck()
@@ -66,12 +71,13 @@ public class OctoBossController : MonoBehaviour
             }
             else
             {
-                spinTimerCountdown -= Time.deltaTime;
+                if (player.isLight)
+                    spinTimerCountdown -= Time.deltaTime;
             }
         }
         else
         {
-            if (spinDurationCountdown <= 0)
+            if (spinDurationCountdown <= 0 || !player.isLight)
             {
                 spinMode = false;
                 spinTimerCountdown = spinTimer;
@@ -109,11 +115,15 @@ public class OctoBossController : MonoBehaviour
             obGunUI.enabled = false;
             obCoreUI.enabled = true;
         }
+        else
+        {
+            obGunUI.enabled = true;
+        }
     }
 
     void CoreCheck()
     {
-        if (core == null)
+        if (core.coreHealthCheck <= 0)
         {
             coreAlive = false;
             obCoreUI.enabled = false;

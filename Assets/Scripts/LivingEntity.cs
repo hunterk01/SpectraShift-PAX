@@ -70,6 +70,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         {
             OnDeath();
         }
+
         Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
 
         if (gameObject.tag == "Player")

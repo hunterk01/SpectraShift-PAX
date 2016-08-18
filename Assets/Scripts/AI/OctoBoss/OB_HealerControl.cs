@@ -3,18 +3,23 @@ using System.Collections;
 
 public class OB_HealerControl : LivingEntity
 {
-    public Transform target;
-    public float speed;
-    public float healerStopDistance = 25;
+    public float speed = 8;
+    public float healerStopDistance = 18;
 
-    public OctoBossController obControl;
-
-    float distance, healBuffer = 1.5f;
+    float distance;
     float hoverHeight;
     Vector3 direction;
+    OctoBossController obControl;
+    Transform target;
+    
+    public float healthTracker; // For debug only
 
     protected override void Start()
     {
+        base.Start();
+
+        obControl = GameObject.FindWithTag("obController").GetComponent<OctoBossController>();
+        target = GameObject.FindWithTag("obCenter").transform;
         hoverHeight = HeightManager.Instance.setHeight;
         SetHeight();
     }
@@ -22,6 +27,7 @@ public class OB_HealerControl : LivingEntity
 	void Update ()
     {
         MoveHealer();
+        healthTracker = currentHealth; 
 	}
 
     void SetHeight()
@@ -36,7 +42,7 @@ public class OB_HealerControl : LivingEntity
         direction = target.position - transform.position;
 
         // Move toward boss and heal when arrive at target
-        if (distance > healerStopDistance)
+        if (distance >= healerStopDistance)
         {
             transform.rotation = Quaternion.LookRotation(direction);
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
@@ -45,7 +51,6 @@ public class OB_HealerControl : LivingEntity
         {
             HealCheck();
         }
-
     }
     
     void HealCheck()
