@@ -17,9 +17,10 @@ public class PlayerController : LivingEntity
     public Slider lightSlider;
     public Text rocketText;
     public float lightEnergy;
-    private float lightEnergyMax = 50;
+    public float lightEnergyMax = 50;
     public float darkEnergy;
-    private float darkEnergyMax = 50;
+    public float darkEnergyMax = 50;
+
 
     public bool playerControl = false;
 
@@ -37,11 +38,7 @@ public class PlayerController : LivingEntity
         healthSlider.maxValue = startingHealth;
         shieldSlider.maxValue = startingShield;
         lightEnergy = 50;
-        darkEnergy = 50;
-        //Slider.Instantiate(darkSlider, gameObject.transform.position, gameObject.transform.rotation);
-        //Slider.Instantiate(lightSlider, gameObject.transform.position, gameObject.transform.rotation);
-        //darkSlider.transform.parent = darkSlider.transform.PlayerUI;
-        //lightSlider.transform.SetParent(PlayerUI, false);
+        darkEnergy = 50;      
     }
 
     void Update ()
@@ -54,15 +51,19 @@ public class PlayerController : LivingEntity
         }
         if (!isLight && darkEnergy < darkEnergyMax)
         {
-            darkEnergy += 0.3f;
+            darkEnergy += 0.01f;
         }
 
         if (isLight && lightEnergy < lightEnergyMax)
         {
-            lightEnergy += 0.3f;
-        }
-
+            lightEnergy += 0.01f;
+        }    
         ControlUI();
+
+        if (addEnergy == true)
+        {
+            onKillEnergy();          
+        }
     }
 
     void InputControl()
@@ -188,5 +189,18 @@ public class PlayerController : LivingEntity
         rocketText.text = weaponsSystems.currentSecondaryAmmo.ToString();
         darkSlider.value = darkEnergy;
         lightSlider.value = lightEnergy;
+    }
+
+    public void onKillEnergy()
+    {
+        if (isLight == true && lightEnergy < lightEnergyMax)
+        {
+            lightEnergy += 5;
+        }
+        if (isLight == false && darkEnergy < darkEnergyMax)
+        {
+            darkEnergy += 5;
+        }
+        addEnergy = false;
     }
 }

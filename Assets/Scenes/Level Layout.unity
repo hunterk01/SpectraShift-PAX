@@ -1515,6 +1515,7 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
+  addEnergy: 0
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
@@ -11386,19 +11387,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22435462, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22435462, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22491342, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22491342, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 162932, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_IsActive
@@ -11406,11 +11407,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22486498, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22486498, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 130476, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_IsActive
@@ -11418,11 +11419,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22438304, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.82
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22438304, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
@@ -14945,11 +14946,11 @@ Prefab:
       objectReference: {fileID: 1573998063}
     - target: {fileID: 11453454, guid: bc311d838f05b0a41828d6169833a028, type: 2}
       propertyPath: lightEnergy
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11453454, guid: bc311d838f05b0a41828d6169833a028, type: 2}
       propertyPath: darkEnergy
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 149412, guid: bc311d838f05b0a41828d6169833a028, type: 2}
       propertyPath: m_Layer
