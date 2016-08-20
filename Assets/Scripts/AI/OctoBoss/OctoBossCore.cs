@@ -10,11 +10,14 @@ public class OctoBossCore : LivingEntity
     // Maximum prediction time the gun will predict in the future
     public float maxPrediction = .5f;
     public float closeTrackDistance = 20;
-    public float fireRate = 1.2f;
+    public float fireRate = 1.2f, gooFireRate = 5;
     public float rotationSpeed = 80;
     public float spiralRotationSpeed = 60;
     public float detectionAngle = 7.5f;
     public float coreHealthCheck;
+    public float shotTimer, secondShotTimer;
+    public float gooPauseTimer, gooPauseMax = 1;
+    public float fireDistance = 60;
 
     public GameObject OB_Bolt;
     public GameObject OB_Ball;
@@ -23,14 +26,15 @@ public class OctoBossCore : LivingEntity
     public OctoBossController obControl;
 
     float hoverHeight;
-    public float shotTimer;
     float shotLifetime = 3.0f;
     float playerDistance, playerAngle;
     int shotCount = 0;
     bool shootGun = false;
+    bool secondShotFired = false;
     Vector3 playerDirection;
 
     SteeringBasics steeringBasics;
+    WeaponSystems weaponSystems;
 
     protected override void Start ()
     {
@@ -38,8 +42,12 @@ public class OctoBossCore : LivingEntity
 
         steeringBasics = GetComponent<SteeringBasics>();
         hoverHeight = HeightManager.Instance.setHeight;
+        weaponSystems = GetComponent<WeaponSystems>();
         currentHealth = startingHealth;
         healthSlider.maxValue = startingHealth;
+        shotTimer = fireRate;
+        secondShotTimer = gooFireRate;
+        gooPauseTimer = gooPauseMax;
 
         SetHeight();
         enemyState = EnemyState.TRACK_FAR;
@@ -53,8 +61,6 @@ public class OctoBossCore : LivingEntity
 
             if (!obControl.shellAlive)
             {
-                if (shootGun) ShootGun();
-
                 CheckHealing();
                 ControlUI();
             }
@@ -95,11 +101,7 @@ public class OctoBossCore : LivingEntity
         // Check if player location is in front of gun and shoot
         if (steeringBasics.IsInFront(obControl.playerTarget.transform.position))
         {
-            shootGun = true;
-        }
-        else
-        {
-            shootGun = false;
+            ShootGun();
         }
     }
 
@@ -137,11 +139,7 @@ public class OctoBossCore : LivingEntity
         // Check if player position + velocity is in front of gun
         if (steeringBasics.IsInFront(explicitTarget))
         {
-            shootGun = true;
-        }
-        else
-        {
-            shootGun = false;
+            ShootGun();
         }
     }
 
@@ -149,21 +147,32 @@ public class OctoBossCore : LivingEntity
     {
         if (!obControl.shellAlive && isLight == obControl.player.isLight)
         {
-            shotTimer -= Time.deltaTime;
-
-            if (shotTimer <= 0)
+            if (shotTimer > 0)
             {
-                if (shotCount < 3)
+                shotTimer -= Time.deltaTime;
+            }
+            else
+            {
+                Destroy(Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation), shotLifetime);
+                shotTimer = fireRate;
+            }
+
+            if (secondShotTimer > 0)
+            {
+                secondShotTimer -= Time.deltaTime;
+            }
+            else
+            {
+                if (gooPauseTimer > 0)
                 {
-                    Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
-                    shotCount++;
-                    shotTimer = fireRate;
+                    weaponSystems.setState(WeaponSystems.WEAPON.SECONDARY);
+                    gooPauseTimer -= Time.deltaTime;
                 }
                 else
                 {
-                    Instantiate(OB_Ball, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
-                    shotCount = 0;
-                    shotTimer = fireRate;
+                    weaponSystems.setState(WeaponSystems.WEAPON.BLANK);
+                    gooPauseTimer = gooPauseMax;
+                    secondShotTimer = gooFireRate;
                 }
             }
         }

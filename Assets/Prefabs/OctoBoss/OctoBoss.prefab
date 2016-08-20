@@ -42,14 +42,9 @@ GameObject:
   - 4: {fileID: 457098}
   - 33: {fileID: 3342502}
   - 23: {fileID: 2328288}
-  - 135: {fileID: 13504508}
-  - 54: {fileID: 5404674}
-  - 114: {fileID: 11405656}
-  - 114: {fileID: 11406854}
-  - 114: {fileID: 11453430}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Eye_Solid
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,9 +201,15 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404036}
-  m_Layer: 0
+  - 135: {fileID: 13548416}
+  - 54: {fileID: 5408696}
+  - 114: {fileID: 11402354}
+  - 114: {fileID: 11406668}
+  - 114: {fileID: 11425414}
+  - 114: {fileID: 11415292}
+  m_Layer: 8
   m_Name: Eye
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2222,12 +2223,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
---- !u!54 &5404674
+--- !u!54 &5408696
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104914}
+  m_GameObject: {fileID: 120988}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -2419,6 +2420,40 @@ MonoBehaviour:
   bulletSpawn: {fileID: 196086}
   healthSlider: {fileID: 0}
   obControl: {fileID: 11433158}
+--- !u!114 &11402354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78db76b71c0da3b48bdffe093eaa9539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLight: 1
+  startingHealth: 100
+  startingShield: 0
+  octoBossGun: 0
+  Explosion: {fileID: 0}
+  healthRegenRate: 4
+  shieldRegenRate: 0
+  regenDelay: 0
+  regenEnabled: 0
+  maxPrediction: 0.5
+  closeTrackDistance: 30
+  fireRate: 1.2
+  rotationSpeed: 80
+  spiralRotationSpeed: 60
+  detectionAngle: 7.5
+  coreHealthCheck: 0
+  shotTimer: 0
+  fireDistance: 60
+  OB_Bolt: {fileID: 138972, guid: 9504a362ce5abac41a723e510fb3809c, type: 2}
+  OB_Ball: {fileID: 122922, guid: 517405feb74a5f040bd81158ec5ea48d, type: 2}
+  bulletSpawn: {fileID: 103018}
+  healthSlider: {fileID: 0}
+  obControl: {fileID: 11433158}
 --- !u!114 &11405344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2468,45 +2503,12 @@ MonoBehaviour:
   bulletSpawn: {fileID: 152314}
   healthSlider: {fileID: 0}
   obControl: {fileID: 11433158}
---- !u!114 &11405656
+--- !u!114 &11406668
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78db76b71c0da3b48bdffe093eaa9539, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isLight: 1
-  startingHealth: 100
-  startingShield: 0
-  octoBossGun: 0
-  Explosion: {fileID: 109656, guid: 9d37728b0ad17384f9509c6123c7fa5c, type: 2}
-  healthRegenRate: 4
-  shieldRegenRate: 0
-  regenDelay: 0
-  regenEnabled: 0
-  maxPrediction: 0.5
-  closeTrackDistance: 30
-  fireRate: 1.2
-  rotationSpeed: 80
-  spiralRotationSpeed: 60
-  detectionAngle: 7.5
-  coreHealthCheck: 0
-  OB_Bolt: {fileID: 138972, guid: 9504a362ce5abac41a723e510fb3809c, type: 2}
-  OB_Ball: {fileID: 122922, guid: 517405feb74a5f040bd81158ec5ea48d, type: 2}
-  bulletSpawn: {fileID: 103018}
-  healthSlider: {fileID: 0}
-  obControl: {fileID: 11433158}
-  shotTimer: 0
---- !u!114 &11406854
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104914}
+  m_GameObject: {fileID: 120988}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3088f939100ae3a47a11d714d7f7fa72, type: 3}
@@ -2533,6 +2535,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
   dropRate: 0
+--- !u!114 &11415292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1aaca11e92c04419c9109823986ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryWeapon: {fileID: 182792, guid: 26b915db1fc8aa143b0fef3f17674bf8, type: 2}
+  secondaryWeapon: {fileID: 120872, guid: 5258313f88e48df459250f87d2ea1999, type: 2}
+  centerHardpoint: {fileID: 461676}
+  leftHardpoint: {fileID: 461676}
+  rightHardpoint: {fileID: 461676}
+  maxSecondaryAmmo: 6
+  currentSecondaryAmmo: 0
 --- !u!114 &11416368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2626,6 +2646,19 @@ MonoBehaviour:
   timeToTarget: 0.1
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &11425414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
+  dropRate: 0
 --- !u!114 &11429762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2853,19 +2886,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 40
   obControl: {fileID: 11433158}
---- !u!114 &11453430
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropItem: {fileID: 100000, guid: 6b381d16d916a2c42991b97717f01dac, type: 3}
-  dropRate: 0
 --- !u!114 &11460268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3082,18 +3102,6 @@ MonoBehaviour:
   bulletSpawn: {fileID: 190580}
   healthSlider: {fileID: 0}
   obControl: {fileID: 11433158}
---- !u!135 &13504508
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104914}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.015
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &13516944
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -3129,6 +3137,18 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.45
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &13548416
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &13559242
 SphereCollider:

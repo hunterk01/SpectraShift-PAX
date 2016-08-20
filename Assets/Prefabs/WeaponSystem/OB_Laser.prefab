@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339e1c3a1d255ab4c946b5b087d4ae6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDelay: 1.2
   lightBolt: {fileID: 138972, guid: 0eb82e33d8935fc4db9627c0a7eab193, type: 2}
   darkBolt: {fileID: 138972, guid: 0eb82e33d8935fc4db9627c0a7eab193, type: 2}
 --- !u!1001 &100100000

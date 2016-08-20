@@ -239,7 +239,7 @@ public class OctoBossGun : LivingEntity
     {
         if (firstShot)
         {
-            Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+            Destroy(Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation), shotLifetime);
             firstShot = false;
         }
 

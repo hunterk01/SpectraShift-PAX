@@ -19,16 +19,13 @@ public class OB_Laser : MonoBehaviour, IGun
     void IGun.fire()
     {
         fired = true;
-        GameObject tempBulletHandler;
         if (isLight)
         {
-            tempBulletHandler = Instantiate(lightBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-            Destroy(tempBulletHandler, laserLifetime);
+            Destroy(Instantiate(lightBolt, gameObject.transform.position, gameObject.transform.rotation), laserLifetime);
         }
         else if(!isLight)
         {
-            tempBulletHandler = Instantiate(darkBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-            Destroy(tempBulletHandler, laserLifetime);
+            Destroy(Instantiate(darkBolt, gameObject.transform.position, gameObject.transform.rotation), laserLifetime);
         }
     }
 
