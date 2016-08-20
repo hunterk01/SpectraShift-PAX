@@ -45,10 +45,9 @@ public class EnemyHomingGun : MonoBehaviour, IGun
                 if (player != null)
                 {
                     tempBulletHandler = Instantiate(Rocket, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-                    HRocketAI temp = tempBulletHandler.GetComponent<HRocketAI>();
+                    HGooAI temp = tempBulletHandler.GetComponent<HGooAI>();
                     temp.setTarget(player);
                     isLoaded = false;
-                    Destroy(tempBulletHandler, rocketLifetime);
                 }
                 else Debug.Log("No Enemy Lock");
             }

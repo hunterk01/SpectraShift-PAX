@@ -2,8 +2,6 @@
 using UnityEngine.UI;
 using System.Collections;
 
-
-
 [RequireComponent(typeof(MovingEntity))]
 public class PlayerController : LivingEntity
 {
@@ -15,10 +13,18 @@ public class PlayerController : LivingEntity
 
     public Slider healthSlider;
     public Slider shieldSlider;
+    public Slider darkSlider;
+    public Slider lightSlider;
     public Text rocketText;
-        
+    public float lightEnergy;
+    public float lightEnergyMax = 50;
+    public float darkEnergy;
+    public float darkEnergyMax = 50;
+
+
     public bool playerControl = false;
 
+    float deadzone = 0.3f;
     float buttonTimer = 0.5f;
     int buttonCount = 0;
 
@@ -31,15 +37,32 @@ public class PlayerController : LivingEntity
         pause = GameObject.FindWithTag("WorldController").GetComponent<PauseGame>();
         healthSlider.maxValue = startingHealth;
         shieldSlider.maxValue = startingShield;
+        lightEnergy = 50;
+        darkEnergy = 50;      
     }
 
-	void Update ()
+    void Update ()
     {
         if (playerControl)
         {
             InputControl();
             ControlUI();
             Regen();
+        }
+        if (!isLight && darkEnergy < darkEnergyMax)
+        {
+            darkEnergy += 0.01f;
+        }
+
+        if (isLight && lightEnergy < lightEnergyMax)
+        {
+            lightEnergy += 0.01f;
+        }    
+        ControlUI();
+
+        if (addEnergy == true)
+        {
+            onKillEnergy();          
         }
     }
 
@@ -59,30 +82,17 @@ public class PlayerController : LivingEntity
         // Controller flight controls
         float horiz_cInput = Input.GetAxis("LS_Horizontal");
         float triggers_cInput = Input.GetAxis("Triggers");
-        
-        if (-0.25f > horiz_cInput || horiz_cInput > 0.25f)    movingEntity.Turn(horiz_cInput);
-        if (triggers_cInput != 0)   
-        {
-            movingEntity.Thrust(triggers_cInput);
-
-            if (triggers_cInput > 0)
-            {
-                Debug.Log("Trigger Plus");
-                afterburners.AfterburnersOn();
-            }
-            else
-            {
-                Debug.Log("Trigger Negative");
-                afterburners.AfterburnersOff();
-            }
-        }
+        if (-deadzone > horiz_cInput || horiz_cInput > deadzone)    movingEntity.Turn(horiz_cInput);
+        if (triggers_cInput != 0)   movingEntity.Thrust(triggers_cInput);
 
         // Keyboard flight controls
         float horiz_kbInput = Input.GetAxis("Horizontal");
         float vert_kbInput = Input.GetAxis("Vertical");
         if (horiz_kbInput != 0) movingEntity.Turn(horiz_kbInput);
         if (vert_kbInput != 0) movingEntity.Thrust(vert_kbInput);
-        if (vert_kbInput > 0)
+
+        // Afterburner control
+        if (triggers_cInput > 0 || vert_kbInput > 0)
         {
             afterburners.AfterburnersOn();
         }
@@ -106,9 +116,19 @@ public class PlayerController : LivingEntity
 
         //Weapons System, Buttons Should be Left for Laser, Right for Rocket (Mouse Inputs)
         if (Input.GetButton("Fire1"))
-        {
-            weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-            Debug.Log("Attempt Firing Laser");
+        {      
+            if (isLight && darkEnergy > 0)
+            {
+                weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                Debug.Log("Attempt Firing Laser");
+                darkEnergy -= 0.2f;
+            }
+            else if (!isLight && lightEnergy > 0)
+            {
+                weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                Debug.Log("Attempt Firing Laser");
+                lightEnergy -= 0.2f;
+            }
         }
         else if (Input.GetButton("Fire2"))
         {
@@ -167,5 +187,20 @@ public class PlayerController : LivingEntity
         healthSlider.value = currentHealth;
         shieldSlider.value = currentShield;
         rocketText.text = weaponsSystems.currentSecondaryAmmo.ToString();
+        darkSlider.value = darkEnergy;
+        lightSlider.value = lightEnergy;
+    }
+
+    public void onKillEnergy()
+    {
+        if (isLight == true && lightEnergy < lightEnergyMax)
+        {
+            lightEnergy += 5;
+        }
+        if (isLight == false && darkEnergy < darkEnergyMax)
+        {
+            darkEnergy += 5;
+        }
+        addEnergy = false;
     }
 }

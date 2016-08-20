@@ -1,28 +1,35 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System;
 
 public class ShiftLaser : MonoBehaviour, IGun
 {
-    public float maxDelay = 0.2f;
-    const float laserLifetime = 6.0f;
+    public float maxDelay = 0.5f;
+    [HideInInspector]
+    public float laserDelay;
 
-    float laserDelay;
+    const float laserLifetime = 3.0f;
     float currentAmmo;
     private float playerHeight;
 
     bool isLight = true;
     bool fired = false;
 
-    public GameObject lightBolt;
-    public GameObject darkBolt;
+    public Canvas PlayerUI;
+    public GameObject lightBolt;   
+    public GameObject darkBolt;   
     private GameObject player;
     private Transform laserTran;
-
+    private ParticleSystem lightBoltPartical;
+    private ParticleSystem darkBoltPartical;
+    
     // Use this for initialization
     void Start ()
     {
         laserDelay = maxDelay;
+        lightBoltPartical = GetComponent<ParticleSystem>();
+        darkBoltPartical = GetComponent<ParticleSystem>();      
     }
 
     void IGun.fire()
@@ -36,12 +43,20 @@ public class ShiftLaser : MonoBehaviour, IGun
             if (isLight)
             {
                 tempBulletHandler = Instantiate(lightBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-                Destroy(tempBulletHandler, laserLifetime);
+                if (!isLight)
+                {
+                    lightBoltPartical.Stop();
+                }
+                Destroy(tempBulletHandler, laserLifetime);              
             }
             else if(!isLight)
-            {
+            {              
                 tempBulletHandler = Instantiate(darkBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-                Destroy(tempBulletHandler, laserLifetime);
+                if (isLight)
+                {
+                    darkBoltPartical.Stop();
+                }
+                Destroy(tempBulletHandler, laserLifetime);               
             }
         }
     }

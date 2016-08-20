@@ -19,14 +19,14 @@ public class HomingLauncher : MonoBehaviour, IGun
     Vector3 displacement;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         rocketDelay = maxDelay;
         isLight = true;
         isLoaded = true;
         weaponSystem = GetComponentInParent<WeaponSystems>();
-	}
-	
+    }
+
     void IGun.fire()
     {
         rocketDelay = rocketDelay - Time.deltaTime;
@@ -35,9 +35,11 @@ public class HomingLauncher : MonoBehaviour, IGun
             rocketDelay = maxDelay;
             GameObject tempBulletHandler;
             GameObject tempEnemy = findClosestEnemy();
-            displacement = tempEnemy.transform.position - transform.position;
-            distance = displacement.magnitude;
-            if (distance < rocketRange)
+            //displacement = tempEnemy.transform.position - transform.position;
+            //distance = displacement.magnitude;
+            distance = Vector3.Distance(tempEnemy.transform.position, transform.position);
+
+            if (distance < rocketRange && tempEnemy.layer == 8)
             {
                 if (tempEnemy != null)
                 {

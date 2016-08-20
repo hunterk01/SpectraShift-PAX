@@ -4,9 +4,11 @@ using UnityEngine.UI;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
+    PlayerController playercontroller;
     public bool isLight;
     public float startingHealth;
     public float startingShield;
+    public bool octoBossGun = false;
 
     public GameObject Explosion;   
     private GameOver gameover;
@@ -17,20 +19,22 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected float currentHealth;
     protected float currentShield;
     protected bool dead;
+    public bool addEnergy;
 
     public float healthRegenRate, shieldRegenRate;
     public float regenDelay;
     private float regenTimer;
-    bool regenEnabled = false;
-    
-
+    [HideInInspector]
+    public bool regenEnabled = false;
+ 
     protected virtual void Start()
     {
         currentHealth = startingHealth;
         currentShield = startingShield;
         regenTimer = regenDelay;
         ammoDrop = gameObject.GetComponent<AmmoDrop>();
-        gameover = GameObject.FindWithTag("WorldController").GetComponent<GameOver>();        
+        gameover = GameObject.FindWithTag("WorldController").GetComponent<GameOver>();
+        addEnergy = false;
     }
 
     public void TakeHit(float damage, RaycastHit hit)
@@ -51,7 +55,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         }
 
         if (currentHealth <= 0 && !dead)
-        {
+        {           
             HasDied();
         }
 
@@ -64,12 +68,13 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected void HasDied()
     {
         dead = true;
+        
         if (OnDeath != null)
         {
-            OnDeath();
+            OnDeath();                      
         }
         Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
-
+    
         if (gameObject.tag == "Player")
         {                              
             gameover.gameOver();                         
@@ -77,6 +82,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         }
         else
         {
+            addEnergy = true;
             ammoDrop.itemDrop();
             GameObject.Destroy(gameObject);
         }

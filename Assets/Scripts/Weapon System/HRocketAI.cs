@@ -10,7 +10,7 @@ public class HRocketAI : MonoBehaviour, IProjectile
     private float distanceToTarget;
     public float turnSpeed = 5;
     private bool isLight;
-
+    
     private GameObject enemy;
     private Transform rocketTran;
     private RaycastHit hit;
@@ -64,7 +64,7 @@ public class HRocketAI : MonoBehaviour, IProjectile
 
     void hitTarget(IDamageable hitObject)
     {
-        hitObject.TakeHit(damage, hit);
+        hitObject.TakeHit(damage, hit);        
         GameObject.Destroy(gameObject);
     }
 

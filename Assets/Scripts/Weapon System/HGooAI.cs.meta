@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8d39b95d7dd3c404ea4680b0f3d3f253
+timeCreated: 1466554277
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - gooSplash: {fileID: 183380, guid: 5db7765d880a32e4d85b8c006887fd09, type: 2}
+  - projectileExplosion: {fileID: 109656, guid: 9d37728b0ad17384f9509c6123c7fa5c,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
