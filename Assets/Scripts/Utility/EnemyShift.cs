@@ -7,16 +7,19 @@ public class EnemyShift : MonoBehaviour
     public bool isLight;
     public Object LightForm;
     public Object DarkForm;
-
-    // Layer numbers: 0 - Not shootable, 8 - Shootable
     public int LightLayer;
     public int DarkLayer;
+    public bool colliderSwitch;
 
     PlayerController player;
+    Collider enemyCollider;
+
     // Use this for initialization
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        enemyCollider = GetComponent<Collider>();
+
     }
 
     // Update is called once per frame
@@ -38,12 +41,14 @@ public class EnemyShift : MonoBehaviour
             targetGameObject1.SetActive(true);
             targetGameObject2.SetActive(false);
             gameObject.layer = LightLayer;
+            enemyCollider.enabled = colliderSwitch;
         }
         else if (player.isLight != isLight)
         {
             targetGameObject1.SetActive(false);
             targetGameObject2.SetActive(true);
             gameObject.layer = DarkLayer;
+            enemyCollider.enabled = !colliderSwitch;
         }
     }
 }

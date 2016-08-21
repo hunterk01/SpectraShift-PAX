@@ -17,7 +17,6 @@ public class OctoBossShell : LivingEntity
 
                 SpinCheck();
             }
-
             else
                 DestroyShell();
         }

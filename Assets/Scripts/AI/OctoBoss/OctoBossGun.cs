@@ -17,6 +17,7 @@ public class OctoBossGun : LivingEntity
     public float closeTrackDistance = 10;
     public float maxPrediction = .5f;
     public float shotTimer;
+    public float energyGainThreshold = 10;
     public int spinRateMultiplier;
     public bool playerViewable = false;
 
@@ -29,6 +30,7 @@ public class OctoBossGun : LivingEntity
 
     float shotLifetime = 3.0f;
     float playerDistance, playerAngle;
+    float damageInflicted, oldHealth;
     Vector3 playerDirection;
     bool scanRight = true;
     bool shootGun = false;
@@ -36,6 +38,7 @@ public class OctoBossGun : LivingEntity
     bool initROF = true;
     bool ROFSet = false;
     bool spinFireRateSet = false;
+    Quaternion startingRotation, endingRotation;
 
     ShiftLaser shiftLaser;
     WeaponSystems weaponSystems;
@@ -54,6 +57,7 @@ public class OctoBossGun : LivingEntity
         startingHealth = 50;
         shotTimer = 0;
         healthSlider.maxValue = startingHealth;
+        oldHealth = currentHealth;       
     }
 	
 	void Update ()
@@ -300,11 +304,26 @@ public class OctoBossGun : LivingEntity
         }      
     }
 
+    void EnergyCharge()
+    {
+        // Give player X light energy per Y amount of damage
+        if (currentHealth < oldHealth)
+        {
+            damageInflicted = oldHealth - currentHealth;
+
+            if (damageInflicted >= energyGainThreshold)
+            {
+                // set WC addEnergy;
+
+                damageInflicted -= energyGainThreshold;
+            }
+
+            oldHealth = currentHealth;
+        }
+    }
+
     void ControlUI()
     {
         healthSlider.value = currentHealth;
-
-        if (gameObject == null)
-            healthSlider.value = 0;
     }
 }

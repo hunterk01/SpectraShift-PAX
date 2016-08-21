@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class OctoBossController : MonoBehaviour
@@ -23,11 +24,14 @@ public class OctoBossController : MonoBehaviour
     public Canvas obGunUI;
 
     public GameObject[] healerSpawnPoints;
+    public Slider[] healthSliders;
     public GameObject healer;
+    public GameObject core;
+
     public float healerSpawnDelay = 15;
 
     GameObject healerTracker;
-    OctoBossCore core;
+
 
     float spinTimerCountdown, spinDurationCountdown;
     public float healerSpawnTimer;
@@ -39,8 +43,6 @@ public class OctoBossController : MonoBehaviour
         healerSpawnTimer = healerSpawnDelay;
         obGunUI.enabled = false;
         obCoreUI.enabled = false;
-
-        core = GameObject.FindObjectOfType<OctoBossCore>().GetComponent<OctoBossCore>();
     }
 
     void Update()
@@ -104,6 +106,7 @@ public class OctoBossController : MonoBehaviour
             if (guns[i] != null)
             {
                 tempGunCount++;
+                //healthSliders[i].value = 0;
             }
         }
 
@@ -123,7 +126,7 @@ public class OctoBossController : MonoBehaviour
 
     void CoreCheck()
     {
-        if (core.coreHealthCheck <= 0)
+        if (core == null)
         {
             coreAlive = false;
             obCoreUI.enabled = false;
@@ -135,17 +138,16 @@ public class OctoBossController : MonoBehaviour
         if (healerTracker == null)
         {
             isHealing = false;
+            healerSpawnTimer -= Time.deltaTime;
 
             if (healerSpawnTimer <= 0)
             {
                 // Spawn a healer at one of four random spawn points
-                int i = Random.Range(1, 4);
+                int i = Random.Range(0, 3);
                 healerTracker = Instantiate(healer, healerSpawnPoints[i - 1].transform.position, healerSpawnPoints[i - 1].transform.rotation) as GameObject;
 
                 healerSpawnTimer = 15;
             }
-
-            healerSpawnTimer -= Time.deltaTime;
         }
     }
 }

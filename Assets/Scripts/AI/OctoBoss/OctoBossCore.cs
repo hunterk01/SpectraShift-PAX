@@ -18,6 +18,8 @@ public class OctoBossCore : LivingEntity
     public float shotTimer, secondShotTimer;
     public float gooPauseTimer, gooPauseMax = 1;
     public float fireDistance = 60;
+    public float energyGainThreshold = 10;
+
 
     public GameObject OB_Bolt;
     public GameObject OB_Ball;
@@ -28,6 +30,7 @@ public class OctoBossCore : LivingEntity
     float hoverHeight;
     float shotLifetime = 3.0f;
     float playerDistance, playerAngle;
+    float damageInflicted, oldHealth;
     int shotCount = 0;
     bool shootGun = false;
     bool secondShotFired = false;
@@ -48,6 +51,7 @@ public class OctoBossCore : LivingEntity
         shotTimer = fireRate;
         secondShotTimer = gooFireRate;
         gooPauseTimer = gooPauseMax;
+        oldHealth = currentHealth;
 
         SetHeight();
         enemyState = EnemyState.TRACK_FAR;
@@ -145,7 +149,7 @@ public class OctoBossCore : LivingEntity
 
     void ShootGun()
     {
-        if (!obControl.shellAlive && isLight == obControl.player.isLight)
+        if (!obControl.shellAlive && obControl.player.isLight)
         {
             if (shotTimer > 0)
             {
@@ -193,11 +197,26 @@ public class OctoBossCore : LivingEntity
         coreHealthCheck = currentHealth;
     }
 
+    void EnergyCharge()
+    {
+        // Give player X light energy per Y amount of damage
+        if (currentHealth < oldHealth)
+        {
+            damageInflicted = oldHealth - currentHealth;
+
+            if (damageInflicted >= energyGainThreshold)
+            {
+                // set WC addEnergy;
+
+                damageInflicted -= energyGainThreshold;
+            }
+
+            oldHealth = currentHealth;
+        }
+    }
+
     void ControlUI()
     {
         healthSlider.value = currentHealth;
-
-        if (gameObject == null)
-            healthSlider.value = 0;
     }
 }

@@ -11,8 +11,6 @@ public class OB_HealerControl : LivingEntity
     Vector3 direction;
     OctoBossController obControl;
     Transform target;
-    
-    public float healthTracker; // For debug only
 
     protected override void Start()
     {
@@ -27,7 +25,7 @@ public class OB_HealerControl : LivingEntity
 	void Update ()
     {
         MoveHealer();
-        healthTracker = currentHealth; 
+        CoreCheck(); 
 	}
 
     void SetHeight()
@@ -63,5 +61,13 @@ public class OB_HealerControl : LivingEntity
             obControl.HealMode(true);
         else
             obControl.HealMode(false);
+    }
+
+    void CoreCheck()
+    {
+        if (!obControl.coreAlive)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 }
