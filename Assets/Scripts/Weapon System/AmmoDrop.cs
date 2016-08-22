@@ -4,6 +4,7 @@ using System.Collections;
 public class AmmoDrop : MonoBehaviour
 {
     public GameObject dropItem;
+    
 
     public int dropRate;
     private int dropChance;
@@ -14,7 +15,6 @@ public class AmmoDrop : MonoBehaviour
         if(dropChance < dropRate)
         {
             Instantiate(dropItem, gameObject.transform.position, gameObject.transform.rotation);
-        }
-        
+        }        
     }
 }

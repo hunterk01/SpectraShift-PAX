@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class LivingEntity : MonoBehaviour, IDamageable
 {
     PlayerController playercontroller;
+    EnergyController energyController;
+
     public bool isLight;
     public float startingHealth;
     public float startingShield;
@@ -19,7 +21,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected float currentHealth;
     protected float currentShield;
     protected bool dead;
-    public bool addEnergy;
+    
 
     public float healthRegenRate, shieldRegenRate;
     public float regenDelay;
@@ -34,7 +36,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         regenTimer = regenDelay;
         ammoDrop = gameObject.GetComponent<AmmoDrop>();
         gameover = GameObject.FindWithTag("WorldController").GetComponent<GameOver>();
-        addEnergy = false;
+        energyController = gameObject.GetComponent<EnergyController>();
     }
 
     public void TakeHit(float damage, RaycastHit hit)
@@ -53,9 +55,9 @@ public class LivingEntity : MonoBehaviour, IDamageable
             currentHealth -= damage;
             regenEnabled = false;
         }
-
+             
         if (currentHealth <= 0 && !dead)
-        {           
+        {
             HasDied();
         }
 
@@ -65,7 +67,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         }
     }
 
-    protected void HasDied()
+    public void HasDied()
     {
         dead = true;
         
@@ -73,8 +75,9 @@ public class LivingEntity : MonoBehaviour, IDamageable
         {
             OnDeath();                      
         }
-        Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
-    
+
+        Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);      
+
         if (gameObject.tag == "Player")
         {                              
             gameover.gameOver();                         
@@ -82,10 +85,11 @@ public class LivingEntity : MonoBehaviour, IDamageable
         }
         else
         {
-            addEnergy = true;
+            energyController.AddEnergy();
             ammoDrop.itemDrop();
-            GameObject.Destroy(gameObject);
+            GameObject.Destroy(gameObject);          
         }
+        
     }
 
     public void Regen()

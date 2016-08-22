@@ -8,6 +8,7 @@ public class PlayerController : LivingEntity
     MovingEntity movingEntity;
     MeshRenderer mesh;
     WeaponSystems weaponsSystems;
+    EnergyController energyController;
     Afterburners afterburners;
     PauseGame pause;
 
@@ -20,7 +21,8 @@ public class PlayerController : LivingEntity
     public float lightEnergyMax = 50;
     public float darkEnergy;
     public float darkEnergyMax = 50;
-
+    public float energyRegen = 0.1f;
+    public float energyPerShot = 0.6f;
 
     public bool playerControl = false;
 
@@ -33,6 +35,7 @@ public class PlayerController : LivingEntity
         base.Start();
         movingEntity = GetComponent<MovingEntity>();
         weaponsSystems = GetComponent<WeaponSystems>();
+        energyController = GetComponent<EnergyController>();
         afterburners = GameObject.FindWithTag("Afterburners").GetComponent<Afterburners>();
         pause = GameObject.FindWithTag("WorldController").GetComponent<PauseGame>();
         healthSlider.maxValue = startingHealth;
@@ -51,19 +54,14 @@ public class PlayerController : LivingEntity
         }
         if (!isLight && darkEnergy < darkEnergyMax)
         {
-            darkEnergy += 0.01f;
+            darkEnergy += energyRegen;
         }
 
         if (isLight && lightEnergy < lightEnergyMax)
         {
-            lightEnergy += 0.01f;
+            lightEnergy += energyRegen;
         }    
-        ControlUI();
-
-        if (addEnergy == true)
-        {
-            onKillEnergy();          
-        }
+        ControlUI();       
     }
 
     void InputControl()
@@ -121,13 +119,13 @@ public class PlayerController : LivingEntity
             {
                 weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
                 Debug.Log("Attempt Firing Laser");
-                darkEnergy -= 0.2f;
+                darkEnergy -= energyPerShot;
             }
             else if (!isLight && lightEnergy > 0)
             {
                 weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
                 Debug.Log("Attempt Firing Laser");
-                lightEnergy -= 0.2f;
+                lightEnergy -= energyPerShot;
             }
         }
         else if (Input.GetButton("Fire2"))
@@ -191,16 +189,29 @@ public class PlayerController : LivingEntity
         lightSlider.value = lightEnergy;
     }
 
-    public void onKillEnergy()
+    public void OnKillEnergy()
     {
-        if (isLight == true && lightEnergy < lightEnergyMax)
+        if (isLight)
         {
             lightEnergy += 5;
+            Debug.Log("Added Light Energy!");
+
+            if (lightEnergy > lightEnergyMax)
+            {
+                lightEnergy = lightEnergyMax;
+            }
         }
-        if (isLight == false && darkEnergy < darkEnergyMax)
+        if (!isLight)
         {
             darkEnergy += 5;
+            Debug.Log("Added Dark Energy!");
+
+            if (darkEnergy > darkEnergyMax)
+            {
+                darkEnergy = darkEnergyMax;
+            }
         }
-        addEnergy = false;
+
+        energyController.HaltEnergy();
     }
 }
