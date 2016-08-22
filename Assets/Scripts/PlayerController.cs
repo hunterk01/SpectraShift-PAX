@@ -52,31 +52,15 @@ public class PlayerController : LivingEntity
             ControlUI();
             Regen();
         }
-        if (!isLight)
-        {
-            darkEnergy += energyRegen;
 
-            if (darkEnergy > darkEnergyMax)
-            {
-                darkEnergy = darkEnergyMax;
-            }
-        }
-
-        if (isLight)
-        {
-            lightEnergy += energyRegen;
-            
-            if (lightEnergy > lightEnergyMax)
-            {
-                lightEnergy = lightEnergyMax;
-            }
-        }    
-        ControlUI(); 
-        
+        EnergyRegen();
+             
         if (gameController.addEnergy == true)
         {
             OnKillEnergy();
-        }      
+        }
+
+        ControlUI();
     }
 
     void InputControl()
@@ -211,15 +195,28 @@ public class PlayerController : LivingEntity
         }
     }
 
-    void ControlUI()
+    public void EnergyRegen()
     {
-        healthSlider.value = currentHealth;
-        shieldSlider.value = currentShield;
-        rocketText.text = weaponsSystems.currentSecondaryAmmo.ToString();
-        darkSlider.value = darkEnergy;
-        lightSlider.value = lightEnergy;
-    }
+        if (!isLight)
+        {
+            darkEnergy += energyRegen;
 
+            if (darkEnergy > darkEnergyMax)
+            {
+                darkEnergy = darkEnergyMax;
+            }
+        }
+
+        if (isLight)
+        {
+            lightEnergy += energyRegen;
+
+            if (lightEnergy > lightEnergyMax)
+            {
+                lightEnergy = lightEnergyMax;
+            }
+        }
+    }
     public void OnKillEnergy()
     {
         if (isLight)
@@ -244,5 +241,14 @@ public class PlayerController : LivingEntity
         }
 
         gameController.addEnergy = false;
+    }
+
+    void ControlUI()
+    {
+        healthSlider.value = currentHealth;
+        shieldSlider.value = currentShield;
+        rocketText.text = weaponsSystems.currentSecondaryAmmo.ToString();
+        darkSlider.value = darkEnergy;
+        lightSlider.value = lightEnergy;
     }
 }

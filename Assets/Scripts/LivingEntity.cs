@@ -36,6 +36,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         regenTimer = regenDelay;
         ammoDrop = gameObject.GetComponent<AmmoDrop>();
         gameover = GameObject.FindWithTag("WorldController").GetComponent<GameOver>();
+        gameController = gameObject.GetComponent<GameController>();
     }
 
     public void TakeHit(float damage, RaycastHit hit)
@@ -75,8 +76,8 @@ public class LivingEntity : MonoBehaviour, IDamageable
             OnDeath();                      
         }
 
-        Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);      
-
+        Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
+       
         if (gameObject.tag == "Player")
         {                              
             gameover.gameOver();                         
