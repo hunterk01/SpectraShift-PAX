@@ -8,9 +8,9 @@ public class PlayerController : LivingEntity
     MovingEntity movingEntity;
     MeshRenderer mesh;
     WeaponSystems weaponsSystems;
-    EnergyController energyController;
     Afterburners afterburners;
     PauseGame pause;
+    GameController gameController;
 
     public Slider healthSlider;
     public Slider shieldSlider;
@@ -29,13 +29,13 @@ public class PlayerController : LivingEntity
     float deadzone = 0.3f;
     float buttonTimer = 0.5f;
     int buttonCount = 0;
+    public float onKillRegen = 5;
 
     protected override void Start()
     {
         base.Start();
         movingEntity = GetComponent<MovingEntity>();
         weaponsSystems = GetComponent<WeaponSystems>();
-        energyController = GetComponent<EnergyController>();
         afterburners = GameObject.FindWithTag("Afterburners").GetComponent<Afterburners>();
         pause = GameObject.FindWithTag("WorldController").GetComponent<PauseGame>();
         healthSlider.maxValue = startingHealth;
@@ -52,16 +52,31 @@ public class PlayerController : LivingEntity
             ControlUI();
             Regen();
         }
-        if (!isLight && darkEnergy < darkEnergyMax)
+        if (!isLight)
         {
             darkEnergy += energyRegen;
+
+            if (darkEnergy > darkEnergyMax)
+            {
+                darkEnergy = darkEnergyMax;
+            }
         }
 
-        if (isLight && lightEnergy < lightEnergyMax)
+        if (isLight)
         {
             lightEnergy += energyRegen;
+            
+            if (lightEnergy > lightEnergyMax)
+            {
+                lightEnergy = lightEnergyMax;
+            }
         }    
-        ControlUI();       
+        ControlUI(); 
+        
+        if (gameController.addEnergy == true)
+        {
+            OnKillEnergy();
+        }      
     }
 
     void InputControl()
@@ -114,18 +129,34 @@ public class PlayerController : LivingEntity
 
         //Weapons System, Buttons Should be Left for Laser, Right for Rocket (Mouse Inputs)
         if (Input.GetButton("Fire1"))
-        {      
-            if (isLight && darkEnergy > 0)
+        {
+            if (isLight)
+            { 
+                if (darkEnergy > 0)
+                   {                   
+                        weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                        Debug.Log("Attempt Firing Laser");
+                        darkEnergy -= energyPerShot;
+
+                        if (darkEnergy < 0)
+                        {
+                            darkEnergy = 0;
+                        }
+                    }
+                }
+            else if (!isLight)
             {
-                weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-                Debug.Log("Attempt Firing Laser");
-                darkEnergy -= energyPerShot;
-            }
-            else if (!isLight && lightEnergy > 0)
-            {
-                weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-                Debug.Log("Attempt Firing Laser");
-                lightEnergy -= energyPerShot;
+                if (lightEnergy > 0)
+                {
+                    weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                    Debug.Log("Attempt Firing Laser");
+                    lightEnergy -= energyPerShot;
+
+                    if (lightEnergy < 0)
+                    {
+                        lightEnergy = 0;
+                    }
+                }
             }
         }
         else if (Input.GetButton("Fire2"))
@@ -193,7 +224,7 @@ public class PlayerController : LivingEntity
     {
         if (isLight)
         {
-            lightEnergy += 5;
+            lightEnergy += onKillRegen;
             Debug.Log("Added Light Energy!");
 
             if (lightEnergy > lightEnergyMax)
@@ -203,7 +234,7 @@ public class PlayerController : LivingEntity
         }
         if (!isLight)
         {
-            darkEnergy += 5;
+            darkEnergy += onKillRegen;
             Debug.Log("Added Dark Energy!");
 
             if (darkEnergy > darkEnergyMax)
@@ -212,6 +243,6 @@ public class PlayerController : LivingEntity
             }
         }
 
-        energyController.HaltEnergy();
+        gameController.addEnergy = false;
     }
 }
