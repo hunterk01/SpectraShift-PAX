@@ -24,6 +24,7 @@ public class EnemyController : LivingEntity
     NavMeshAgent pathfinder;
     Material material;
     WeaponSystems weaponSystems;
+    
 
     Vector3 accel;
 
@@ -44,7 +45,7 @@ public class EnemyController : LivingEntity
         pathfinder = GetComponent<NavMeshAgent>();
         material = gameObject.GetComponentInChildren<Renderer>().material;
         weaponSystems = GetComponent<WeaponSystems>();
-
+        
         steeringBasics = GetComponent<SteeringBasics>();
         pursue = GetComponent<Pursue>();
         evade = GetComponent<Evade>();
@@ -64,7 +65,7 @@ public class EnemyController : LivingEntity
         Hover();
         ShiftCheck();
         CheckState();
-        StateResolution();
+        StateResolution();     
     }
 
     void ShiftCheck()
@@ -186,5 +187,5 @@ public class EnemyController : LivingEntity
                 evade.GetCloseSteering(playerRB);
                 break;
         }
-    }
+    }   
 }

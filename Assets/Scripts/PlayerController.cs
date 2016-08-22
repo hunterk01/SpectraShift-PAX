@@ -10,6 +10,7 @@ public class PlayerController : LivingEntity
     WeaponSystems weaponsSystems;
     Afterburners afterburners;
     PauseGame pause;
+    GameController gameController;
 
     public Slider healthSlider;
     public Slider shieldSlider;
@@ -17,15 +18,18 @@ public class PlayerController : LivingEntity
     public Slider lightSlider;
     public Text rocketText;
     public float lightEnergy;
-    private float lightEnergyMax = 50;
+    public float lightEnergyMax = 50;
     public float darkEnergy;
-    private float darkEnergyMax = 50;
+    public float darkEnergyMax = 50;
+    public float energyRegen = 0.1f;
+    public float energyPerShot = 0.6f;
 
     public bool playerControl = false;
 
     float deadzone = 0.3f;
     float buttonTimer = 0.5f;
     int buttonCount = 0;
+    public float onKillRegen = 5;
 
     protected override void Start()
     {
@@ -37,11 +41,7 @@ public class PlayerController : LivingEntity
         healthSlider.maxValue = startingHealth;
         shieldSlider.maxValue = startingShield;
         lightEnergy = 50;
-        darkEnergy = 50;
-        //Slider.Instantiate(darkSlider, gameObject.transform.position, gameObject.transform.rotation);
-        //Slider.Instantiate(lightSlider, gameObject.transform.position, gameObject.transform.rotation);
-        //darkSlider.transform.parent = darkSlider.transform.PlayerUI;
-        //lightSlider.transform.SetParent(PlayerUI, false);
+        darkEnergy = 50;      
     }
 
     void Update ()
@@ -52,14 +52,12 @@ public class PlayerController : LivingEntity
             ControlUI();
             Regen();
         }
-        if (!isLight && darkEnergy < darkEnergyMax)
-        {
-            darkEnergy += 0.3f;
-        }
 
-        if (isLight && lightEnergy < lightEnergyMax)
+        EnergyRegen();
+             
+        if (gameController.addEnergy == true)
         {
-            lightEnergy += 0.3f;
+            OnKillEnergy();
         }
 
         ControlUI();
@@ -115,18 +113,34 @@ public class PlayerController : LivingEntity
 
         //Weapons System, Buttons Should be Left for Laser, Right for Rocket (Mouse Inputs)
         if (Input.GetButton("Fire1"))
-        {      
-            if (isLight && darkEnergy > 0)
+        {
+            if (isLight)
+            { 
+                if (darkEnergy > 0)
+                   {                   
+                        weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                        Debug.Log("Attempt Firing Laser");
+                        darkEnergy -= energyPerShot;
+
+                        if (darkEnergy < 0)
+                        {
+                            darkEnergy = 0;
+                        }
+                    }
+                }
+            else if (!isLight)
             {
-                weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-                Debug.Log("Attempt Firing Laser");
-                darkEnergy -= 0.3f;
-            }
-            else if (!isLight && lightEnergy > 0)
-            {
-                weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-                Debug.Log("Attempt Firing Laser");
-                lightEnergy -= 0.3f;
+                if (lightEnergy > 0)
+                {
+                    weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                    Debug.Log("Attempt Firing Laser");
+                    lightEnergy -= energyPerShot;
+
+                    if (lightEnergy < 0)
+                    {
+                        lightEnergy = 0;
+                    }
+                }
             }
         }
         else if (Input.GetButton("Fire2"))
@@ -179,6 +193,54 @@ public class PlayerController : LivingEntity
         {
             buttonCount = 0;
         }
+    }
+
+    public void EnergyRegen()
+    {
+        if (!isLight)
+        {
+            darkEnergy += energyRegen;
+
+            if (darkEnergy > darkEnergyMax)
+            {
+                darkEnergy = darkEnergyMax;
+            }
+        }
+
+        if (isLight)
+        {
+            lightEnergy += energyRegen;
+
+            if (lightEnergy > lightEnergyMax)
+            {
+                lightEnergy = lightEnergyMax;
+            }
+        }
+    }
+    public void OnKillEnergy()
+    {
+        if (isLight)
+        {
+            lightEnergy += onKillRegen;
+            Debug.Log("Added Light Energy!");
+
+            if (lightEnergy > lightEnergyMax)
+            {
+                lightEnergy = lightEnergyMax;
+            }
+        }
+        if (!isLight)
+        {
+            darkEnergy += onKillRegen;
+            Debug.Log("Added Dark Energy!");
+
+            if (darkEnergy > darkEnergyMax)
+            {
+                darkEnergy = darkEnergyMax;
+            }
+        }
+
+        gameController.addEnergy = false;
     }
 
     void ControlUI()
