@@ -8,9 +8,11 @@ public class OB_HealerControl : LivingEntity
 
     float distance;
     float hoverHeight;
+    
     Vector3 direction;
     OctoBossController obControl;
     Transform target;
+    Rigidbody rb;
 
     protected override void Start()
     {
@@ -19,6 +21,7 @@ public class OB_HealerControl : LivingEntity
         obControl = GameObject.FindWithTag("obController").GetComponent<OctoBossController>();
         target = GameObject.FindWithTag("obCenter").transform;
         hoverHeight = HeightManager.Instance.setHeight;
+        rb = GetComponent<Rigidbody>();
         SetHeight();
     }
 
@@ -40,13 +43,15 @@ public class OB_HealerControl : LivingEntity
         direction = target.position - transform.position;
 
         // Move toward boss and heal when arrive at target
-        if (distance >= healerStopDistance)
+        if (distance >= healerStopDistance && !obControl.isHealing)
         {
             transform.rotation = Quaternion.LookRotation(direction);
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
         else
         {
+            rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+
             HealCheck();
         }
     }
@@ -69,5 +74,15 @@ public class OB_HealerControl : LivingEntity
         {
             GameObject.Destroy(gameObject);
         }
+    }
+
+    void OnCollisionEnter()
+    {
+        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+    }
+
+    void OnCollisionExit()
+    {
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
     }
 }

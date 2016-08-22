@@ -143,8 +143,8 @@ public class OctoBossController : MonoBehaviour
             if (healerSpawnTimer <= 0)
             {
                 // Spawn a healer at one of four random spawn points
-                int i = Random.Range(0, 3);
-                healerTracker = Instantiate(healer, healerSpawnPoints[i - 1].transform.position, healerSpawnPoints[i - 1].transform.rotation) as GameObject;
+                int i = Random.Range(0, 4);
+                healerTracker = Instantiate(healer, healerSpawnPoints[i].transform.position, healerSpawnPoints[i].transform.rotation) as GameObject;
 
                 healerSpawnTimer = 15;
             }
