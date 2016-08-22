@@ -36,7 +36,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         regenTimer = regenDelay;
         ammoDrop = gameObject.GetComponent<AmmoDrop>();
         gameover = GameObject.FindWithTag("WorldController").GetComponent<GameOver>();
-        gameController = gameObject.GetComponent<GameController>();
+        gameController = GameObject.FindWithTag("WorldController").GetComponent<GameController>();
     }
 
     public void TakeHit(float damage, RaycastHit hit)

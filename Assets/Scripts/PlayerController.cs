@@ -38,6 +38,7 @@ public class PlayerController : LivingEntity
         weaponsSystems = GetComponent<WeaponSystems>();
         afterburners = GameObject.FindWithTag("Afterburners").GetComponent<Afterburners>();
         pause = GameObject.FindWithTag("WorldController").GetComponent<PauseGame>();
+        gameController = GameObject.FindWithTag("WorldController").GetComponent<GameController>();
         healthSlider.maxValue = startingHealth;
         shieldSlider.maxValue = startingShield;
         lightEnergy = 50;
@@ -217,6 +218,7 @@ public class PlayerController : LivingEntity
             }
         }
     }
+
     public void OnKillEnergy()
     {
         if (isLight)

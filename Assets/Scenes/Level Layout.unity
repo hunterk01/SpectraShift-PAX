@@ -1434,6 +1434,7 @@ GameObject:
   - 114: {fileID: 279500868}
   - 114: {fileID: 279500869}
   - 114: {fileID: 279500870}
+  - 114: {fileID: 279500871}
   m_Layer: 0
   m_Name: World Controller
   m_TagString: WorldController
@@ -1515,11 +1516,22 @@ MonoBehaviour:
   startingShield: 0
   octoBossGun: 0
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
-  addEnergy: 0
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
+--- !u!114 &279500871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 279500864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8124123df319f45828cc926e132d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addEnergy: 0
 --- !u!1 &284733407
 GameObject:
   m_ObjectHideFlags: 0
@@ -11387,19 +11399,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22435462, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22435462, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22491342, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22491342, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 162932, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_IsActive
@@ -11407,11 +11419,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22486498, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22486498, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 130476, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_IsActive
@@ -11419,11 +11431,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22438304, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.82
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22438304, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
