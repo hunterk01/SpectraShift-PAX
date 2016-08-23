@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class OctoBossController : MonoBehaviour
@@ -7,7 +8,6 @@ public class OctoBossController : MonoBehaviour
 
     public GameObject[] guns;
 
-    public GameObject core;
     public int gunCount = 8;
     public int gunsViewing = 0;
 
@@ -24,36 +24,43 @@ public class OctoBossController : MonoBehaviour
     public Canvas obGunUI;
 
     public GameObject[] healerSpawnPoints;
+    public Slider[] healthSliders;
     public GameObject healer;
+    public GameObject core;
+
     public float healerSpawnDelay = 15;
+
     GameObject healerTracker;
 
+
     float spinTimerCountdown, spinDurationCountdown;
-    public float healerSpawnTimer
-        ;
+    public float healerSpawnTimer;
     
     void Start()
     {
         spinTimerCountdown = spinTimer;
         spinDurationCountdown = spinDuration;
         healerSpawnTimer = healerSpawnDelay;
-        obGunUI.enabled = true;
+        obGunUI.enabled = false;
         obCoreUI.enabled = false;
     }
 
     void Update()
     {
-        if (shellAlive)
+        if (startFight)
         {
-            GunCheck();
-            SpinModeCheck();
-        }
-        else
-        {
-            CoreCheck();
-        }
+            if (shellAlive)
+            {
+                GunCheck();
+                SpinModeCheck();
+            }
+            else
+            {
+                CoreCheck();
+            }
 
-        SpawnHealer();
+            SpawnHealer();
+        }
     }
 
     public void SpinModeCheck()
@@ -66,12 +73,13 @@ public class OctoBossController : MonoBehaviour
             }
             else
             {
-                spinTimerCountdown -= Time.deltaTime;
+                if (player.isLight)
+                    spinTimerCountdown -= Time.deltaTime;
             }
         }
         else
         {
-            if (spinDurationCountdown <= 0)
+            if (spinDurationCountdown <= 0 || !player.isLight)
             {
                 spinMode = false;
                 spinTimerCountdown = spinTimer;
@@ -109,6 +117,10 @@ public class OctoBossController : MonoBehaviour
             obGunUI.enabled = false;
             obCoreUI.enabled = true;
         }
+        else
+        {
+            obGunUI.enabled = true;
+        }
     }
 
     void CoreCheck()
@@ -125,17 +137,16 @@ public class OctoBossController : MonoBehaviour
         if (healerTracker == null)
         {
             isHealing = false;
+            healerSpawnTimer -= Time.deltaTime;
 
             if (healerSpawnTimer <= 0)
             {
                 // Spawn a healer at one of four random spawn points
-                int i = Random.Range(1, 4);
-                healerTracker = Instantiate(healer, healerSpawnPoints[i - 1].transform.position, healerSpawnPoints[i - 1].transform.rotation) as GameObject;
+                int i = Random.Range(0, 4);
+                healerTracker = Instantiate(healer, healerSpawnPoints[i].transform.position, healerSpawnPoints[i].transform.rotation) as GameObject;
 
                 healerSpawnTimer = 15;
             }
-
-            healerSpawnTimer -= Time.deltaTime;
         }
     }
 }

@@ -3,25 +3,32 @@ using System.Collections;
 
 public class OB_HealerControl : LivingEntity
 {
-    public Transform target;
-    public float speed;
-    public float healerStopDistance = 25;
+    public float speed = 8;
+    public float healerStopDistance = 18;
 
-    public OctoBossController obControl;
-
-    float distance, healBuffer = 1.5f;
+    float distance;
     float hoverHeight;
+    
     Vector3 direction;
+    OctoBossController obControl;
+    Transform target;
+    Rigidbody rb;
 
     protected override void Start()
     {
+        base.Start();
+
+        obControl = GameObject.FindWithTag("obController").GetComponent<OctoBossController>();
+        target = GameObject.FindWithTag("obCenter").transform;
         hoverHeight = HeightManager.Instance.setHeight;
+        rb = GetComponent<Rigidbody>();
         SetHeight();
     }
 
 	void Update ()
     {
         MoveHealer();
+        CoreCheck(); 
 	}
 
     void SetHeight()
@@ -36,16 +43,17 @@ public class OB_HealerControl : LivingEntity
         direction = target.position - transform.position;
 
         // Move toward boss and heal when arrive at target
-        if (distance > healerStopDistance)
+        if (distance >= healerStopDistance && !obControl.isHealing)
         {
             transform.rotation = Quaternion.LookRotation(direction);
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
         else
         {
+            rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+
             HealCheck();
         }
-
     }
     
     void HealCheck()
@@ -58,5 +66,23 @@ public class OB_HealerControl : LivingEntity
             obControl.HealMode(true);
         else
             obControl.HealMode(false);
+    }
+
+    void CoreCheck()
+    {
+        if (!obControl.coreAlive)
+        {
+            GameObject.Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter()
+    {
+        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+    }
+
+    void OnCollisionExit()
+    {
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
     }
 }

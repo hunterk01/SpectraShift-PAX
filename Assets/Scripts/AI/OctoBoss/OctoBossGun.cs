@@ -17,6 +17,7 @@ public class OctoBossGun : LivingEntity
     public float closeTrackDistance = 10;
     public float maxPrediction = .5f;
     public float shotTimer;
+    public float energyGainThreshold = 10;
     public int spinRateMultiplier;
     public bool playerViewable = false;
 
@@ -29,6 +30,7 @@ public class OctoBossGun : LivingEntity
 
     float shotLifetime = 3.0f;
     float playerDistance, playerAngle;
+    float damageInflicted, oldHealth;
     Vector3 playerDirection;
     bool scanRight = true;
     bool shootGun = false;
@@ -36,6 +38,7 @@ public class OctoBossGun : LivingEntity
     bool initROF = true;
     bool ROFSet = false;
     bool spinFireRateSet = false;
+    Quaternion startingRotation, endingRotation;
 
     ShiftLaser shiftLaser;
     WeaponSystems weaponSystems;
@@ -54,21 +57,25 @@ public class OctoBossGun : LivingEntity
         startingHealth = 50;
         shotTimer = 0;
         healthSlider.maxValue = startingHealth;
+        oldHealth = currentHealth;       
     }
 	
 	void Update ()
     {
-        if (obControl.spinMode)
+        if (obControl.startFight)
         {
-            enemyState = EnemyState.SPIN_ATTACK;
+            if (obControl.spinMode)
+            {
+                enemyState = EnemyState.SPIN_ATTACK;
+            }
+
+            if (shootGun) ShootGun();
+
+            CheckHealing();
+
+            StateResolution();
+            ControlUI();
         }
-
-        if (shootGun) ShootGun();
-
-        CheckHealing();
-
-        StateResolution();
-        ControlUI();
     }
 
     void SetHeight()
@@ -137,69 +144,84 @@ public class OctoBossGun : LivingEntity
 
     void TrackClose()
     {
-        playerDirection = obControl.playerTarget.transform.position - transform.position;
-        playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
-        playerAngle = Vector3.Angle(playerDirection, transform.forward);
+        if (obControl.player.isLight)
+        {
+            playerDirection = obControl.playerTarget.transform.position - transform.position;
+            playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
+            playerAngle = Vector3.Angle(playerDirection, transform.forward);
 
-        // Check if the gun still sees the player.  If not, change to SCAN
-        if (playerAngle > detectionAngle)
+            // Check if the gun still sees the player.  If not, change to SCAN
+            if (playerAngle > detectionAngle)
+                enemyState = EnemyState.SCAN;
+
+            // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
+            if (playerDistance > closeTrackDistance)
+                enemyState = EnemyState.TRACK_FAR;
+
+            // Rotate gun to track player position
+            steeringBasics.LookAtDirection(obControl.playerTarget.transform.position);
+            CheckRotationBounds();
+
+            // Check if player location is in front of gun and shoot
+            if (steeringBasics.IsInFront(obControl.playerTarget.transform.position))
+            {
+                shootGun = true;
+            }
+        }
+        else
+        {
             enemyState = EnemyState.SCAN;
 
-        // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
-        if (playerDistance > closeTrackDistance)
-            enemyState = EnemyState.TRACK_FAR;
-
-        // Rotate gun to track player position
-        steeringBasics.LookAtDirection(obControl.playerTarget.transform.position);
-        CheckRotationBounds();
-
-        // Check if player location is in front of gun and shoot
-        if(steeringBasics.IsInFront(obControl.playerTarget.transform.position))
-        {
-            shootGun = true;
         }
     }
 
     void TrackFar()
     {
-        playerDirection = obControl.playerTarget.transform.position - transform.position;
-        playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
-        playerAngle = Vector3.Angle(playerDirection, transform.forward);
-
-        // Check if the gun still sees the player.  If not, change to SCAN
-        if (playerAngle > detectionAngle)
-            enemyState = EnemyState.SCAN;
-
-        // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
-        if (playerDistance < closeTrackDistance)
-            enemyState = EnemyState.TRACK_CLOSE;
-
-        // Rotate gun to track player position + velocity
-        // Get the targets's speed
-        float speed = obControl.playerRB.velocity.magnitude;
-
-        // Calculate the prediction time
-        float prediction;
-        if (speed <= playerDistance / maxPrediction)
+        if (obControl.player.isLight)
         {
-            prediction = maxPrediction;
-        }
+            playerDirection = obControl.playerTarget.transform.position - transform.position;
+            playerDistance = Vector3.Distance(obControl.playerTarget.transform.position, transform.position);
+            playerAngle = Vector3.Angle(playerDirection, transform.forward);
+
+            // Check if the gun still sees the player.  If not, change to SCAN
+            if (playerAngle > detectionAngle)
+                enemyState = EnemyState.SCAN;
+
+            // Check is player is still within close tracking distance.  If not, change to TRACK_FAR
+            if (playerDistance < closeTrackDistance)
+                enemyState = EnemyState.TRACK_CLOSE;
+
+            // Rotate gun to track player position + velocity
+            // Get the targets's speed
+            float speed = obControl.playerRB.velocity.magnitude;
+
+            // Calculate the prediction time
+            float prediction;
+            if (speed <= playerDistance / maxPrediction)
+            {
+                prediction = maxPrediction;
+            }
+            else
+            {
+                prediction = playerDistance / speed;
+                //Place the predicted position a little before the target reaches the character
+                prediction *= 0.9f;
+            }
+
+            // Set where the AI thinks the target will be and look at it
+            Vector3 explicitTarget = obControl.playerRB.position + obControl.playerRB.velocity * prediction;
+            steeringBasics.LookAtDirection(explicitTarget);
+            CheckRotationBounds();
+
+            // Check if player position + velocity is in front of gun
+            if (steeringBasics.IsInFront(explicitTarget))
+            {
+                shootGun = true;
+            }
+        }       
         else
         {
-            prediction = playerDistance / speed;
-            //Place the predicted position a little before the target reaches the character
-            prediction *= 0.9f;
-        }
-
-        // Set where the AI thinks the target will be and look at it
-        Vector3 explicitTarget = obControl.playerRB.position + obControl.playerRB.velocity * prediction;
-        steeringBasics.LookAtDirection(explicitTarget);
-        CheckRotationBounds();
-
-        // Check if player position + velocity is in front of gun
-        if (steeringBasics.IsInFront(explicitTarget))
-        {
-            shootGun = true;
+            enemyState = EnemyState.SCAN;
         }
     }
 
@@ -221,17 +243,15 @@ public class OctoBossGun : LivingEntity
     {
         if (firstShot)
         {
-            Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+            Destroy(Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation), shotLifetime);
             firstShot = false;
         }
 
         shotTimer -= Time.deltaTime;
 
-        if (shotTimer <= 0)
+        if (shotTimer <= 0 && obControl.player.isLight)
         {
-            GameObject tempOB_Bolt;
-            tempOB_Bolt = Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation) as GameObject;
-            Destroy(tempOB_Bolt, shotLifetime);
+            Destroy(Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation), shotLifetime);
 
             if (obControl.spinMode)
             {
@@ -280,6 +300,24 @@ public class OctoBossGun : LivingEntity
                 currentHealth = startingHealth;
             }
         }      
+    }
+
+    void EnergyCharge()
+    {
+        // Give player X light energy per Y amount of damage
+        if (currentHealth < oldHealth)
+        {
+            damageInflicted = oldHealth - currentHealth;
+
+            if (damageInflicted >= energyGainThreshold)
+            {
+                // set WC addEnergy;
+
+                damageInflicted -= energyGainThreshold;
+            }
+
+            oldHealth = currentHealth;
+        }
     }
 
     void ControlUI()

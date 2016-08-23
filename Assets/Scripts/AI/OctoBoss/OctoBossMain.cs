@@ -11,11 +11,14 @@ public class OctoBossMain : MonoBehaviour
 
 	void Update ()
     {
-        if (obControl.shellAlive)
-            SpinCheck();
-        else
+        if (obControl.startFight)
         {
-            CheckForDeath();
+            if (obControl.shellAlive)
+                SpinCheck();
+            else
+            {
+                CheckForDeath();
+            }
         }
 	}
 
