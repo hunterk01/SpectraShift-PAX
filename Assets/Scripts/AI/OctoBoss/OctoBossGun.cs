@@ -251,9 +251,7 @@ public class OctoBossGun : LivingEntity
 
         if (shotTimer <= 0 && obControl.player.isLight)
         {
-            GameObject tempOB_Bolt;
-            tempOB_Bolt = Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation) as GameObject;
-            Destroy(tempOB_Bolt, shotLifetime);
+            Destroy(Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation), shotLifetime);
 
             if (obControl.spinMode)
             {
