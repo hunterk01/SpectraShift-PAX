@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 1d281af9035fa2b4d81732c15ce432a9
+timeCreated: 1471985657
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: building_garage_01
+    100002: building_tower_05
+    100004: building_tower_07
+    100006: building_tower_13
+    100008: building_tower_22
+    100010: building_tower_twin
+    100012: //RootNode
+    100014: city_ground
+    100016: crane_01
+    100018: crane_02
+    100020: crumbled_tower_04
+    100022: crumbled_tower_05
+    100024: crumbled_tower_06
+    100026: crumbled_tower_07
+    100028: obj_prop_building_tower2
+    100030: obj_prop_building_tower3
+    100032: rocks_1
+    100034: rocks_2
+    100036: rubble_2
+    100038: rubble_3
+    100040: rubble_5
+    100042: sad_tower_02
+    100044: sad_tower_03
+    100046: sad_tower_04
+    100048: stone_wall_border
+    100050: werahouse_1
+    400000: building_garage_01
+    400002: building_tower_05
+    400004: building_tower_07
+    400006: building_tower_13
+    400008: building_tower_22
+    400010: building_tower_twin
+    400012: //RootNode
+    400014: city_ground
+    400016: crane_01
+    400018: crane_02
+    400020: crumbled_tower_04
+    400022: crumbled_tower_05
+    400024: crumbled_tower_06
+    400026: crumbled_tower_07
+    400028: obj_prop_building_tower2
+    400030: obj_prop_building_tower3
+    400032: rocks_1
+    400034: rocks_2
+    400036: rubble_2
+    400038: rubble_3
+    400040: rubble_5
+    400042: sad_tower_02
+    400044: sad_tower_03
+    400046: sad_tower_04
+    400048: stone_wall_border
+    400050: werahouse_1
+    2300000: building_garage_01
+    2300002: building_tower_05
+    2300004: building_tower_07
+    2300006: building_tower_13
+    2300008: building_tower_22
+    2300010: building_tower_twin
+    2300012: city_ground
+    2300014: crane_01
+    2300016: crane_02
+    2300018: crumbled_tower_04
+    2300020: crumbled_tower_05
+    2300022: crumbled_tower_06
+    2300024: crumbled_tower_07
+    2300026: obj_prop_building_tower2
+    2300028: obj_prop_building_tower3
+    2300030: rocks_1
+    2300032: rocks_2
+    2300034: rubble_2
+    2300036: rubble_3
+    2300038: rubble_5
+    2300040: sad_tower_02
+    2300042: sad_tower_03
+    2300044: sad_tower_04
+    2300046: stone_wall_border
+    2300048: werahouse_1
+    3300000: building_garage_01
+    3300002: building_tower_05
+    3300004: building_tower_07
+    3300006: building_tower_13
+    3300008: building_tower_22
+    3300010: building_tower_twin
+    3300012: city_ground
+    3300014: crane_01
+    3300016: crane_02
+    3300018: crumbled_tower_04
+    3300020: crumbled_tower_05
+    3300022: crumbled_tower_06
+    3300024: crumbled_tower_07
+    3300026: obj_prop_building_tower2
+    3300028: obj_prop_building_tower3
+    3300030: rocks_1
+    3300032: rocks_2
+    3300034: rubble_2
+    3300036: rubble_3
+    3300038: rubble_5
+    3300040: sad_tower_02
+    3300042: sad_tower_03
+    3300044: sad_tower_04
+    3300046: stone_wall_border
+    3300048: werahouse_1
+    4300000: city_ground
+    4300002: stone_wall_border
+    4300004: building_garage_01
+    4300006: building_tower_twin
+    4300008: building_tower_05
+    4300010: building_tower_07
+    4300012: building_tower_13
+    4300014: building_tower_22
+    4300016: werahouse_1
+    4300018: crane_02
+    4300020: crane_01
+    4300022: rubble_2
+    4300024: rocks_2
+    4300026: rocks_1
+    4300028: rubble_3
+    4300030: sad_tower_02
+    4300032: sad_tower_03
+    4300034: sad_tower_04
+    4300036: rubble_5
+    4300038: crumbled_tower_04
+    4300040: crumbled_tower_05
+    4300042: crumbled_tower_06
+    4300044: crumbled_tower_07
+    4300046: obj_prop_building_tower2
+    4300048: obj_prop_building_tower3
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

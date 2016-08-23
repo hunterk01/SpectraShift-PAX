@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: c6e215804c434ff4bba1924dffdb5aad
+timeCreated: 1471980179
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - LaserSplash: {fileID: 119968, guid: e5aef38caa3c0c54c9299e03d150c27b, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

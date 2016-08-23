@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421354}
   - 114: {fileID: 11452076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Afterburners
   m_TagString: Afterburners
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 484732}
   - 33: {fileID: 3388332}
   - 23: {fileID: 2313894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - 4: {fileID: 438918}
   - 33: {fileID: 3308768}
   - 23: {fileID: 2321368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - 4: {fileID: 495784}
   - 33: {fileID: 3318358}
   - 23: {fileID: 2375982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - 4: {fileID: 495296}
   - 33: {fileID: 3370444}
   - 23: {fileID: 2338230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - 4: {fileID: 461118}
   - 33: {fileID: 3356550}
   - 23: {fileID: 2307924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - 4: {fileID: 471020}
   - 33: {fileID: 3395930}
   - 23: {fileID: 2327032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - 199: {fileID: 19932676}
   - 54: {fileID: 5402874}
   - 114: {fileID: 11417096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EngFlame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - 4: {fileID: 409910}
   - 33: {fileID: 3335392}
   - 23: {fileID: 2349394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - 4: {fileID: 458020}
   - 33: {fileID: 3327382}
   - 23: {fileID: 2338298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - 4: {fileID: 429132}
   - 33: {fileID: 3314154}
   - 23: {fileID: 2338716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - 4: {fileID: 425928}
   - 33: {fileID: 3386394}
   - 23: {fileID: 2375922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 483278}
   - 108: {fileID: 10887368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Directional light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - 4: {fileID: 451740}
   - 33: {fileID: 3385960}
   - 23: {fileID: 2372658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - 4: {fileID: 482250}
   - 33: {fileID: 3307864}
   - 23: {fileID: 2318134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hard Point Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - 4: {fileID: 494870}
   - 33: {fileID: 3352726}
   - 23: {fileID: 2389784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - 199: {fileID: 19956580}
   - 198: {fileID: 19821206}
   - 114: {fileID: 11465092}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - 4: {fileID: 483662}
   - 33: {fileID: 3311700}
   - 23: {fileID: 2359236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCylinder5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - 4: {fileID: 483702}
   - 33: {fileID: 3320624}
   - 23: {fileID: 2381338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCylinder4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - 4: {fileID: 412180}
   - 33: {fileID: 3321924}
   - 23: {fileID: 2306222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - 4: {fileID: 445672}
   - 33: {fileID: 3339550}
   - 23: {fileID: 2360722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   - 199: {fileID: 19926116}
   - 198: {fileID: 19827428}
   - 114: {fileID: 11462780}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - 4: {fileID: 475088}
   - 33: {fileID: 3339140}
   - 23: {fileID: 2327616}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCylinder7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   - 4: {fileID: 469492}
   - 33: {fileID: 3358794}
   - 23: {fileID: 2378402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   - 4: {fileID: 456070}
   - 33: {fileID: 3353636}
   - 23: {fileID: 2335784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - 4: {fileID: 490398}
   - 33: {fileID: 3395602}
   - 23: {fileID: 2333324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - 198: {fileID: 19894476}
   - 135: {fileID: 13538398}
   - 114: {fileID: 11479972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Afterburner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 425456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hard Point Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   - 4: {fileID: 499540}
   - 33: {fileID: 3359148}
   - 23: {fileID: 2392632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hard Point Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +552,7 @@ GameObject:
   - 198: {fileID: 19829558}
   - 135: {fileID: 13539058}
   - 114: {fileID: 11430498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Afterburner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   - 4: {fileID: 426862}
   - 33: {fileID: 3316776}
   - 23: {fileID: 2326562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   - 4: {fileID: 418228}
   - 33: {fileID: 3376488}
   - 23: {fileID: 2380166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pPlane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   - 4: {fileID: 454838}
   - 33: {fileID: 3375970}
   - 23: {fileID: 2361150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +620,7 @@ GameObject:
   - 4: {fileID: 421986}
   - 33: {fileID: 3394936}
   - 23: {fileID: 2333638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   - 4: {fileID: 459462}
   - 33: {fileID: 3373766}
   - 23: {fileID: 2377732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   - 4: {fileID: 475120}
   - 33: {fileID: 3368302}
   - 23: {fileID: 2377500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +692,7 @@ GameObject:
   - 4: {fileID: 457534}
   - 33: {fileID: 3319676}
   - 23: {fileID: 2316506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCylinder6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ GameObject:
   - 4: {fileID: 447692}
   - 33: {fileID: 3322110}
   - 23: {fileID: 2342666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -726,7 +726,7 @@ GameObject:
   - 4: {fileID: 454714}
   - 33: {fileID: 3316098}
   - 23: {fileID: 2394960}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,7 +743,7 @@ GameObject:
   - 4: {fileID: 498646}
   - 33: {fileID: 3319148}
   - 23: {fileID: 2331210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +770,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 398.4, y: 0, z: -50}
+  m_LocalPosition: {x: 405.2, y: 3.5, z: 149.7}
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children:
   - {fileID: 445672}
@@ -2549,13 +2549,27 @@ MonoBehaviour:
   isLight: 1
   startingHealth: 100
   startingShield: 50
+  octoBossGun: 0
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
   healthRegenRate: 15
   shieldRegenRate: 12
   regenDelay: 10
+  regenEnabled: 0
   healthSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
+  darkSlider: {fileID: 0}
+  lightSlider: {fileID: 0}
+  shiftSlider: {fileID: 0}
   rocketText: {fileID: 0}
+  lightEnergy: 1
+  lightEnergyMax: 50
+  darkEnergy: 1
+  darkEnergyMax: 50
+  energyRegen: 0.2
+  energyPerShot: 0.6
+  onKillRegen: 5
+  shiftCooldownMax: 5
+  shiftCooldownRate: 0.1
   playerControl: 1
 --- !u!114 &11462780
 MonoBehaviour:
@@ -2605,7 +2619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb348d263c2f1648a959d62814329cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverHeight: 3.5
+  hoverHeight: 4.5
   hoverHeightStrictness: 1
   forwardSpeed: 5000
   backwardSpeed: 3000
