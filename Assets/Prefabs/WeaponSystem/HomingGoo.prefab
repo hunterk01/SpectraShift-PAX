@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd3737a5bc84414a9b5bcd4a0f79afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDelay: 2
+  maxDelay: 0.8
   rocketLifetime: 3.5
   rocketRange: 40
   projectileHeight: 0

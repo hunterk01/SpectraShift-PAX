@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyShift : MonoBehaviour {
+public class EnemyShift : MonoBehaviour
+{
 
     public bool isLight;
     public Object LightForm;
@@ -14,18 +15,18 @@ public class EnemyShift : MonoBehaviour {
     Collider enemyCollider;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         enemyCollider = GetComponent<Collider>();
 
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         Shift();
-	}
+    }
 
     void Shift()
     {
