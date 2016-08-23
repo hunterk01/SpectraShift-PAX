@@ -363,7 +363,7 @@ GameObject:
   - 136: {fileID: 13629824}
   - 114: {fileID: 11492310}
   - 114: {fileID: 11419112}
-  - 114: {fileID: 11419738}
+  - 114: {fileID: 11461326}
   m_Layer: 8
   m_Name: OB_Healer
   m_TagString: Enemy
@@ -1958,7 +1958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem: {fileID: 148750, guid: 5af35412b34063e49998abf63942cfb6, type: 2}
   dropRate: 25
---- !u!114 &11419738
+--- !u!114 &11461326
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1966,15 +1966,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 144492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f8065aaa047cd74abb74196da38331f, type: 3}
+  m_Script: {fileID: 11500000, guid: 54d0c53151d72024489f89d1268c689a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isLight: 0
   LightForm: {fileID: 170798}
   DarkForm: {fileID: 194192}
-  LightLayer: 8
-  DarkLayer: 1
-  colliderSwitch: 1
+  LightLayer: 0
+  DarkLayer: 8
+  colliderSwitch: 0
 --- !u!114 &11492310
 MonoBehaviour:
   m_ObjectHideFlags: 1

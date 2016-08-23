@@ -25,9 +25,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481060}
-  - 114: {fileID: 11436888}
   - 198: {fileID: 19825472}
   - 199: {fileID: 19918886}
+  - 114: {fileID: 11430262}
   m_Layer: 0
   m_Name: OctoBossBolt
   m_TagString: Untagged
@@ -155,7 +155,7 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11436888
+--- !u!114 &11430262
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
