@@ -106,7 +106,6 @@ public class OctoBossController : MonoBehaviour
             if (guns[i] != null)
             {
                 tempGunCount++;
-                //healthSliders[i].value = 0;
             }
         }
 

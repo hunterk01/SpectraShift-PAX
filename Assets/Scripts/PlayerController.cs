@@ -10,16 +10,37 @@ public class PlayerController : LivingEntity
     WeaponSystems weaponsSystems;
     Afterburners afterburners;
     PauseGame pause;
+    GameController gameController;
 
     public Slider healthSlider;
     public Slider shieldSlider;
+    public Slider darkSlider;
+    public Slider lightSlider;
+    public Slider shiftSlider;
     public Text rocketText;
-        
+    public float lightEnergy;
+    public float lightEnergyMax = 50;
+    public float darkEnergy;
+    public float darkEnergyMax = 50;
+    public float energyRegen = 0.1f;
+    public float energyPerShot = 0.6f;
+    public float onKillRegen = 5;
+    public float shiftCooldownMax = 5f;
+    public float shiftCooldownRate = 0.1f;
+
     public bool playerControl = false;
 
     float deadzone = 0.3f;
     float buttonTimer = 0.5f;
+    float shiftCooldownTimer;
     int buttonCount = 0;
+    bool canShift = true;
+
+    // Controller variables
+    Vector2 horiz_cInput;
+    float triggers_cInput;
+    float horiz_kbInput;
+    float vert_kbInput;
 
     protected override void Start()
     {
@@ -28,11 +49,16 @@ public class PlayerController : LivingEntity
         weaponsSystems = GetComponent<WeaponSystems>();
         afterburners = GameObject.FindWithTag("Afterburners").GetComponent<Afterburners>();
         pause = GameObject.FindWithTag("WorldController").GetComponent<PauseGame>();
+        gameController = GameObject.FindWithTag("WorldController").GetComponent<GameController>();
         healthSlider.maxValue = startingHealth;
         shieldSlider.maxValue = startingShield;
+        shiftSlider.maxValue = shiftCooldownMax;
+        lightEnergy = 50;
+        darkEnergy = 50;
+        shiftCooldownTimer = shiftCooldownMax;      
     }
 
-	void Update ()
+    void Update ()
     {
         if (playerControl)
         {
@@ -40,6 +66,15 @@ public class PlayerController : LivingEntity
             ControlUI();
             Regen();
         }
+
+        EnergyRegen();
+             
+        if (gameController.addEnergy == true)
+        {
+            OnKillEnergy();
+        }
+
+        ControlUI();
     }
 
     void InputControl()
@@ -56,14 +91,23 @@ public class PlayerController : LivingEntity
         /////////////////////////////////////////////////
 
         // Controller flight controls
-        float horiz_cInput = Input.GetAxis("LS_Horizontal");
-        float triggers_cInput = Input.GetAxis("Triggers");
-        if (-deadzone > horiz_cInput || horiz_cInput > deadzone)    movingEntity.Turn(horiz_cInput);
+        horiz_cInput = new Vector2(Input.GetAxis("LS_Horizontal"), Input.GetAxis("Vertical"));
+        if (horiz_cInput.magnitude < deadzone)
+            horiz_cInput = Vector2.zero;
+        else
+            horiz_cInput = horiz_cInput.normalized * (horiz_cInput.magnitude - deadzone) / (1 - deadzone);
+
+        movingEntity.Turn(horiz_cInput.x);
+
+        // Removed section of deadzone check.  Leaving it here in case there's a need to go back to old method.
+        // if (-deadzone > horiz_cInput.x || horiz_cInput.x > deadzone)
+
+        triggers_cInput = Input.GetAxis("Triggers");
         if (triggers_cInput != 0)   movingEntity.Thrust(triggers_cInput);
 
         // Keyboard flight controls
-        float horiz_kbInput = Input.GetAxis("Horizontal");
-        float vert_kbInput = Input.GetAxis("Vertical");
+        horiz_kbInput = Input.GetAxis("Horizontal");
+        vert_kbInput = Input.GetAxis("Vertical");
         if (horiz_kbInput != 0) movingEntity.Turn(horiz_kbInput);
         if (vert_kbInput != 0) movingEntity.Thrust(vert_kbInput);
 
@@ -93,8 +137,34 @@ public class PlayerController : LivingEntity
         //Weapons System, Buttons Should be Left for Laser, Right for Rocket (Mouse Inputs)
         if (Input.GetButton("Fire1"))
         {
-            weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-            Debug.Log("Attempt Firing Laser");
+            if (isLight)
+            { 
+                if (darkEnergy > 0)
+                   {                   
+                        weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                        Debug.Log("Attempt Firing Laser");
+                        darkEnergy -= energyPerShot;
+
+                        if (darkEnergy < 0)
+                        {
+                            darkEnergy = 0;
+                        }
+                    }
+                }
+            else if (!isLight)
+            {
+                if (lightEnergy > 0)
+                {
+                    weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                    Debug.Log("Attempt Firing Laser");
+                    lightEnergy -= energyPerShot;
+
+                    if (lightEnergy < 0)
+                    {
+                        lightEnergy = 0;
+                    }
+                }
+            }
         }
         else if (Input.GetButton("Fire2"))
         {
@@ -103,14 +173,24 @@ public class PlayerController : LivingEntity
         }
         else weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
 
-        if (Input.GetButtonDown("Fire4"))
+        if (canShift)
         {
-            if (isLight) isLight = false;
-            else isLight = true;
-            Debug.Log("Fire4 pressed");
+            if (Input.GetButtonDown("Fire4"))
+            {
+                if (isLight) isLight = false;
+                else isLight = true;
+                Debug.Log("Fire4 pressed");
+                canShift = false;
+                shiftCooldownTimer = 0;
+            }
+        }
+        else
+        {
+            ShiftCooldown();
         }
 
-        // Strafe and juke controls
+        // Juke controls
+        /*  Removed from game Demo
         if (Input.GetButtonDown("StrafeLeft"))
         {
             if(buttonTimer > 0 && buttonCount == 1)
@@ -137,6 +217,7 @@ public class PlayerController : LivingEntity
                 buttonCount += 1;
             }
         }
+        */
 
         if (buttonTimer > 0)
         {
@@ -148,10 +229,75 @@ public class PlayerController : LivingEntity
         }
     }
 
+    public void EnergyRegen()
+    {
+        if (!isLight)
+        {
+            darkEnergy += energyRegen;
+
+            if (darkEnergy > darkEnergyMax)
+            {
+                darkEnergy = darkEnergyMax;
+            }
+        }
+
+        if (isLight)
+        {
+            lightEnergy += energyRegen;
+
+            if (lightEnergy > lightEnergyMax)
+            {
+                lightEnergy = lightEnergyMax;
+            }
+        }
+    }
+
+    public void OnKillEnergy()
+    {
+        if (isLight)
+        {
+            lightEnergy += onKillRegen;
+            Debug.Log("Added Light Energy!");
+
+            if (lightEnergy > lightEnergyMax)
+            {
+                lightEnergy = lightEnergyMax;
+            }
+        }
+        if (!isLight)
+        {
+            darkEnergy += onKillRegen;
+            Debug.Log("Added Dark Energy!");
+
+            if (darkEnergy > darkEnergyMax)
+            {
+                darkEnergy = darkEnergyMax;
+            }
+        }
+
+        gameController.addEnergy = false;
+    }
+
+    void ShiftCooldown()
+    {
+        if (shiftCooldownTimer >= shiftCooldownMax)
+        {
+            canShift = true;
+            shiftCooldownTimer = shiftCooldownMax;
+        }
+        else
+        {
+            shiftCooldownTimer += Time.deltaTime;
+        }
+    }
+
     void ControlUI()
     {
         healthSlider.value = currentHealth;
         shieldSlider.value = currentShield;
         rocketText.text = weaponsSystems.currentSecondaryAmmo.ToString();
+        darkSlider.value = darkEnergy;
+        lightSlider.value = lightEnergy;
+        shiftSlider.value = shiftCooldownTimer;
     }
 }
