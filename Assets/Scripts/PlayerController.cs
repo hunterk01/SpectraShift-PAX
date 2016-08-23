@@ -148,6 +148,7 @@ public class PlayerController : LivingEntity
                         if (darkEnergy < 0)
                         {
                             darkEnergy = 0;
+                            weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
                         }
                     }
                 }
@@ -162,6 +163,7 @@ public class PlayerController : LivingEntity
                     if (lightEnergy < 0)
                     {
                         lightEnergy = 0;
+                        weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
                     }
                 }
             }
