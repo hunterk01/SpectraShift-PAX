@@ -235,7 +235,7 @@ public class PlayerController : LivingEntity
     {
         if (!isLight)
         {
-            darkEnergy += energyRegen;
+            darkEnergy += energyRegen * Time.deltaTime;
 
             if (darkEnergy > darkEnergyMax)
             {
@@ -245,7 +245,7 @@ public class PlayerController : LivingEntity
 
         if (isLight)
         {
-            lightEnergy += energyRegen;
+            lightEnergy += energyRegen * Time.deltaTime;
 
             if (lightEnergy > lightEnergyMax)
             {

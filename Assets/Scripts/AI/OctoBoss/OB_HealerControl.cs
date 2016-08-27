@@ -5,6 +5,7 @@ public class OB_HealerControl : LivingEntity
 {
     public float speed = 8;
     public float healerStopDistance = 18;
+    public Object object1;
 
     float distance;
     float hoverHeight;
@@ -59,7 +60,9 @@ public class OB_HealerControl : LivingEntity
     void HealCheck()
     {
         // Play healing vfx
-
+        Object currentObject1 = object1 ?? gameObject;
+        GameObject targetGameObject1 = currentObject1 as GameObject;
+        targetGameObject1.SetActive(true);
 
         // Healing control switch
         if (gameObject != null)
