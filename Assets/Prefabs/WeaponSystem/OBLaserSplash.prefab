@@ -83,7 +83,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 1.2
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -118,7 +118,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 8
+      scalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -234,7 +234,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4282532607
       minMaxState: 0
     startSize:
       scalar: 1
@@ -384,7 +384,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 4
-    radius: 0.5401275
+    radius: 0.1256745
     angle: 71.88021
     length: 5
     boxX: 1
@@ -455,7 +455,7 @@ ParticleSystem:
   SizeModule:
     enabled: 1
     curve:
-      scalar: 0.8
+      scalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:

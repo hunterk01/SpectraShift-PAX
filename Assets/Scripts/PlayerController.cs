@@ -138,33 +138,29 @@ public class PlayerController : LivingEntity
         if (Input.GetButton("Fire1"))
         {
             if (isLight)
-            { 
+            {
                 if (darkEnergy > 0)
-                   {                   
-                        weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-                        Debug.Log("Attempt Firing Laser");
-                        darkEnergy -= energyPerShot;
-
-                        if (darkEnergy < 0)
-                        {
-                            darkEnergy = 0;
-                            weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
-                        }
-                    }
+                {
+                    weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                    Debug.Log("Attempt Firing Laser");
                 }
+                else
+                {
+                    darkEnergy = 0;
+                    weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
+                }
+            }
             else if (!isLight)
             {
                 if (lightEnergy > 0)
                 {
                     weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
                     Debug.Log("Attempt Firing Laser");
-                    lightEnergy -= energyPerShot;
-
-                    if (lightEnergy < 0)
-                    {
-                        lightEnergy = 0;
-                        weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
-                    }
+                }
+                else
+                {
+                    lightEnergy = 0;
+                    weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
                 }
             }
         }
@@ -219,7 +215,6 @@ public class PlayerController : LivingEntity
                 buttonCount += 1;
             }
         }
-        */
 
         if (buttonTimer > 0)
         {
@@ -229,6 +224,7 @@ public class PlayerController : LivingEntity
         {
             buttonCount = 0;
         }
+        */
     }
 
     public void EnergyRegen()

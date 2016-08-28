@@ -16,6 +16,8 @@ public class ShiftLaser : MonoBehaviour, IGun
     bool isLight = true;
     bool fired = false;
 
+    GameController gameController;
+
     public Canvas PlayerUI;
     public GameObject lightBolt;   
     public GameObject darkBolt;   
@@ -28,6 +30,7 @@ public class ShiftLaser : MonoBehaviour, IGun
     void Start ()
     {
         laserDelay = maxDelay;
+        gameController = GameObject.FindWithTag("WorldController").GetComponent<GameController>();
         lightBoltPartical = GetComponent<ParticleSystem>();
         darkBoltPartical = GetComponent<ParticleSystem>();      
     }
@@ -43,6 +46,7 @@ public class ShiftLaser : MonoBehaviour, IGun
             if (isLight)
             {
                 tempBulletHandler = Instantiate(lightBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+                gameController.shotFired();
                 if (!isLight)
                 {
                     lightBoltPartical.Stop();
@@ -52,6 +56,7 @@ public class ShiftLaser : MonoBehaviour, IGun
             else if(!isLight)
             {              
                 tempBulletHandler = Instantiate(darkBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+                gameController.shotFired();
                 if (isLight)
                 {
                     darkBoltPartical.Stop();
