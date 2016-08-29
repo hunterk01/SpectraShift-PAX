@@ -614,7 +614,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454970}
-  - 33: {fileID: 3354712}
   - 135: {fileID: 13512448}
   - 23: {fileID: 2351196}
   - 114: {fileID: 11418524}
@@ -630,7 +629,7 @@ GameObject:
   - 114: {fileID: 11430076}
   - 114: {fileID: 11428772}
   m_Layer: 8
-  m_Name: ship_mosquito
+  m_Name: ship_Mosquito
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1322,8 +1321,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.85, y: 4.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 11.85, y: 4.5, z: -36.54}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
   m_Children:
   - {fileID: 484434}
   - {fileID: 409388}
@@ -1889,7 +1888,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165946}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -2390,13 +2389,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183032}
   m_Mesh: {fileID: 4300010, guid: bddc2901cc2435342bd0d9b6aa3b18ea, type: 3}
---- !u!33 &3354712
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165946}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3358402
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2566,6 +2558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c97283765c79874e89c397636ae2bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   isLight: 1
   startingHealth: 10
   startingShield: 0
@@ -2619,9 +2612,10 @@ MonoBehaviour:
   spawner: {fileID: 0}
   boundsPosition: {x: 0, y: 0, z: 0}
   patrolWaypoints:
-  - {x: -9.17832, y: 3, z: 132.11804}
-  - {x: 4.666753, y: 3, z: 143.23486}
-  - {x: -22.69188, y: 3, z: 135.77403}
+  - {x: 8.022493, y: 4.5, z: 269.476}
+  - {x: 227.55205, y: 4.5, z: 74.44}
+  - {x: 4.407503, y: 4.5, z: 164.47603}
+  - {x: 222.75644, y: 4.5, z: -45.559998}
   waypointArriveDistance: 0.5
   worldWaypointPosition: {x: 0, y: 0, z: 0}
   waypointSize: 0
@@ -2757,8 +2751,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 0, z: -0.21}
 --- !u!136 &13688878
 CapsuleCollider:
   m_ObjectHideFlags: 1
