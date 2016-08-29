@@ -770,7 +770,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 405.2, y: 3.5, z: 149.7}
+  m_LocalPosition: {x: 4.35, y: 3.5, z: -39.71}
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children:
   - {fileID: 445672}
@@ -2546,10 +2546,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53c551d290e8a7488f3047f73394afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   isLight: 1
   startingHealth: 100
   startingShield: 50
-  octoBossGun: 0
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
   healthRegenRate: 15
   shieldRegenRate: 12
@@ -2565,8 +2565,8 @@ MonoBehaviour:
   lightEnergyMax: 50
   darkEnergy: 1
   darkEnergyMax: 50
-  energyRegen: 0.2
-  energyPerShot: 0.6
+  energyRegen: 3
+  energyPerShot: 1.5
   onKillRegen: 5
   shiftCooldownMax: 5
   shiftCooldownRate: 0.1

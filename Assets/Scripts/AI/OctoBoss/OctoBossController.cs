@@ -27,6 +27,7 @@ public class OctoBossController : MonoBehaviour
     public Slider[] healthSliders;
     public GameObject healer;
     public GameObject core;
+    public GameObject victoryTrigger;
 
     public float healerSpawnDelay = 15;
 
@@ -129,6 +130,7 @@ public class OctoBossController : MonoBehaviour
         {
             coreAlive = false;
             obCoreUI.enabled = false;
+            victoryTrigger.SetActive(true);
         }
     }
 

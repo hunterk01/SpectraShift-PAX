@@ -10,7 +10,6 @@ public class PlayerController : LivingEntity
     WeaponSystems weaponsSystems;
     Afterburners afterburners;
     PauseGame pause;
-    GameController gameController;
 
     public Slider healthSlider;
     public Slider shieldSlider;
@@ -49,7 +48,6 @@ public class PlayerController : LivingEntity
         weaponsSystems = GetComponent<WeaponSystems>();
         afterburners = GameObject.FindWithTag("Afterburners").GetComponent<Afterburners>();
         pause = GameObject.FindWithTag("WorldController").GetComponent<PauseGame>();
-        gameController = GameObject.FindWithTag("WorldController").GetComponent<GameController>();
         healthSlider.maxValue = startingHealth;
         shieldSlider.maxValue = startingShield;
         shiftSlider.maxValue = shiftCooldownMax;
@@ -138,33 +136,29 @@ public class PlayerController : LivingEntity
         if (Input.GetButton("Fire1"))
         {
             if (isLight)
-            { 
+            {
                 if (darkEnergy > 0)
-                   {                   
-                        weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
-                        Debug.Log("Attempt Firing Laser");
-                        darkEnergy -= energyPerShot;
-
-                        if (darkEnergy < 0)
-                        {
-                            darkEnergy = 0;
-                            weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
-                        }
-                    }
+                {
+                    weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
+                    Debug.Log("Attempt Firing Laser");
                 }
+                else
+                {
+                    darkEnergy = 0;
+                    weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
+                }
+            }
             else if (!isLight)
             {
                 if (lightEnergy > 0)
                 {
                     weaponsSystems.setState(WeaponSystems.WEAPON.PRIMARY);
                     Debug.Log("Attempt Firing Laser");
-                    lightEnergy -= energyPerShot;
-
-                    if (lightEnergy < 0)
-                    {
-                        lightEnergy = 0;
-                        weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
-                    }
+                }
+                else
+                {
+                    lightEnergy = 0;
+                    weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
                 }
             }
         }
@@ -219,7 +213,6 @@ public class PlayerController : LivingEntity
                 buttonCount += 1;
             }
         }
-        */
 
         if (buttonTimer > 0)
         {
@@ -229,13 +222,14 @@ public class PlayerController : LivingEntity
         {
             buttonCount = 0;
         }
+        */
     }
 
     public void EnergyRegen()
     {
         if (!isLight)
         {
-            darkEnergy += energyRegen;
+            darkEnergy += energyRegen * Time.deltaTime;
 
             if (darkEnergy > darkEnergyMax)
             {
@@ -245,7 +239,7 @@ public class PlayerController : LivingEntity
 
         if (isLight)
         {
-            lightEnergy += energyRegen;
+            lightEnergy += energyRegen * Time.deltaTime;
 
             if (lightEnergy > lightEnergyMax)
             {

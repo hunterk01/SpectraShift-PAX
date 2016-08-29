@@ -40,9 +40,17 @@ public class OB_BoltAI : MonoBehaviour, IProjectile
        
         if (Physics.Raycast(transform.position, bulletForward, out hit, 2f, collisionMask))
         {
-            IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
-            LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
-            hitTarget(damageableObject);
+            if (hit.collider.tag != "NotDestructable")
+            {
+                IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+                LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
+                hitTarget(damageableObject);
+            }
+            else
+            {
+                Instantiate(LaserSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, splashOffset), gameObject.transform.rotation);
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -58,7 +66,7 @@ public class OB_BoltAI : MonoBehaviour, IProjectile
         hitObject.TakeHit(damage, hit);
         Instantiate(LaserSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, splashOffset), gameObject.transform.rotation);
         //Debug.Log("HIT!!!!!!");
-        GameObject.Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     bool IProjectile.shiftState

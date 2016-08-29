@@ -5,12 +5,12 @@ using UnityEngine.UI;
 public class LivingEntity : MonoBehaviour, IDamageable
 {
     PlayerController playercontroller;
-    GameController gameController;
+    [HideInInspector]
+    public GameController gameController;
 
     public bool isLight;
     public float startingHealth;
     public float startingShield;
-    public bool octoBossGun = false;
 
     public GameObject Explosion;   
     private GameOver gameover;

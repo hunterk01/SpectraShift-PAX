@@ -5,7 +5,7 @@ public class HGooAI : MonoBehaviour, IProjectile
 { 
 
     public float maxSpeed = 30;
-    private const float maxDamage = 20;
+    public float maxDamage = 20;
     private const float maxTurnSpeed = 10;
     private float distanceToTarget;
     public float turnSpeed = 5;
@@ -67,9 +67,17 @@ public class HGooAI : MonoBehaviour, IProjectile
         }
         if (Physics.Raycast(transform.position, bulletForward, out hit, .5f, collisionMask))
         {
-            IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
-            LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
-            hitTarget(damageableObject);
+            if (hit.collider.tag != "NotDestructable")
+            {
+                IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+                LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
+                hitTarget(damageableObject);
+            }
+            else
+            {
+                Instantiate(gooSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, gooSplashOffset), gameObject.transform.rotation);
+                Destroy(gameObject);
+            }
         }
 
         if (gooLifetime < 0)

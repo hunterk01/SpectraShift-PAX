@@ -6,7 +6,7 @@ public class BoltAI : MonoBehaviour, IProjectile
     //Base Speed and Damage Multiplier as well as Base Damage
     private float speed = 80.0f;
     //private float dmgMultiplier = 1.0f;
-    private float damage = 5.0f;
+    public float damage = 5.0f;
     private RaycastHit hit;
     public LayerMask collisionMask;
     public GameObject LaserSplash;
@@ -22,8 +22,7 @@ public class BoltAI : MonoBehaviour, IProjectile
     void Start()
     {
         laserTran = gameObject.GetComponent<Transform>();
-        boltHeight = HeightManager.Instance.setHeight;       
-
+        boltHeight = HeightManager.Instance.setHeight;
     }
 
     // Update is called once per frame
@@ -40,9 +39,17 @@ public class BoltAI : MonoBehaviour, IProjectile
        
         if (Physics.Raycast(transform.position, bulletForward, out hit, 2f, collisionMask))
         {
-            IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
-            LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
-            hitTarget(damageableObject);
+            if (hit.collider.tag != "NotDestructable")
+            {
+                IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+                LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
+                hitTarget(damageableObject);
+            }
+            else
+            {
+                Instantiate(LaserSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, splashOffset), gameObject.transform.rotation);
+                GameObject.Destroy(gameObject);
+            }
         }
     }
 
@@ -57,7 +64,6 @@ public class BoltAI : MonoBehaviour, IProjectile
     {
         hitObject.TakeHit(damage, hit);
         Instantiate(LaserSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, splashOffset), gameObject.transform.rotation);
-        //Debug.Log("HIT!!!!!!");
         GameObject.Destroy(gameObject);
     }
 
