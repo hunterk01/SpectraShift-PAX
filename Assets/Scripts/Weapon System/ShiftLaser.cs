@@ -46,7 +46,9 @@ public class ShiftLaser : MonoBehaviour, IGun
             if (isLight)
             {
                 tempBulletHandler = Instantiate(lightBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+
                 gameController.shotFired();
+
                 if (!isLight)
                 {
                     lightBoltPartical.Stop();
@@ -56,7 +58,9 @@ public class ShiftLaser : MonoBehaviour, IGun
             else if(!isLight)
             {              
                 tempBulletHandler = Instantiate(darkBolt, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+
                 gameController.shotFired();
+
                 if (isLight)
                 {
                     darkBoltPartical.Stop();

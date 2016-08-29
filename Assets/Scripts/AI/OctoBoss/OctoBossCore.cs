@@ -20,7 +20,6 @@ public class OctoBossCore : LivingEntity
     public float fireDistance = 60;
     public float energyGainThreshold = 10;
 
-
     public GameObject OB_Bolt;
     public GameObject OB_Ball;
     public GameObject bulletSpawn;
@@ -67,6 +66,11 @@ public class OctoBossCore : LivingEntity
             {
                 CheckHealing();
                 ControlUI();
+            }
+
+            if (!obControl.player.isLight)
+            {
+                weaponSystems.setState(WeaponSystems.WEAPON.BLANK);
             }
         }
 	}
@@ -206,7 +210,7 @@ public class OctoBossCore : LivingEntity
 
             if (damageInflicted >= energyGainThreshold)
             {
-                // set WC addEnergy;
+                gameController.addEnergy = true;
 
                 damageInflicted -= energyGainThreshold;
             }

@@ -241,25 +241,28 @@ public class OctoBossGun : LivingEntity
 
     void ShootGun()
     {
-        if (firstShot)
+        if (obControl.player.isLight)
         {
-            Destroy(Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation), shotLifetime);
-            firstShot = false;
-        }
-
-        shotTimer -= Time.deltaTime;
-
-        if (shotTimer <= 0 && obControl.player.isLight)
-        {
-            Destroy(Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation), shotLifetime);
-
-            if (obControl.spinMode)
+            if (firstShot)
             {
-                shotTimer = fireRateFast;
+                Destroy(Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation), shotLifetime);
+                firstShot = false;
             }
-            else
+
+            shotTimer -= Time.deltaTime;
+
+            if (shotTimer <= 0)
             {
-                shotTimer = fireRateNormal;
+                Destroy(Instantiate(OB_Bolt, bulletSpawn.transform.position, bulletSpawn.transform.rotation), shotLifetime);
+
+                if (obControl.spinMode)
+                {
+                    shotTimer = fireRateFast;
+                }
+                else
+                {
+                    shotTimer = fireRateNormal;
+                }
             }
         }
     }
@@ -311,7 +314,7 @@ public class OctoBossGun : LivingEntity
 
             if (damageInflicted >= energyGainThreshold)
             {
-                // set WC addEnergy;
+                gameController.addEnergy = true;
 
                 damageInflicted -= energyGainThreshold;
             }

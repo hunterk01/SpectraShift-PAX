@@ -19,11 +19,13 @@ public class EnemySpawner : MonoBehaviour
     int unspawnedEnemies;
     int enemiesAlive;
     float nextSpawnTime;
+    float waypointPositionX, waypointPositionZ;
     bool startSpawn;
+    bool boundsSet = false;
 
     // Patrol area bounds
     Color color = Color.green;
-    float setY = 3f;
+    float setY = 4.5f;
     float minX, maxX, minZ, maxZ;
     Vector3 topLeft, topRight, lowerLeft, lowerRight;
 
@@ -38,12 +40,17 @@ public class EnemySpawner : MonoBehaviour
     {
         playerTarget = GameObject.FindGameObjectWithTag("Player");
         startSpawn = false;
-        SetPatrolAreaBounds();
+        //SetPatrolAreaBounds();
         enemies = new GameObject[squadron.enemyCount];
 	}
 	
 	void Update ()
     {
+        if (!boundsSet)
+        {
+            SetPatrolAreaBounds();
+        }
+
         if (spawnerOn)
         {
             SpawnDetection();
@@ -95,8 +102,29 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < patrolPoints; i++)
         {
-            float waypointPositionX = Random.Range(minX, maxX);
-            float waypointPositionZ = Random.Range(minZ, maxZ);
+            if (i == 0)
+            {
+                waypointPositionX = Random.Range(minX, maxX);
+                waypointPositionZ = maxZ;
+            }
+            else if (i == 1)
+            {
+                waypointPositionX = Random.Range(minZ, maxZ);
+                waypointPositionZ = maxX;
+            }
+            else if (i == 2)
+            {
+                waypointPositionX = Random.Range(minX, maxX);
+                waypointPositionZ = minZ;
+            }
+            else if (i == 3)
+            {
+                waypointPositionX = Random.Range(minZ, maxZ);
+                waypointPositionZ = minX;
+            }
+
+            //float waypointPositionX = Random.Range(minX, maxX);
+            //float waypointPositionZ = Random.Range(minZ, maxZ);
 
             patrol.patrolWaypoints[i] = new Vector3(waypointPositionX, setY, waypointPositionZ);
         }
@@ -130,6 +158,8 @@ public class EnemySpawner : MonoBehaviour
         topRight = new Vector3(maxX, setY, maxZ);
         lowerLeft = new Vector3(minX, setY, minZ);
         lowerRight = new Vector3(maxX, setY, minZ);
+
+        boundsSet = true;
     }
 
     void DestroySpawnedEnemies()

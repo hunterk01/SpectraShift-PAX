@@ -10,7 +10,6 @@ public class PlayerController : LivingEntity
     WeaponSystems weaponsSystems;
     Afterburners afterburners;
     PauseGame pause;
-    GameController gameController;
 
     public Slider healthSlider;
     public Slider shieldSlider;
@@ -49,7 +48,6 @@ public class PlayerController : LivingEntity
         weaponsSystems = GetComponent<WeaponSystems>();
         afterburners = GameObject.FindWithTag("Afterburners").GetComponent<Afterburners>();
         pause = GameObject.FindWithTag("WorldController").GetComponent<PauseGame>();
-        gameController = GameObject.FindWithTag("WorldController").GetComponent<GameController>();
         healthSlider.maxValue = startingHealth;
         shieldSlider.maxValue = startingShield;
         shiftSlider.maxValue = shiftCooldownMax;

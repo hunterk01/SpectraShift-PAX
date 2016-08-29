@@ -1743,7 +1743,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 56dee0fec4438684b9f2eb3928cfa7f0, type: 2}
+  - {fileID: 2100000, guid: 10a4f1c312b035d49bd5c339be755f8f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1769,7 +1769,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 56dee0fec4438684b9f2eb3928cfa7f0, type: 2}
+  - {fileID: 2100000, guid: 10a4f1c312b035d49bd5c339be755f8f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1821,7 +1821,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 56dee0fec4438684b9f2eb3928cfa7f0, type: 2}
+  - {fileID: 2100000, guid: 10a4f1c312b035d49bd5c339be755f8f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1847,7 +1847,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 56dee0fec4438684b9f2eb3928cfa7f0, type: 2}
+  - {fileID: 2100000, guid: 10a4f1c312b035d49bd5c339be755f8f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1873,7 +1873,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 56dee0fec4438684b9f2eb3928cfa7f0, type: 2}
+  - {fileID: 2100000, guid: 10a4f1c312b035d49bd5c339be755f8f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2092,10 +2092,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4d672a9d769774db8397bf4ebaa7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   isLight: 0
   startingHealth: 25
   startingShield: 0
-  octoBossGun: 0
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
   healthRegenRate: 2
   shieldRegenRate: 0
