@@ -7,7 +7,7 @@ public class OctoBossShell : LivingEntity
 
     public OctoBossController obControl;
 
-	void Update ()
+    void Update ()
     {
         if (obControl.startFight)
         {
@@ -32,6 +32,7 @@ public class OctoBossShell : LivingEntity
 
     void DestroyShell()
     {
+
         // Play shell explosion vfx
         Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
 

@@ -13,6 +13,7 @@ public class HRocketAI : MonoBehaviour, IProjectile
     
     private GameObject enemy;
     private Transform rocketTran;
+    public GameObject explosion;
     private RaycastHit hit;
     public LayerMask collisionMask;
     public float rocketHeight;
@@ -56,15 +57,25 @@ public class HRocketAI : MonoBehaviour, IProjectile
 
         if (Physics.Raycast(transform.position, bulletForward, out hit, .5f, collisionMask))
         {
-            IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
-            LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
-            hitTarget(damageableObject);
+            if (hit.collider.tag != "NotDestructable")
+            {
+                IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+                LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
+                hitTarget(damageableObject);
+            }
+
+            else
+            {
+                Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+                Destroy(gameObject);
+            }
         }
     }
 
     void hitTarget(IDamageable hitObject)
     {
-        hitObject.TakeHit(damage, hit);        
+        hitObject.TakeHit(damage, hit);
+        Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
         GameObject.Destroy(gameObject);
     }
 

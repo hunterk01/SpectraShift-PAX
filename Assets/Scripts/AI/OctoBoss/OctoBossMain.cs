@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class OctoBossMain : MonoBehaviour
 {
     public float rotationSpeed = 40;
 
     public OctoBossController obControl;
+
+    public Object eyeExplosion;
 
     float bodyRotation;
 
@@ -32,8 +35,11 @@ public class OctoBossMain : MonoBehaviour
 
     void CheckForDeath()
     {
+
         if (!obControl.coreAlive)
         {
+            Instantiate(eyeExplosion, gameObject.transform.position, Quaternion.identity);
+
             GameObject.Destroy(gameObject);
         }
     }
