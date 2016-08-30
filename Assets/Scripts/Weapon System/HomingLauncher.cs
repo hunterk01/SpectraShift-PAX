@@ -5,7 +5,7 @@ public class HomingLauncher : MonoBehaviour, IGun
 {
     public float maxDelay = 0.5f;
     public float rocketLifetime = 10;
-    public float rocketRange = 40;
+    public float rocketRange = 50;
 
     public GameObject Rocket;
     private WeaponSystems weaponSystem;
@@ -22,7 +22,7 @@ public class HomingLauncher : MonoBehaviour, IGun
     // Use this for initialization
     void Start()
     {
-        rocketDelay = 0;
+        rocketDelay = maxDelay;
         isLight = true;
         isLoaded = true;
         weaponSystem = GetComponentInParent<WeaponSystems>();
@@ -30,13 +30,10 @@ public class HomingLauncher : MonoBehaviour, IGun
 
     void IGun.fire()
     {
-        if (firstShot)
-        {
-            rocketDelay = 0;
-        }
-
+        rocketDelay = rocketDelay - Time.deltaTime;
         if (rocketDelay <= 0)
         {
+            rocketDelay = maxDelay;
             GameObject tempBulletHandler;
             GameObject tempEnemy = findClosestEnemy();
             //displacement = tempEnemy.transform.position - transform.position;
@@ -53,16 +50,9 @@ public class HomingLauncher : MonoBehaviour, IGun
                     isLoaded = false;
                     Destroy(tempBulletHandler, rocketLifetime);
                     weaponSystem.manageSecondaryAmmo(ammoUsage);
-
-                    rocketDelay = maxDelay;
-                    firstShot = false;
                 }
                 else Debug.Log("No Enemy Lock");
             }
-        }
-        else
-        {
-            rocketDelay = rocketDelay - Time.deltaTime;
         }
     }
 

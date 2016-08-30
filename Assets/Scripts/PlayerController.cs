@@ -103,7 +103,7 @@ public class PlayerController : LivingEntity
         // if (-deadzone > horiz_cInput.x || horiz_cInput.x > deadzone)
 
         triggers_cInput = Input.GetAxis("Triggers");
-        if (triggers_cInput >= 0.1f)   movingEntity.Thrust(triggers_cInput);
+        if (-0.1f >= triggers_cInput || triggers_cInput >= 0.1f)   movingEntity.Thrust(triggers_cInput);
 
         // Keyboard flight controls
         horiz_kbInput = Input.GetAxis("Horizontal");
@@ -169,7 +169,8 @@ public class PlayerController : LivingEntity
             weaponsSystems.setState(WeaponSystems.WEAPON.SECONDARY);
             Debug.Log("Attempt Rocket Firing");
         }
-        else weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
+        else
+            weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
 
         if (canShift)
         {
