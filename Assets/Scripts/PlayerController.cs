@@ -103,7 +103,7 @@ public class PlayerController : LivingEntity
         // if (-deadzone > horiz_cInput.x || horiz_cInput.x > deadzone)
 
         triggers_cInput = Input.GetAxis("Triggers");
-        if (triggers_cInput != 0)   movingEntity.Thrust(triggers_cInput);
+        if (triggers_cInput >= 0.1f)   movingEntity.Thrust(triggers_cInput);
 
         // Keyboard flight controls
         horiz_kbInput = Input.GetAxis("Horizontal");
