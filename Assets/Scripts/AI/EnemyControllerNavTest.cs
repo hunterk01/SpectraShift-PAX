@@ -58,8 +58,10 @@ public class EnemyControllerNavTest: LivingEntity
         enemyState = EnemyState.PATROL;
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         Hover();
         ShiftCheck();
         CheckState();

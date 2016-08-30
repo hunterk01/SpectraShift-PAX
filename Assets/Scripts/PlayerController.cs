@@ -56,8 +56,10 @@ public class PlayerController : LivingEntity
         shiftCooldownTimer = shiftCooldownMax;      
     }
 
-    void Update ()
+    protected override void Update ()
     {
+        base.Update();
+
         if (playerControl)
         {
             InputControl();

@@ -24,7 +24,7 @@ public class OctoBossController : MonoBehaviour
     public Canvas obGunUI;
 
     public GameObject[] healerSpawnPoints;
-    public Slider[] healthSliders;
+    public GameObject[] healthSliders;
     public GameObject healer;
     public GameObject core;
     public GameObject victoryTrigger;
@@ -60,7 +60,7 @@ public class OctoBossController : MonoBehaviour
                 CoreCheck();
             }
 
-            SpawnHealer();
+            if (core != null)   SpawnHealer();
         }
     }
 
@@ -107,6 +107,10 @@ public class OctoBossController : MonoBehaviour
             if (guns[i] != null)
             {
                 tempGunCount++;
+            }
+            else
+            {
+                healthSliders[i].SetActive(false);
             }
         }
 

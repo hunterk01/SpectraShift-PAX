@@ -75,14 +75,14 @@ public class HGooAI : MonoBehaviour, IProjectile
             }
             else
             {
-                Instantiate(gooSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, gooSplashOffset), gameObject.transform.rotation);
+                Destroy(Instantiate(gooSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, gooSplashOffset), gameObject.transform.rotation), 2);
                 Destroy(gameObject);
             }
         }
 
         if (gooLifetime < 0)
         {
-            Instantiate(projectileExplosion, gameObject.transform.position, Quaternion.identity);            
+            Destroy(Instantiate(projectileExplosion, gameObject.transform.position, Quaternion.identity), 2);            
             Destroy(gameObject);
         }
         else
@@ -94,7 +94,7 @@ public class HGooAI : MonoBehaviour, IProjectile
     void hitTarget(IDamageable hitObject)
     {
         hitObject.TakeHit(damage, hit);
-        Instantiate(gooSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, gooSplashOffset), gameObject.transform.rotation);
+        Destroy(Instantiate(gooSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, gooSplashOffset), gameObject.transform.rotation), 2);
         GameObject.Destroy(gameObject);
     }
 

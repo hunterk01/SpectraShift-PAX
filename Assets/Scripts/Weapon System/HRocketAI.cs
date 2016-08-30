@@ -75,7 +75,7 @@ public class HRocketAI : MonoBehaviour, IProjectile
     void hitTarget(IDamageable hitObject)
     {
         hitObject.TakeHit(damage, hit);
-        Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation), 2);
         GameObject.Destroy(gameObject);
     }
 

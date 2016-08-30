@@ -12,21 +12,30 @@ public class TriggerSingleEvent: MonoBehaviour
         public string text;
     }
 
+    public bool stopPlayer = false;
+
+    [Header("Pre-Dialog Events")]
+    public bool preDialogEvents = false;
+    public GameObject[] preEvents;
+
+    [Header("Dialog")]
     public Dialog[] dialog;
-    public GameObject[] events;
     public GameObject pilotChat;
     public GameObject dropshipChat;
     public Text pilotText;
     public Text dropshipText;
-    public bool stopPlayer = false;
     public bool delayStart = false;
-    public bool postDialogEvents = false;
     public float dialogDelay = 6;
     public float startDelay = 3;
+
+    [Header("Post-Dialog Events")]
+    public bool postDialogEvents = false;
+    public GameObject[] postEvents;
 
     bool triggerOn = false;
     bool playEvent = false;
     bool chatBoxSet = false;
+    bool preEventsHandled = false;
     float dialogTimer;
     float delayStartTimer;
     int dialogCount = 0;
@@ -72,6 +81,8 @@ public class TriggerSingleEvent: MonoBehaviour
 
     void PlayDialog()
     {
+        if (preDialogEvents && !preEventsHandled) RunPreEvents();
+
         if (dialogCount < dialog.Length)
         {
             if (stopPlayer)
@@ -115,18 +126,34 @@ public class TriggerSingleEvent: MonoBehaviour
                 player.playerControl = true;
             }
 
-            if (postDialogEvents)   EventsOn();
+            if (postDialogEvents)   RunPostEvents();
         }
     }
 
-    void EventsOn()
+    void RunPreEvents()
     {
-        for (int i = 0; i < events.Length; i++)
+        for (int i = 0; i < preEvents.Length; i++)
         {
-            events[i].SetActive(true);
+            if (preEvents[i].activeSelf == false)
+            {
+                preEvents[i].SetActive(true);
+            }
+            else
+            {
+                preEvents[i].SetActive(false);
+            }
+        }
+
+        preEventsHandled = true;
+    }
+
+    void RunPostEvents()
+    {
+        for (int i = 0; i < postEvents.Length; i++)
+        {
+            postEvents[i].SetActive(true);
         }
 
         gameObject.SetActive(false);
     }
-
 }

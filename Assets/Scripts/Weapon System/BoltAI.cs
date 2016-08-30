@@ -47,7 +47,7 @@ public class BoltAI : MonoBehaviour, IProjectile
             }
             else
             {
-                Instantiate(LaserSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, splashOffset), gameObject.transform.rotation);
+                Destroy(Instantiate(LaserSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, splashOffset), gameObject.transform.rotation), 2);
                 GameObject.Destroy(gameObject);
             }
         }
@@ -63,7 +63,7 @@ public class BoltAI : MonoBehaviour, IProjectile
     void hitTarget(IDamageable hitObject)
     {
         hitObject.TakeHit(damage, hit);
-        Instantiate(LaserSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, splashOffset), gameObject.transform.rotation);
+        Destroy(Instantiate(LaserSplash, gameObject.transform.position + gameObject.transform.TransformVector(0, 0, splashOffset), gameObject.transform.rotation), 2);
         GameObject.Destroy(gameObject);
     }
 

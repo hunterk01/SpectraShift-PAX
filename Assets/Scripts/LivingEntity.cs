@@ -21,7 +21,10 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected float currentHealth;
     protected float currentShield;
     protected bool dead;
-    
+
+    public bool deathDelay = false;
+    public float deathDelayMax;
+    float deathDelayTimer;
 
     public float healthRegenRate, shieldRegenRate;
     public float regenDelay;
@@ -34,9 +37,18 @@ public class LivingEntity : MonoBehaviour, IDamageable
         currentHealth = startingHealth;
         currentShield = startingShield;
         regenTimer = regenDelay;
+        deathDelayTimer = deathDelayMax;
         ammoDrop = gameObject.GetComponent<AmmoDrop>();
         gameover = GameObject.FindWithTag("WorldController").GetComponent<GameOver>();
         gameController = GameObject.FindWithTag("WorldController").GetComponent<GameController>();
+    }
+
+    protected virtual void Update()
+    {
+        if (dead)
+        {
+            HasDied();
+        }
     }
 
     public void TakeHit(float damage, RaycastHit hit)
@@ -58,7 +70,8 @@ public class LivingEntity : MonoBehaviour, IDamageable
              
         if (currentHealth <= 0 && !dead)
         {
-            HasDied();
+            //HasDied();
+            dead = true;
         }
 
         if (regenTimer < regenDelay)
@@ -69,28 +82,47 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     public void HasDied()
     {
+        Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
+
+        if (deathDelay)
+        {
+            if (deathDelayTimer < 0)
+            {
+                Destruction();
+            }
+            else
+            {
+                deathDelayTimer -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            Destruction();
+        }  
+    }
+
+    void Destruction()
+    {
         dead = true;
-        
+
         if (OnDeath != null)
         {
-            OnDeath();                      
+            OnDeath();
         }
 
-        Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
-       
         if (gameObject.tag == "Player")
-        {                              
-            gameover.gameOver();                         
-            GameObject.Destroy(gameObject);                       
+        {
+            gameover.gameOver();
         }
         else
         {
             gameController.addEnergy = true;
             ammoDrop.itemDrop();
-            GameObject.Destroy(gameObject);          
         }
-        
+
+        GameObject.Destroy(gameObject);
     }
+
 
     public void Regen()
     {

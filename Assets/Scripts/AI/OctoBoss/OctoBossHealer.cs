@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OB_HealerControl : LivingEntity
+public class OctoBossHealer : LivingEntity
 {
     public float speed = 8;
     public float healerStopDistance = 18;
@@ -26,8 +26,10 @@ public class OB_HealerControl : LivingEntity
         SetHeight();
     }
 
-	void Update ()
+    protected override void Update()
     {
+        base.Update();
+
         MoveHealer();
         CoreCheck(); 
 	}

@@ -770,7 +770,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.35, y: 3.5, z: -39.71}
+  m_LocalPosition: {x: 412, y: 3.5, z: 150}
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children:
   - {fileID: 445672}
@@ -2442,7 +2442,7 @@ Light:
   m_SpotAngle: 115
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -2451,7 +2451,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2551,9 +2551,11 @@ MonoBehaviour:
   startingHealth: 100
   startingShield: 50
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
+  deathDelay: 0
+  deathDelayMax: 0
   healthRegenRate: 15
   shieldRegenRate: 12
-  regenDelay: 10
+  regenDelay: 5
   regenEnabled: 0
   healthSlider: {fileID: 0}
   shieldSlider: {fileID: 0}

@@ -55,9 +55,11 @@ public class OctoBossCore : LivingEntity
         SetHeight();
         enemyState = EnemyState.TRACK_FAR;
 	}
-	
-	void Update ()
+
+    protected override void Update()
     {
+        base.Update();
+
         if (obControl.startFight)
         {
             StateResolution();

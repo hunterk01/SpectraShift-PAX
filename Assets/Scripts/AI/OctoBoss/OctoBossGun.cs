@@ -59,9 +59,11 @@ public class OctoBossGun : LivingEntity
         healthSlider.maxValue = startingHealth;
         oldHealth = currentHealth;       
     }
-	
-	void Update ()
+
+    protected override void Update()
     {
+        base.Update();
+
         if (obControl.startFight)
         {
             if (obControl.spinMode)
