@@ -30,10 +30,10 @@ public class HomingLauncher : MonoBehaviour, IGun
 
     void IGun.fire()
     {
-        rocketDelay = rocketDelay - Time.deltaTime;
-        if (rocketDelay <= 0)
+        //rocketDelay = rocketDelay - Time.deltaTime;
+        if (weaponSystem.rocketReady   /*rocketDelay <= 0*/)
         {
-            rocketDelay = maxDelay;
+            //rocketDelay = maxDelay;
             GameObject tempBulletHandler;
             GameObject tempEnemy = findClosestEnemy();
             //displacement = tempEnemy.transform.position - transform.position;
@@ -50,6 +50,7 @@ public class HomingLauncher : MonoBehaviour, IGun
                     isLoaded = false;
                     Destroy(tempBulletHandler, rocketLifetime);
                     weaponSystem.manageSecondaryAmmo(ammoUsage);
+                    weaponSystem.rocketReady = false;
                 }
                 else Debug.Log("No Enemy Lock");
             }

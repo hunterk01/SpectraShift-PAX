@@ -10,6 +10,7 @@ public class PlayerController : LivingEntity
     WeaponSystems weaponsSystems;
     Afterburners afterburners;
     PauseGame pause;
+    Rigidbody rb;
 
     public Slider healthSlider;
     public Slider shieldSlider;
@@ -26,6 +27,7 @@ public class PlayerController : LivingEntity
     public float onKillRegen = 5;
     public float shiftCooldownMax = 5f;
     public float shiftCooldownRate = 0.1f;
+    public float collisionForce = 100;
 
     public bool playerControl = false;
 
@@ -46,6 +48,7 @@ public class PlayerController : LivingEntity
         base.Start();
         movingEntity = GetComponent<MovingEntity>();
         weaponsSystems = GetComponent<WeaponSystems>();
+        rb = GetComponent<Rigidbody>();
         afterburners = GameObject.FindWithTag("Afterburners").GetComponent<Afterburners>();
         pause = GameObject.FindWithTag("WorldController").GetComponent<PauseGame>();
         healthSlider.maxValue = startingHealth;
@@ -164,13 +167,20 @@ public class PlayerController : LivingEntity
                 }
             }
         }
-        else if (Input.GetButton("Fire2"))
+        else if (Input.GetButtonDown("Fire2"))
         {
             weaponsSystems.setState(WeaponSystems.WEAPON.SECONDARY);
             Debug.Log("Attempt Rocket Firing");
         }
+        else if (Input.GetButtonUp("Fire2"))
+        {
+            weaponsSystems.rocketReady = true;
+        }
         else
+        {
             weaponsSystems.setState(WeaponSystems.WEAPON.BLANK);
+        }
+
 
         if (canShift)
         {
@@ -298,5 +308,20 @@ public class PlayerController : LivingEntity
         darkSlider.value = darkEnergy;
         lightSlider.value = lightEnergy;
         shiftSlider.value = shiftCooldownTimer;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        rb.constraints = RigidbodyConstraints.FreezeRotationY;
+
+        Vector3 direction = collision.contacts[0].point - transform.position;
+        direction = -direction.normalized;
+        rb.AddForce(direction * collisionForce);
+    }
+
+    void OnCollisionExit()
+    {
+
+        rb.constraints = RigidbodyConstraints.None;
     }
 }

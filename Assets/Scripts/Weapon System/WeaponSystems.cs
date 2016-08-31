@@ -19,6 +19,7 @@ public class WeaponSystems : MonoBehaviour
 
     public float maxSecondaryAmmo = 6;
     public float currentSecondaryAmmo;
+    public bool rocketReady = true;
 
     const float baseDamageModifier = 1.0f;
 

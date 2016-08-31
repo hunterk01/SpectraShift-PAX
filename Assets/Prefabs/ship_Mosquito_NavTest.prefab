@@ -2613,6 +2613,8 @@ MonoBehaviour:
   startingHealth: 10
   startingShield: 0
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
+  deathDelay: 0
+  deathDelayMax: 0
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
@@ -2640,7 +2642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropItem: {fileID: 148750, guid: 5af35412b34063e49998abf63942cfb6, type: 2}
+  dropItem: {fileID: 188748, guid: e6479f25ec5833746b27e790c48dc9dd, type: 2}
   dropRate: 15
 --- !u!114 &11432836
 MonoBehaviour:
@@ -2715,6 +2717,7 @@ MonoBehaviour:
   rightHardpoint: {fileID: 0}
   maxSecondaryAmmo: 10
   currentSecondaryAmmo: 0
+  rocketReady: 1
 --- !u!114 &11478804
 MonoBehaviour:
   m_ObjectHideFlags: 1

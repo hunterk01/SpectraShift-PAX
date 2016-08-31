@@ -334,6 +334,8 @@ MonoBehaviour:
   startingHealth: 10
   startingShield: 0
   Explosion: {fileID: 158486, guid: ad9c0a3ef5db2964e8ac7245fdc19661, type: 2}
+  deathDelay: 0
+  deathDelayMax: 0
   healthRegenRate: 0
   shieldRegenRate: 0
   regenDelay: 0
@@ -397,6 +399,7 @@ MonoBehaviour:
   rightHardpoint: {fileID: 426716}
   maxSecondaryAmmo: 10
   currentSecondaryAmmo: 0
+  rocketReady: 1
 --- !u!114 &11432452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -501,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fb0ce3a29767e4e9899869d3500d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropItem: {fileID: 148750, guid: 5af35412b34063e49998abf63942cfb6, type: 2}
+  dropItem: {fileID: 148684, guid: f7e6702882e231f408f321a1245a747c, type: 2}
   dropRate: 20
 --- !u!136 &13623162
 CapsuleCollider:
