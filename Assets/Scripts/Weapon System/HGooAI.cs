@@ -14,6 +14,7 @@ public class HGooAI : MonoBehaviour, IProjectile
     public float gooSplashOffset = 1;
     public GameObject projectileExplosion;
 
+    PlayerController player;
     private GameObject enemy;
     private Transform rocketTran;
     private RaycastHit hit;
@@ -35,11 +36,17 @@ public class HGooAI : MonoBehaviour, IProjectile
         rocketHeight = HeightManager.Instance.setHeight;
         gooPartical = GetComponent<ParticleSystem>();
         gooCollider = GetComponent<Collider>();
+
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!player.isLight)
+        {
+            Destroy(gameObject);
+        }
         rocketTran.position = new Vector3(rocketTran.position.x, rocketHeight, rocketTran.position.z);
 
         if (enemy != null && !isLight)
