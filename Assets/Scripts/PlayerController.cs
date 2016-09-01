@@ -30,6 +30,7 @@ public class PlayerController : LivingEntity
     public float collisionForce = 100;
 
     public bool playerControl = false;
+    public bool inBossArea = false;
 
     float deadzone = 0.3f;
     float buttonTimer = 0.5f;

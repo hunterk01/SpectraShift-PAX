@@ -16,6 +16,7 @@ public class OctoBossController : MonoBehaviour
     public bool spinMode = false;
     public bool shellAlive = true;
     public bool coreAlive = true;
+    public bool spotPlayer = false;
 
     public PlayerController player;
     public GameObject playerTarget;

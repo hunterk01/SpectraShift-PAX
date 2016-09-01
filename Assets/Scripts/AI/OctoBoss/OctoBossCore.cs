@@ -19,6 +19,7 @@ public class OctoBossCore : LivingEntity
     public float gooPauseTimer, gooPauseMax = 1;
     public float fireDistance = 60;
     public float energyGainThreshold = 10;
+    public float spotPlayerTotal = 8;
 
     public GameObject OB_Bolt;
     public GameObject OB_Ball;
@@ -30,10 +31,13 @@ public class OctoBossCore : LivingEntity
     float shotLifetime = 3.0f;
     float playerDistance, playerAngle;
     float damageInflicted, oldHealth;
+    float spotPlayerElapsedTime;
     int shotCount = 0;
     bool shootGun = false;
     bool secondShotFired = false;
+    bool spotPlayerValuesSet = false;
     Vector3 playerDirection;
+    Quaternion eyeEnd;
 
     SteeringBasics steeringBasics;
     WeaponSystems weaponSystems;
@@ -74,6 +78,10 @@ public class OctoBossCore : LivingEntity
             {
                 weaponSystems.setState(WeaponSystems.WEAPON.BLANK);
             }
+        }
+        else if(obControl.spotPlayer)
+        {
+            //NoticePlayer();
         }
 	}
 

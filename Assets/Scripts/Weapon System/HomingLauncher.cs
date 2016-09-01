@@ -87,19 +87,58 @@ public class HomingLauncher : MonoBehaviour, IGun
         foreach (GameObject enemy in enemies)
         {
             var enemyController = enemy.GetComponent<EnemyControllerNavTest>();
-            if (enemyController == null) continue;
 
-            if (enemyController.isLight == player.isLight)
+            if (player.inBossArea)
             {
-                Vector3 diff = enemy.transform.position - position;
-                
-                float dot = Vector3.Dot(diff.normalized, gameObject.transform.forward);
-
-                float curDistance = diff.sqrMagnitude;
-                if (curDistance < distance && dot > 0.5f)
+                if (player.isLight)
                 {
-                    closest = enemy;
-                    distance = curDistance;
+                    if (enemyController != null) continue;
+
+                    Vector3 diff = enemy.transform.position - position;
+
+                    float dot = Vector3.Dot(diff.normalized, gameObject.transform.forward);
+
+                    float curDistance = diff.sqrMagnitude;
+                    if (curDistance < distance && dot > 0.5f)
+                    {
+                        closest = enemy;
+                        distance = curDistance;
+                    }
+                }
+                else
+                {
+                    var octoBossHealer = enemy.GetComponent<OctoBossHealer>();
+
+                    if (enemyController == null && octoBossHealer == null) continue;
+
+                    Vector3 diff = enemy.transform.position - position;
+
+                    float dot = Vector3.Dot(diff.normalized, gameObject.transform.forward);
+
+                    float curDistance = diff.sqrMagnitude;
+                    if (curDistance < distance && dot > 0.5f)
+                    {
+                        closest = enemy;
+                        distance = curDistance;
+                    }
+                }
+            }
+            else
+            {
+                if (enemyController == null) continue;
+
+                if (enemyController.isLight == player.isLight)
+                {
+                    Vector3 diff = enemy.transform.position - position;
+
+                    float dot = Vector3.Dot(diff.normalized, gameObject.transform.forward);
+
+                    float curDistance = diff.sqrMagnitude;
+                    if (curDistance < distance && dot > 0.5f)
+                    {
+                        closest = enemy;
+                        distance = curDistance;
+                    }
                 }
             }
         }

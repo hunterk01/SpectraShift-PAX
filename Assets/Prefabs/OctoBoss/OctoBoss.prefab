@@ -901,7 +901,7 @@ GameObject:
   - 114: {fileID: 11459124}
   m_Layer: 0
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3574,6 +3574,7 @@ MonoBehaviour:
   gooPauseMax: 1
   fireDistance: 60
   energyGainThreshold: 10
+  spotPlayerTotal: 8
   OB_Bolt: {fileID: 190064, guid: 35f1e1f31904b24419ba8ced12cd0ab8, type: 2}
   OB_Ball: {fileID: 123586, guid: e3f7d9a616457d24d91b7a2590852e24, type: 2}
   bulletSpawn: {fileID: 103018}
@@ -3890,6 +3891,7 @@ MonoBehaviour:
   spinMode: 0
   shellAlive: 1
   coreAlive: 1
+  spotPlayer: 0
   player: {fileID: 0}
   playerTarget: {fileID: 0}
   playerRB: {fileID: 0}
