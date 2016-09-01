@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDelay: 0.5
   rocketLifetime: 10
-  rocketRange: 70
+  rocketRange: 50
   Rocket: {fileID: 174672, guid: ddb2ef5390c6ad0478259250ef50affd, type: 2}
 --- !u!1001 &100100000
 Prefab:

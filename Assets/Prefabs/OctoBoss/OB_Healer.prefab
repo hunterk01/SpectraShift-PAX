@@ -2059,7 +2059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItem: {fileID: 148684, guid: f7e6702882e231f408f321a1245a747c, type: 2}
-  dropRate: 25
+  dropRate: 0
 --- !u!114 &11451876
 MonoBehaviour:
   m_ObjectHideFlags: 1
