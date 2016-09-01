@@ -35,7 +35,7 @@ public class OctoBossShell : LivingEntity
 
         // Play shell explosion vfx
         Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
-
+        
         // Destroy GameObject
         GameObject.Destroy(gameObject);
     }

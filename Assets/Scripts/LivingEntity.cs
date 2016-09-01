@@ -25,6 +25,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public bool deathDelay = false;
     public float deathDelayMax;
     float deathDelayTimer;
+    bool explosionPlayed = false;
 
     public float healthRegenRate, shieldRegenRate;
     public float regenDelay;
@@ -82,10 +83,15 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     public void HasDied()
     {
-        Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
+        if (!explosionPlayed)
+        {
+            Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
+        }
 
         if (deathDelay)
         {
+            explosionPlayed = true;
+
             if (deathDelayTimer < 0)
             {
                 Destruction();

@@ -9,6 +9,8 @@ public class CameraFollow : MonoBehaviour
     public float height = 20f;
     public float distance = 20f;
 
+    GameOver gameOver;
+
     // Camera limits.
     public float min = 10f;
     public float max = 60;
@@ -39,6 +41,8 @@ public class CameraFollow : MonoBehaviour
 
         // Setup our default camera.  We set the zoom result to be our default position.
         zoomResult = new Vector3(0f, height, -distance);
+
+        gameOver = GameObject.FindWithTag("WorldController").GetComponent<GameOver>();
     }
 
     void LateUpdate()
@@ -46,6 +50,7 @@ public class CameraFollow : MonoBehaviour
         // Check target.
         if (!target)
         {
+            gameOver.gameOver();
             Debug.LogError("This camera has no target, you need to assign a target in the inspector.");
             return;
         }

@@ -201,7 +201,7 @@ ParticleSystem:
   serializedVersion: 2
   lengthInSec: 0.5
   startDelay:
-    scalar: 0.8
+    scalar: 1.5
     maxCurve:
       serializedVersion: 2
       m_Curve:
@@ -1650,7 +1650,7 @@ ParticleSystem:
   serializedVersion: 2
   lengthInSec: 0.3
   startDelay:
-    scalar: 0.8
+    scalar: 1.5
     maxCurve:
       serializedVersion: 2
       m_Curve:
@@ -1695,7 +1695,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 2
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3147,7 +3147,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156570}
   serializedVersion: 2
-  lengthInSec: 0.8
+  lengthInSec: 1.4
   startDelay:
     scalar: 0
     maxCurve:
@@ -3194,7 +3194,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 0.3
+      scalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4648,7 +4648,7 @@ ParticleSystem:
   serializedVersion: 2
   lengthInSec: 1
   startDelay:
-    scalar: 0.8
+    scalar: 1.5
     maxCurve:
       serializedVersion: 2
       m_Curve:
@@ -4728,7 +4728,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 2
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6117,7 +6117,7 @@ ParticleSystem:
   serializedVersion: 2
   lengthInSec: 0.5
   startDelay:
-    scalar: 0.8
+    scalar: 1.5
     maxCurve:
       serializedVersion: 2
       m_Curve:
@@ -6162,7 +6162,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 1
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6197,7 +6197,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 1
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6213,7 +6213,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.5
+          value: 0.4
           inSlope: 0
           outSlope: 0
           tangentMode: 0

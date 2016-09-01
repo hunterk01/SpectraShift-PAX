@@ -8,8 +8,6 @@ public class OctoBossMain : MonoBehaviour
 
     public OctoBossController obControl;
 
-    public Object eyeExplosion;
-
     float bodyRotation;
 
 	void Update ()
@@ -37,9 +35,7 @@ public class OctoBossMain : MonoBehaviour
     {
 
         if (!obControl.coreAlive)
-        {
-            Instantiate(eyeExplosion, gameObject.transform.position, Quaternion.identity);
-
+        {           
             GameObject.Destroy(gameObject);
         }
     }

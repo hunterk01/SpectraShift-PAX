@@ -43,7 +43,7 @@ MonoBehaviour:
   rocketLifetime: 3.5
   rocketRange: 40
   projectileHeight: 0
-  Rocket: {fileID: 122922, guid: 517405feb74a5f040bd81158ec5ea48d, type: 2}
+  Rocket: {fileID: 123586, guid: e3f7d9a616457d24d91b7a2590852e24, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

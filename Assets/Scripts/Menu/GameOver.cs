@@ -1,19 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public Transform canvas;
-      
+    public bool GODelay = false;
+    public float GODelayMax;
+    float GODelayTimer;
+
+    protected virtual void Start()
+    {      
+        GODelayTimer = GODelayMax;       
+    }
+
     public void gameOver()
     {
-        if (canvas.gameObject.activeInHierarchy == false)
-        {                    
-            canvas.gameObject.SetActive(true);           
+        if (GODelay)
+        {            
+            if (GODelayTimer < 0)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
+            else
+            {
+                GODelayTimer -= Time.deltaTime;
+            }
         }
         else
         {
-            canvas.gameObject.SetActive(false);           
+            SceneManager.LoadScene("GameOver");
         }
+           
     }
 }
