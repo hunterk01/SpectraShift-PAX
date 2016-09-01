@@ -13,6 +13,7 @@ public class EnemyControllerNavTest: LivingEntity
     public float shotTimer, secondShotTimer;
     public Shader shader1, shader2;
     public bool secondaryWeapon = false;
+    public float collisionForce = 100;
 
     // For debug purposes
     public float targetDistance;
@@ -20,6 +21,7 @@ public class EnemyControllerNavTest: LivingEntity
     PlayerController player;
     GameObject playerTarget;
     Rigidbody playerRB;
+    Rigidbody rb;
     MovingEntity movingEntity;
     NavMeshAgent pathfinder;
     Material material;
@@ -38,6 +40,7 @@ public class EnemyControllerNavTest: LivingEntity
         base.Start();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         playerRB = player.GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         movingEntity = GetComponent<MovingEntity>();
         playerTarget = GameObject.FindGameObjectWithTag("Player");
         pathfinder = GetComponent<NavMeshAgent>();
@@ -188,5 +191,12 @@ public class EnemyControllerNavTest: LivingEntity
                 evade.GetCloseSteering(playerRB);
                 break;
         }
-    }   
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Vector3 direction = collision.contacts[0].point - transform.position;
+        direction = -direction.normalized;
+        rb.AddForce(direction * collisionForce);
+    }
 }

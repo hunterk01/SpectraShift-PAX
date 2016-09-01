@@ -5,6 +5,7 @@ using System.Collections;
 public class OctoBossController : MonoBehaviour
 {
     public float spinTimer, spinDuration;
+    public float droneShutoffDelay = 1.6f;
 
     public GameObject[] guns;
 
@@ -29,20 +30,23 @@ public class OctoBossController : MonoBehaviour
     public GameObject healer;
     public GameObject core;
     public GameObject victoryTrigger;
+    public EnemySpawnerNavMesh[] bossSpawners;
+    public GameObject bossSpawnTrigger;
 
     public float healerSpawnDelay = 15;
 
     GameObject healerTracker;
 
-
     float spinTimerCountdown, spinDurationCountdown;
-    public float healerSpawnTimer;
+    float healerSpawnTimer;
+    float droneShutoffTimer;
     
     void Start()
     {
         spinTimerCountdown = spinTimer;
         spinDurationCountdown = spinDuration;
         healerSpawnTimer = healerSpawnDelay;
+        droneShutoffTimer = droneShutoffDelay;
         obGunUI.enabled = false;
         obCoreUI.enabled = false;
     }
@@ -136,6 +140,19 @@ public class OctoBossController : MonoBehaviour
             coreAlive = false;
             obCoreUI.enabled = false;
             victoryTrigger.SetActive(true);
+            bossSpawnTrigger.SetActive(false);
+
+            if (droneShutoffTimer < 0)
+            {
+                for (int i = 0; i < bossSpawners.Length; i++)
+                {
+                    bossSpawners[i].spawnerOn = false;
+                }
+            }
+            else
+            {
+                droneShutoffTimer -= Time.deltaTime;
+            }
         }
     }
 

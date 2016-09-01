@@ -3875,6 +3875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinTimer: 7
   spinDuration: 5
+  droneShutoffDelay: 1.6
   guns:
   - {fileID: 180856}
   - {fileID: 140784}
@@ -3914,8 +3915,13 @@ MonoBehaviour:
   healer: {fileID: 144492, guid: 6836104d7a389c442a6dc7dbbfc78715, type: 2}
   core: {fileID: 120988}
   victoryTrigger: {fileID: 0}
+  bossSpawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bossSpawnTrigger: {fileID: 0}
   healerSpawnDelay: 15
-  healerSpawnTimer: 0
 --- !u!114 &11441548
 MonoBehaviour:
   m_ObjectHideFlags: 1
