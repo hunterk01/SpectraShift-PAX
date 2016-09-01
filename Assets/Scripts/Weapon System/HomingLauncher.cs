@@ -18,6 +18,7 @@ public class HomingLauncher : MonoBehaviour, IGun
     float distance;
 
     Vector3 displacement;
+    PlayerController player;
 
     // Use this for initialization
     void Start()
@@ -26,6 +27,7 @@ public class HomingLauncher : MonoBehaviour, IGun
         isLight = true;
         isLoaded = true;
         weaponSystem = GetComponentInParent<WeaponSystems>();
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     void IGun.fire()
@@ -38,8 +40,10 @@ public class HomingLauncher : MonoBehaviour, IGun
             GameObject tempEnemy = findClosestEnemy();
             //displacement = tempEnemy.transform.position - transform.position;
             //distance = displacement.magnitude;
-            distance = Vector3.Distance(tempEnemy.transform.position, transform.position);
 
+            if (tempEnemy == null) return;
+
+            distance = Vector3.Distance(tempEnemy.transform.position, transform.position);
             if (distance < rocketRange && tempEnemy.layer == 8)
             {
                 if (tempEnemy != null)
@@ -82,17 +86,28 @@ public class HomingLauncher : MonoBehaviour, IGun
         //Check each Enemy Object and replace closest with current enemy if it's closer
         foreach (GameObject enemy in enemies)
         {
-            Vector3 diff = enemy.transform.position - position;
-            float dot = Vector3.Dot(diff, gameObject.transform.forward);
+            var enemyController = enemy.GetComponent<EnemyControllerNavTest>();
+            if (enemyController == null) continue;
 
-            float curDistance = diff.sqrMagnitude;
-
-            if (curDistance < distance && dot >= 0.5f)
+            if (enemyController.isLight == player.isLight)
             {
-                closest = enemy;
-                distance = curDistance;
+                Vector3 diff = enemy.transform.position - position;
+                
+                float dot = Vector3.Dot(diff.normalized, gameObject.transform.forward);
+
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance && dot > 0.5f)
+                {
+                    closest = enemy;
+                    distance = curDistance;
+                }
             }
         }
         return closest;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, rocketRange);
     }
 }
