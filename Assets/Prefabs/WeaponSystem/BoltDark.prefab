@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 107040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.107, z: -0.156}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.55}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.6}
   m_Children:
   - {fileID: 495534}
   - {fileID: 439654}
@@ -85,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 114948}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.25, z: 0.08}
+  m_LocalScale: {x: 0.15, y: 0.3, z: 0.15}
   m_Children: []
   m_Father: {fileID: 400254}
   m_RootOrder: 0
@@ -131,9 +131,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 2
-  m_Color: {r: 0.5532389, g: 0.05882352, b: 0.7294118, a: 1}
-  m_Intensity: 2.36
-  m_Range: 20
+  m_Color: {r: 0.74509805, g: 0.19607843, b: 0.78431374, a: 1}
+  m_Intensity: 2.3
+  m_Range: 5
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb5c2fcaf3b2944fa35e34a7527bde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
@@ -756,7 +757,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4287760523
+          rgba: 4294901997
         key1:
           serializedVersion: 2
           rgba: 4291002044
