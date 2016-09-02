@@ -3517,7 +3517,7 @@ MonoBehaviour:
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
   deathDelay: 0
   deathDelayMax: 0
-  healthRegenRate: 2
+  healthRegenRate: 7
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
@@ -3556,7 +3556,7 @@ MonoBehaviour:
   Explosion: {fileID: 156570, guid: b469f3c4a97fb3848b85047c3dae656b, type: 2}
   deathDelay: 1
   deathDelayMax: 1.7
-  healthRegenRate: 4
+  healthRegenRate: 10
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
@@ -3611,7 +3611,7 @@ MonoBehaviour:
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
   deathDelay: 0
   deathDelayMax: 0
-  healthRegenRate: 2
+  healthRegenRate: 7
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
@@ -3735,7 +3735,7 @@ MonoBehaviour:
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
   deathDelay: 0
   deathDelayMax: 0
-  healthRegenRate: 2
+  healthRegenRate: 7
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
@@ -3983,7 +3983,7 @@ MonoBehaviour:
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
   deathDelay: 0
   deathDelayMax: 0
-  healthRegenRate: 2
+  healthRegenRate: 7
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
@@ -4022,7 +4022,7 @@ MonoBehaviour:
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
   deathDelay: 0
   deathDelayMax: 0
-  healthRegenRate: 2
+  healthRegenRate: 7
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
@@ -4061,7 +4061,7 @@ MonoBehaviour:
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
   deathDelay: 0
   deathDelayMax: 0
-  healthRegenRate: 2
+  healthRegenRate: 7
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
@@ -4426,7 +4426,7 @@ MonoBehaviour:
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
   deathDelay: 0
   deathDelayMax: 0
-  healthRegenRate: 2
+  healthRegenRate: 7
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
@@ -4465,7 +4465,7 @@ MonoBehaviour:
   Explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
   deathDelay: 0
   deathDelayMax: 0
-  healthRegenRate: 2
+  healthRegenRate: 7
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
