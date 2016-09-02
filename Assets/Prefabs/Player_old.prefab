@@ -2603,7 +2603,7 @@ MonoBehaviour:
   deathDelayMax: 0
   healthRegenRate: 15
   shieldRegenRate: 12
-  regenDelay: 7.5
+  regenDelay: 5
   regenEnabled: 0
   healthSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
@@ -2673,13 +2673,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverHeight: 4.5
   hoverHeightStrictness: 1
-  forwardSpeed: 5000
-  backwardSpeed: 3000
-  strafeSpeed: 3000
+  forwardSpeed: 5500
+  backwardSpeed: 3500
+  strafeSpeed: 3250
   jukeMulitplier: 4.5
   jukeTimer: 0.2
   jukeBankAmount: 0.5
-  bankAmount: 0.1
+  bankAmount: 0.035
   bankSpeed: 0.2
   turnSpeed: 3000
   mass: 2.5

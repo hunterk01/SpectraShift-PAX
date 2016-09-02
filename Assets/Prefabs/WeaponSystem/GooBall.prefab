@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 25
-  maxDamage: 12
+  maxDamage: 16
   turnSpeed: 4
   gooSplash: {fileID: 164834, guid: e8b32a331d6ee5a428cfdde64b9864e5, type: 2}
   gooSplashOffset: 1

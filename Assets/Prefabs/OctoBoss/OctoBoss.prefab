@@ -3556,7 +3556,7 @@ MonoBehaviour:
   Explosion: {fileID: 156570, guid: b469f3c4a97fb3848b85047c3dae656b, type: 2}
   deathDelay: 1
   deathDelayMax: 1.7
-  healthRegenRate: 10
+  healthRegenRate: 8
   shieldRegenRate: 0
   regenDelay: 0
   regenEnabled: 0
@@ -3875,7 +3875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinTimer: 7
   spinDuration: 5
-  droneShutoffDelay: 1.6
+  droneShutoffDelay: 1.2
   guns:
   - {fileID: 180856}
   - {fileID: 140784}
