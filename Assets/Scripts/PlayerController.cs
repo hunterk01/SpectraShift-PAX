@@ -18,6 +18,8 @@ public class PlayerController : LivingEntity
     public Slider lightSlider;
     public Slider shiftSlider;
     public Text rocketText;
+    public GameObject lightWarning;
+    public GameObject darkWarning;
     public float lightEnergy;
     public float lightEnergyMax = 50;
     public float darkEnergy;
@@ -35,6 +37,8 @@ public class PlayerController : LivingEntity
     float deadzone = 0.3f;
     float buttonTimer = 0.5f;
     float shiftCooldownTimer;
+    float energyWarningTimer;
+    float energyWarningDelay = 0.25f;
     int buttonCount = 0;
     bool canShift = true;
 
@@ -57,7 +61,8 @@ public class PlayerController : LivingEntity
         shiftSlider.maxValue = shiftCooldownMax;
         lightEnergy = 50;
         darkEnergy = 50;
-        shiftCooldownTimer = shiftCooldownMax;      
+        shiftCooldownTimer = shiftCooldownMax;
+        energyWarningTimer = energyWarningDelay;  
     }
 
     protected override void Update ()
@@ -71,6 +76,7 @@ public class PlayerController : LivingEntity
             Regen();
         }
 
+        EnergyWarning();
         EnergyRegen();
              
         if (gameController.addEnergy == true)
@@ -309,6 +315,55 @@ public class PlayerController : LivingEntity
         darkSlider.value = darkEnergy;
         lightSlider.value = lightEnergy;
         shiftSlider.value = shiftCooldownTimer;
+    }
+
+    void EnergyWarning()
+    {
+        if (lightEnergy <= 0)
+        {
+            if (energyWarningTimer < 0)
+            {
+                if (lightWarning.activeSelf  == false)
+                {
+                    lightWarning.SetActive(true);
+                }
+                else
+                {
+                    lightWarning.SetActive(false);
+                }
+
+                energyWarningTimer = energyWarningDelay;
+            }
+            else
+            {
+                energyWarningTimer -= Time.deltaTime;
+            }
+        }
+        else if (darkEnergy <= 0)
+        {
+            if (energyWarningTimer < 0)
+            {
+                if (darkWarning.activeSelf == false)
+                {
+                    darkWarning.SetActive(true);
+                }
+                else
+                {
+                    darkWarning.SetActive(false);
+                }
+
+                energyWarningTimer = energyWarningDelay;
+            }
+            else
+            {
+                energyWarningTimer -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            lightWarning.SetActive(false);
+            darkWarning.SetActive(false);
+        }
     }
 
     void OnCollisionEnter(Collision collision)

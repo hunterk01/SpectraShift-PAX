@@ -24,7 +24,6 @@ public class OctoBossGate : MonoBehaviour
     {
         if (!gateRaised)
         {
-            //obControl.spotPlayer = true;
             player.inBossArea = true;
             RaiseGate();
         }

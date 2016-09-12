@@ -20,6 +20,7 @@ public class HRocketAI : MonoBehaviour, IProjectile
     public float damage;
     public float speed;
 
+    PlayerController player;
 
 	// Use this for initialization
 	void Start ()
@@ -29,6 +30,8 @@ public class HRocketAI : MonoBehaviour, IProjectile
         speed = maxSpeed;
         distanceToTarget = 0;
         rocketHeight = HeightManager.Instance.setHeight;
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        isLight = player.isLight;
     }
 	
 	// Update is called once per frame
@@ -63,12 +66,16 @@ public class HRocketAI : MonoBehaviour, IProjectile
                 LivingEntity hitObject = hit.collider.GetComponent<LivingEntity>();
                 hitTarget(damageableObject);
             }
-
             else
             {
                 Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
                 Destroy(gameObject);
             }
+        }
+
+        if (isLight != player.isLight)
+        {
+            Destroy(gameObject);
         }
     }
 
