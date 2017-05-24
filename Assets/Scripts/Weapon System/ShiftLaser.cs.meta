@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: 167136421fa8c35488f78b8e90e01928
-timeCreated: 1464725554
-licenseType: Pro
+timeCreated: 1469573034
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PlayerUI: {fileID: 22386550, guid: 7f8a962233ca1cd4b863d8b1c4360c26, type: 2}
+  - lightBolt: {instanceID: 0}
+  - darkBolt: {instanceID: 0}
+  - darkSlider: {instanceID: 0}
+  - lightSlider: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
